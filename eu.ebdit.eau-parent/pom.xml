@@ -24,6 +24,11 @@
   		<version>1.8.0</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.groovy</groupId>
+  		<artifactId>groovy-all</artifactId>
+  		<version>1.6.1</version>
+  	</dependency>
   </dependencies>
   <modules>
   	<module>../eu.ebdit.eau/pom.xml</module>
