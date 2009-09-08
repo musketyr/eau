@@ -13,4 +13,5 @@ package eu.ebdit.eau.testing
 	Status status
 	String message
 	
+
 }

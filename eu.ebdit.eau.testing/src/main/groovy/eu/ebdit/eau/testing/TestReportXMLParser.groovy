@@ -11,7 +11,7 @@ public class TestReportXMLParser{
 	TestReportXMLParser(def toBeParsed){
 		this.toBeParsed = toBeParsed
 	}
-	
+	
 	List<Result> parse(){
 		def testsuite = new XmlParser().parse(toBeParsed);
 		if (testsuite.name() == 'testsuite') {

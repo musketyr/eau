@@ -25,7 +25,7 @@ public class TestScoreXMLParser{
 				ret << new TestScoreBean(
 						classFQName: it.parent().'@name', 
 						testName: it.'@name', 
-						points: it.'@points'.toDouble(), 
+						points: it.'@points'.toDouble(),
 						bonus: it.'@bonus', 
 						message: it.'@message', 
 						detail: it.text()
