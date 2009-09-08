@@ -64,7 +64,14 @@ public class BaseTest {
 	}
 	
 	protected Eau getEva() {
-		return TestingEau.of(getScoreList(), getResultList());
+		
+		List<TestScore> scoreList = getScoreList();
+		System.out.println("score list:");
+		System.out.println(scoreList);
+		List<Result> resultList = getResultList();
+		System.out.println("result list:");
+		System.out.println(resultList);
+		return TestingEau.of(scoreList, resultList);
 	}
 	
 	protected List<Result> getResultList() {
