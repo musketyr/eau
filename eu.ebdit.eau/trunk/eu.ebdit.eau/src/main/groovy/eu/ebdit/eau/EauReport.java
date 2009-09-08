@@ -2,7 +2,7 @@ package eu.ebdit.eau;
 
 import java.util.Collection;
 
-public interface EvaReport {
+public interface EauReport {
 
 	double getMaxPointsBonusIncluded();
 	double getMaxPoints();
@@ -10,6 +10,6 @@ public interface EvaReport {
 	double getSuccessPercentage();
 	String getMessage();
 	String getDetails();
-	Collection<EvaReport> getChildReports();
+	Collection<EauReport> getChildReports();
 	
 }

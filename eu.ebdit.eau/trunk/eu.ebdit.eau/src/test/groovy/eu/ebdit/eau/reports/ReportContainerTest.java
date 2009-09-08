@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.EvaReport;
+import eu.ebdit.eau.EauReport;
 
 
 public class ReportContainerTest {
@@ -16,10 +16,10 @@ public class ReportContainerTest {
 	private static final String FIXTURE2_MESSAGE = "Fixture2";
 	private static final String FIXTURE1_MESSAGE = "Fixture1";
 	private static final double EPSILON = 0.01;
-	private EvaReport fixture1;
-	private EvaReport fixture2;
-	private Iterable<EvaReport> fixture1Items;
-	private Iterable<EvaReport> fixture2Items;
+	private EauReport fixture1;
+	private EauReport fixture2;
+	private Iterable<EauReport> fixture1Items;
+	private Iterable<EauReport> fixture2Items;
 
 	@Before public void setUp(){
 		fixture1Items = getFixture1Items();
@@ -70,21 +70,21 @@ public class ReportContainerTest {
 		assertEquals(fixture1.hashCode(), ReportContainer.of(FIXTURE1_MESSAGE, fixture1Items).hashCode());
 	}
 	
-	private Iterable<EvaReport> getFixture1Items() {
+	private Iterable<EauReport> getFixture1Items() {
 		return ImmutableList.of(
 				getReport(2, 1, 2),
 				getReport(3, 2, 4)
 		);
 	}
 	
-	private Iterable<EvaReport> getFixture2Items() {
+	private Iterable<EauReport> getFixture2Items() {
 		return ImmutableList.of(
 				getReport(2, 3, 3),
 				getReport(2, 2, 4)
 		);
 	}
-	private EvaReport getReport(double maxPoints, double points, double pointsWithBonuses){
-		EvaReport er = mock(EvaReport.class);
+	private EauReport getReport(double maxPoints, double points, double pointsWithBonuses){
+		EauReport er = mock(EauReport.class);
 		when(er.getMaxPoints()).thenReturn(maxPoints);
 		when(er.getPoints()).thenReturn(points);
 		when(er.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);

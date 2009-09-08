@@ -4,37 +4,37 @@ import java.util.Collection;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.EvaReport;
+import eu.ebdit.eau.EauReport;
 
-public class ReportContainer implements EvaReport {
+public class ReportContainer implements EauReport {
 
-	private final ImmutableList<EvaReport> children;
+	private final ImmutableList<EauReport> children;
 	private final String message;
 	
 	
 		
-	private ReportContainer(ImmutableList<EvaReport> children, String message) {
+	private ReportContainer(ImmutableList<EauReport> children, String message) {
 		this.children = children;
 		this.message = message;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static ReportContainer of(String message, Iterable<EvaReport> theChildren) {
-		ImmutableList<EvaReport> children;
+	public static ReportContainer of(String message, Iterable<EauReport> theChildren) {
+		ImmutableList<EauReport> children;
 		if (theChildren instanceof ImmutableList) {
-			children = (ImmutableList<EvaReport>) theChildren;
+			children = (ImmutableList<EauReport>) theChildren;
 		} else {
 			children = ImmutableList.copyOf(theChildren);
 		}
 		return new ReportContainer(children, message);
 	}
-	public Collection<EvaReport> getChildReports() {
+	public Collection<EauReport> getChildReports() {
 		return children;
 	}
 
 	public double getMaxPoints() {
 		double ret = 0;
-		for (EvaReport er : children) {
+		for (EauReport er : children) {
 			ret += er.getMaxPoints();
 		}
 		return ret;
@@ -42,7 +42,7 @@ public class ReportContainer implements EvaReport {
 
 	public double getMaxPointsBonusIncluded() {
 		double ret = 0;
-		for (EvaReport er : children) {
+		for (EauReport er : children) {
 			ret += er.getMaxPointsBonusIncluded();
 		}
 		return ret;
@@ -58,7 +58,7 @@ public class ReportContainer implements EvaReport {
 
 	public double getPoints() {
 		double ret = 0;
-		for (EvaReport er : children) {
+		for (EauReport er : children) {
 			ret += er.getPoints();
 		}
 		return ret;
@@ -84,7 +84,7 @@ public class ReportContainer implements EvaReport {
 	
 	private String toString(int ident) {
 		String ret = ident(ident) + String.format("%06.2f%% - %s", getSuccessPercentage() * 100, getMessage()) + " {\n";
-		for (EvaReport er : children) {
+		for (EauReport er : children) {
 			if (er == null) {
 				continue;
 			}

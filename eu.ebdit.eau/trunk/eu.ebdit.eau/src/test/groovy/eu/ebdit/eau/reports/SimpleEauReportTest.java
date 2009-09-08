@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.ebdit.eau.EvaReport;
+import eu.ebdit.eau.EauReport;
 
 
-public class SimpleEvaReportTest {
+public class SimpleEauReportTest {
 
 	private static final String F2_MESSAGE = "F2";
 	private static final String F1_MESSAGE = "F1";
 	private static final double EPSILON = 0.01;
 	private static final String F2_DETAILS = "F2 DETAILS";
-	private EvaReport f1;
-	private EvaReport f2;
+	private EauReport f1;
+	private EauReport f2;
 	
 	@Before public void setUp(){
-		f1 = new SimpleEvaReport(F1_MESSAGE, 1, 1);
-		f2 = new SimpleEvaReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
+		f1 = new SimpleEauReport(F1_MESSAGE, 1, 1);
+		f2 = new SimpleEauReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
 	}
 	
 	@Test
@@ -66,8 +66,8 @@ public class SimpleEvaReportTest {
 	
 	@Test
 	public void testEquals() throws Exception {
-		assertEquals(new SimpleEvaReport(F1_MESSAGE, 1, 2), new SimpleEvaReport(F1_MESSAGE, 1, 2));
-		assertEquals(new SimpleEvaReport(F1_MESSAGE, 1, 2).hashCode(), new SimpleEvaReport(F1_MESSAGE, 1, 2).hashCode());
+		assertEquals(new SimpleEauReport(F1_MESSAGE, 1, 2), new SimpleEauReport(F1_MESSAGE, 1, 2));
+		assertEquals(new SimpleEauReport(F1_MESSAGE, 1, 2).hashCode(), new SimpleEauReport(F1_MESSAGE, 1, 2).hashCode());
 	}
 	
 	@Test
