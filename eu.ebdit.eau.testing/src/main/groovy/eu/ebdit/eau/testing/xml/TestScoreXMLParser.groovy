@@ -1,7 +1,11 @@
 /**
  * 
  */
-package eu.ebdit.eau.testing
+package eu.ebdit.eau.testing.xml
+
+import eu.ebdit.eau.testing.TestScore
+import eu.ebdit.eau.testing.Result
+import eu.ebdit.eau.testing.beans.TestScoreBean
 
 
 
