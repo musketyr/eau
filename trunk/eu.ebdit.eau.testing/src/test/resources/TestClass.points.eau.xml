@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<points>
+	<class name="org.example.TestClass">
+		<test name="testOne" points="0.5" message="Test one is for 0.5 points"/>
+		<test name="testTwo" points="0.75"/>
+		<test name="testThree" points="1" bonus="true" message="Bonus">
+			Here could be some details
+		</test>
+	</class>
+	<!-- here could be other classes -->
+</points>
