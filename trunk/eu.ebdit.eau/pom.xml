@@ -9,7 +9,7 @@
 		<artifactId>eau-parent</artifactId>
 		<groupId>eu.ebdit</groupId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../eu.ebdit.eau-parent</relativePath>
+		<relativePath>../eu.ebdit.eau-parent/pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -18,58 +18,8 @@
     <name>Eau - Evaluation Automation Utility</name>
     <version>0.0.1-SNAPSHOT</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.codehaus.groovy.maven.runtime</groupId>
-            <artifactId>gmaven-runtime-1.6</artifactId>
-            <version>1.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>com.google.collections</groupId>
-        	<artifactId>google-collections</artifactId>
-        	<version>1.0-rc2</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.mockito</groupId>
-        	<artifactId>mockito-all</artifactId>
-        	<version>1.8.0</version>
-        	<scope>test</scope>
-        </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-        	  <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-compiler-plugin</artifactId>
-	        <configuration>
-	          <source>1.5</source>
-	          <target>1.5</target>
-	        </configuration>
-	      </plugin>
-            <plugin>
-                <groupId>org.codehaus.groovy.maven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generateStubs</goal>
-                            <goal>compile</goal>
-                            <goal>generateTestStubs</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+
+
 
 </project>

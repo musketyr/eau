@@ -6,9 +6,56 @@
   <name>Eau parent project</name>
   <version>0.0.1-SNAPSHOT</version>
   
+  <dependencies>
+  	<dependency>
+  		<groupId>com.google.collections</groupId>
+  		<artifactId>google-collections</artifactId>
+  		<version>1.0-rc2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.5</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.mockito</groupId>
+  		<artifactId>mockito-all</artifactId>
+  		<version>1.8.0</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
   <modules>
   	<module>../eu.ebdit.eau/pom.xml</module>
   	<module>../eu.ebdit.eau.testing/pom.xml</module>
   </modules>
+  
+      <build>
+        <plugins>
+        	  <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <configuration>
+	          <source>1.5</source>
+	          <target>1.5</target>
+	        </configuration>
+	      </plugin>
+            <plugin>
+                <groupId>org.codehaus.groovy.maven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generateStubs</goal>
+                            <goal>compile</goal>
+                            <goal>generateTestStubs</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
   
 </project>
