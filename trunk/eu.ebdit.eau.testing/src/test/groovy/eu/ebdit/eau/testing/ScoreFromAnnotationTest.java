@@ -2,6 +2,8 @@ package eu.ebdit.eau.testing;
 
 import java.util.List;
 
+import eu.ebdit.eau.testing.annotations.ScoreAnnotationFinder;
+
 
 
 public class ScoreFromAnnotationTest extends BaseTest {

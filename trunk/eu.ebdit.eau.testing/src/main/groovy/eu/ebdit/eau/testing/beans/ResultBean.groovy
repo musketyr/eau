@@ -1,4 +1,7 @@
-package eu.ebdit.eau.testing
+package eu.ebdit.eau.testing.beans
+
+import eu.ebdit.eau.testing.Status
+import eu.ebdit.eau.testing.Result
 
 
 

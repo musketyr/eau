@@ -1,5 +1,5 @@
-package eu.ebdit.eau.testing
-import java.lang.IllegalArgumentException
+package eu.ebdit.eau.testing.xml
+import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.testing.TestScoreimport eu.ebdit.eau.testing.Resultimport eu.ebdit.eau.testing.Statusimport eu.ebdit.eau.testing.beans.ResultBean
 /**
  * @author Vladimir Orany
  *
