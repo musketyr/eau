@@ -13,7 +13,7 @@ import eu.ebdit.eau.Eau;
 import eu.ebdit.eau.EauReport;
 
 public class BaseTest {
-
+	
 	private static final double EPSILON = 0.01;
 	private static final String CLASS_FQNAME = "org.example.TestClass";
 	private static final String SCORE_1_MESSAGE_OK = "Test one is for 0.5 points";

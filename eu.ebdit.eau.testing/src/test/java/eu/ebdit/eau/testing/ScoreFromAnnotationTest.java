@@ -13,4 +13,9 @@ public class ScoreFromAnnotationTest extends BaseTest {
 		return finder.check("org.example.TestClass");
 	}
 	
+	@Override
+	public void testSelfCreateTestScore() throws Exception {
+		// do nothing
+	}
+	
 }

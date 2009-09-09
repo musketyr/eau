@@ -15,4 +15,9 @@ public class ScoreFromXMLTest extends BaseTest {
 	protected List<TestScore> getScoreList() throws Exception{
 		return new TestScoreXMLParser().parse(new File(getClass().getResource("/TestClass.points.eau.xml").toURI()));
 	}
+	
+	@Override
+	public void testSelfCreateTestScore() throws Exception {
+		// do nothing
+	}
 }

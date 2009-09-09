@@ -15,7 +15,7 @@ import eu.ebdit.eau.reports.SimpleEauReport;
 
 public class TestingEau implements Eau {
 
-	private final Map<String,Map<String, TestScore>> scoreMap;
+	private final Map<String, Map<String, TestScore>> scoreMap;
 	private final ImmutableList<Result> resultList;
 	
 	
