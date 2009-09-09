@@ -9,10 +9,10 @@ import eu.ebdit.eau.testing.TestScore
  */
 @Immutable public final class TestScoreBean implements TestScore{
 
+	boolean bonus
+	double points
 	String classFQName
 	String testName
-	double points
 	String message
 	String details
-	boolean bonus
 }
