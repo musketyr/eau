@@ -14,14 +14,8 @@ import eu.ebdit.eau.testing.beans.TestScoreBean
  *
  */
 public class TestScoreXMLParser{
-
-	private final toBeParsed
 	
-	TestScoreXMLParser(def toBeParsed){
-		this.toBeParsed = toBeParsed
-	}
-	
-	List<TestScore> parse(){
+	List<TestScore> parse(toBeParsed){
 		def points = new XmlParser().parse(toBeParsed);
 		if (points.name() == 'points') {
 			List<Result> ret = []

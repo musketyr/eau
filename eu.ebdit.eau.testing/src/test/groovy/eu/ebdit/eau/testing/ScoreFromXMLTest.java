@@ -13,6 +13,6 @@ import eu.ebdit.eau.testing.xml.TestScoreXMLParser;
 public class ScoreFromXMLTest extends BaseTest {
 	
 	protected List<TestScore> getScoreList() throws Exception{
-		return new TestScoreXMLParser(new File(getClass().getResource("/TestClass.points.eau.xml").toURI())).parse();
+		return new TestScoreXMLParser().parse(new File(getClass().getResource("/TestClass.points.eau.xml").toURI()));
 	}
 }
