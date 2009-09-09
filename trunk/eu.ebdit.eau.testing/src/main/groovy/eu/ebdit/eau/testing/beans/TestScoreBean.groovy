@@ -15,4 +15,9 @@ import eu.ebdit.eau.testing.TestScore
 	String testName
 	String message
 	String details
+	
+	static TestScoreBean of(String className, String testName, double points, String message = '', boolean bonus = false, String details = ''){
+		return new TestScoreBean(classFQName: className, testName: testName, points: points, message: message, bonus: bonus, details: details)
+	}
+	
 }
