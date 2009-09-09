@@ -6,6 +6,8 @@ package eu.ebdit.eau.testing;
 import java.io.File;
 import java.util.List;
 
+import eu.ebdit.eau.testing.xml.TestReportXMLParser;
+
 
 
 /**

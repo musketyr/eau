@@ -32,7 +32,7 @@ public class ScoreAnnotationFinder {
 						details = m.getAnnotation(Details.class).value();
 					}
 					boolean bonus = m.isAnnotationPresent(Bonus.class);
-					scores.add(new TestScoreBean(className, m.getName(), points, desc, details, bonus));
+					scores.add(TestScoreBean.of(className, m.getName(), points, desc, bonus, details));
 				}
 			}
 			return ImmutableList.copyOf(scores);
