@@ -17,6 +17,6 @@ import eu.ebdit.eau.testing.xml.TestReportXMLParser;
 public class TestFromXMLTest extends BaseTest{
 	
 	protected List<Result> getResultList() throws Exception{
-		return new TestReportXMLParser(new File(getClass().getResource("/TestClass.xml").toURI())).parse();
+		return new TestReportXMLParser().parse(new File(getClass().getResource("/TestClass.xml").toURI()));
 	}
 }

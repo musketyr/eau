@@ -4,15 +4,8 @@ import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.testing.TestScore
  * @author Vladimir Orany
  *
  */
-public class TestReportXMLParser{
-
-	private final toBeParsed
-	
-	TestReportXMLParser(def toBeParsed){
-		this.toBeParsed = toBeParsed
-	}
-	
-	List<Result> parse(){
+public class TestReportXMLParser{
+	List<Result> parse(toBeParsed){
 		def testsuite = new XmlParser().parse(toBeParsed);
 		if (testsuite.name() == 'testsuite') {
 			List<Result> ret = []
