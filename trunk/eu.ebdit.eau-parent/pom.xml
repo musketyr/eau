@@ -73,6 +73,11 @@
           <!-- <configLocation>src/main/resources/checkstyle.xml</configLocation> -->
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>2.3</version>
+      </plugin>
       <!-- causes out of memory :( -->
 <!--      <plugin>-->
 <!--        <groupId>org.codehaus.mojo</groupId>-->
