@@ -8,4 +8,5 @@
              files=".*?/groovy-stubs/.*"/>
   <suppress checks="TabCharacterCheck" files=".*"/>
   <suppress checks="WhitespaceAroundCheck" files=".*"/>
+  <suppress checks="TodoCommentCheck" files=".*"/>
 </suppressions>
