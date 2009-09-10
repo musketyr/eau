@@ -30,7 +30,7 @@ public class BaseTest {
 	public void testScoring() throws Exception {
 		Eau eau = getEva();
 		EauReport er = eau.report();
-		System.out.println(er);
+		//System.out.println(er);
 		assertNotNull(er);
 		assertNotNull(er.getMessage());
 		assertEquals(0.5, er.getPoints(), EPSILON);
@@ -66,11 +66,11 @@ public class BaseTest {
 	protected Eau getEva() throws Exception{
 		
 		List<TestScore> scoreList = getScoreList();
-		System.out.println("score list:");
-		System.out.println(scoreList);
+		//System.out.println("score list:");
+		//System.out.println(scoreList);
 		List<Result> resultList = getResultList();
-		System.out.println("result list:");
-		System.out.println(resultList);
+		//System.out.println("result list:");
+		//System.out.println(resultList);
 		return TestingEau.of(scoreList, resultList);
 	}
 	
