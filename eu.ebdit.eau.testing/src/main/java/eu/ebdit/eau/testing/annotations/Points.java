@@ -7,11 +7,13 @@ import java.lang.annotation.Target;
 
 /**
  * Number of points obtained whether the test is successful.
+ * 
  * @author Vladimir Orany
- *
+ * 
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Points {
-	/** @returns the number of points */ double value();
+    /** @returns the number of points */
+    double value();
 }

@@ -2,14 +2,14 @@ package eu.ebdit.eau.testing;
 
 public interface TestScore {
 
-	String getClassFQName();
+    String getClassFQName();
 
-	String getTestName();
+    String getTestName();
 
-	double getPoints();
+    double getPoints();
 
-	String getMessage();
+    String getMessage();
 
-	boolean isBonus();
+    boolean isBonus();
 
 }
