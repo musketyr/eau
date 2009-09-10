@@ -82,11 +82,12 @@
         <configuration>
           <excludes>
             <exclude>**/TestClass.java</exclude>
-            <exclude>**/generated/*.java</exclude>
+            <exclude>**/groovy-stubs/*.java</exclude>
           </excludes>
            <excludeRoots>
             <excludeRoot>target/generated-sources/groovy-stubs</excludeRoot>
           </excludeRoots>
+          <targetJdk>1.5</targetJdk>
           </configuration>
       </plugin>
       <!-- causes out of memory :( -->
