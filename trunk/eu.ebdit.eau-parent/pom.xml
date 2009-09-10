@@ -70,7 +70,9 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.3</version>
         <configuration>
-          <!-- <configLocation>src/main/resources/checkstyle.xml</configLocation> -->
+        	<excludes>**/groovy-stubs/*.java</excludes>
+          <!-- <configLocation>src/main/resources/checkstyle.xml</configLocation>-->
+           <!--<suppressionsFileExpression>src/main/resources/checkstyle-supressions.xml</suppressionsFileExpression>-->
         </configuration>
       </plugin>
       <plugin>
