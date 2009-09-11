@@ -35,7 +35,6 @@
 		<module>../eu.ebdit.eau/pom.xml</module>
 		<module>../eu.ebdit.eau.testing/pom.xml</module>
 	</modules>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -72,7 +71,7 @@
 				<version>2.3</version>
 				<configuration>
 					<excludes>**/groovy-stubs/*.java</excludes>
-					<suppressionsLocation>src/main/resources/checkstyle-supressions.xml</suppressionsLocation>
+					<suppressionsLocation>../eu.ebdit.eau-parent/src/main/resources/checkstyle-supressions.xml</suppressionsLocation>
 				</configuration>
 			</plugin>
 			<plugin>
