@@ -7,13 +7,6 @@
 	<name>Eau parent project</name>
 	<version>0.0.1-SNAPSHOT</version>
 
-<pluginRepositories>
-   <pluginRepository>
-      <id>snapshots.repository.codehaus.org</id>
-      <url>http://snapshots.repository.codehaus.org</url>
-   </pluginRepository>
-</pluginRepositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.google.collections</groupId>
@@ -68,25 +61,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.2</version>
-                    <configuration>
-                        <formats>
-                            <format>xml</format>
-                            <format>html</format>
-                        </formats>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>cobertura</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
 		</plugins>
 	</build>
 
@@ -143,26 +117,17 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 			</plugin>
-			
 
-
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>emma-maven-plugin</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <inherited>true</inherited>
-        </plugin>
-                
-<!--			<plugin>-->
-<!--				<groupId>org.codehaus.mojo</groupId>-->
-<!--				<artifactId>cobertura-maven-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<formats>-->
-<!--						<format>html</format>-->
-<!--						<format>xml</format>-->
-<!--					</formats>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 
