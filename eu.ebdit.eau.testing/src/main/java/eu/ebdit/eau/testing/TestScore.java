@@ -1,15 +1,11 @@
 package eu.ebdit.eau.testing;
 
-public interface TestScore {
+import eu.ebdit.eau.Score;
+
+public interface TestScore extends Score {
 
     String getClassFQName();
 
-    String getTestName();
-
-    double getPoints();
-
     String getMessage();
-
-    boolean isBonus();
 
 }

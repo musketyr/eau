@@ -3,9 +3,9 @@ package eu.ebdit.eau.reports;
 import java.util.Collection;
 import java.util.Collections;
 
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Report;
 
-public class SimpleEauReport implements EauReport {
+public class SimpleReport implements Report {
 
     private final double points;
     private final double max;
@@ -13,7 +13,7 @@ public class SimpleEauReport implements EauReport {
     private final String message;
     private final String details;
 
-    public SimpleEauReport(String message, double points, double max,
+    public SimpleReport(String message, double points, double max,
 	    double maxWithBonuses, String details) {
 	this.points = points;
 	this.max = max;
@@ -22,21 +22,21 @@ public class SimpleEauReport implements EauReport {
 	this.details = details;
     }
 
-    public SimpleEauReport(String message, double points, double max,
+    public SimpleReport(String message, double points, double max,
 	    double maxWithBonuses) {
 	this(message, points, max, maxWithBonuses, null);
     }
 
-    public SimpleEauReport(String message, double points, double max,
+    public SimpleReport(String message, double points, double max,
 	    String details) {
 	this(message, points, max, max, details);
     }
 
-    public SimpleEauReport(String message, double points, double max) {
+    public SimpleReport(String message, double points, double max) {
 	this(message, points, max, max, null);
     }
 
-    public Collection<EauReport> getChildReports() {
+    public Collection<Report> getChildReports() {
 	return Collections.emptyList();
     }
 
@@ -93,7 +93,7 @@ public class SimpleEauReport implements EauReport {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	SimpleEauReport other = (SimpleEauReport) obj;
+	SimpleReport other = (SimpleReport) obj;
 	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max))
 	    return false;
 	if (Double.doubleToLongBits(maxWithBonuses) != Double

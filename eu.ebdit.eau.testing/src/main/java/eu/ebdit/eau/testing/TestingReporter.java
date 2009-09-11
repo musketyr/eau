@@ -7,25 +7,25 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import eu.ebdit.eau.EauReporter;
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Reporter;
+import eu.ebdit.eau.Report;
 import eu.ebdit.eau.reports.ReportContainer;
-import eu.ebdit.eau.reports.SimpleEauReport;
+import eu.ebdit.eau.reports.SimpleReport;
 
-public class TestingEau implements EauReporter {
+public class TestingReporter implements Reporter {
 
     private final Map<String, Map<String, TestScore>> scoreMap;
-    private final ImmutableList<Result> resultList;
+    private final ImmutableList<TestResult> resultList;
 
-    private TestingEau(Map<String, Map<String, TestScore>> scoreMap,
-	    ImmutableList<Result> resultList) {
+    private TestingReporter(Map<String, Map<String, TestScore>> scoreMap,
+	    ImmutableList<TestResult> resultList) {
 	this.scoreMap = scoreMap;
 	this.resultList = resultList;
     }
 
-    public EauReport report() {
-	List<EauReport> children = Lists.newArrayList();
-	for (Result r : resultList) {
+    public Report report() {
+	List<Report> children = Lists.newArrayList();
+	for (TestResult r : resultList) {
 	    Map<String, TestScore> m = scoreMap.get(r.getClassFQName());
 	    if (m == null) {
 		// TODO: what to do?
@@ -41,17 +41,17 @@ public class TestingEau implements EauReporter {
 	return ReportContainer.of("TestingEva Report", children);
     }
 
-    private EauReport getEvaReport(TestScore ts, Result r) {
+    private Report getEvaReport(TestScore ts, TestResult r) {
 	String message = ts.getMessage() == null ? r.getMessage() : ts
 		.getMessage();
 	double points = r.getStatus().isOK() ? ts.getPoints() : 0;
 	double max = ts.isBonus() ? 0 : ts.getPoints();
 	double maxWB = ts.getPoints();
-	return new SimpleEauReport(message, points, max, maxWB);
+	return new SimpleReport(message, points, max, maxWB);
     }
 
-    public static EauReporter of(Iterable<TestScore> scoreList,
-	    Iterable<Result> resultList) {
+    public static Reporter of(Iterable<TestScore> scoreList,
+	    Iterable<TestResult> resultList) {
 	Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
 	for (TestScore s : scoreList) {
 	    Map<String, TestScore> map = newMap.get(s.getClassFQName());
@@ -61,7 +61,7 @@ public class TestingEau implements EauReporter {
 	    }
 	    map.put(s.getTestName(), s);
 	}
-	return new TestingEau(newMap, ImmutableList.copyOf(resultList));
+	return new TestingReporter(newMap, ImmutableList.copyOf(resultList));
     }
 
 }

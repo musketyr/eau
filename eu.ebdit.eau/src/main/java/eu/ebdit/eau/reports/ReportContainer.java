@@ -4,37 +4,37 @@ import java.util.Collection;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Report;
 
-public class ReportContainer implements EauReport {
+public class ReportContainer implements Report {
 
-    private final ImmutableList<EauReport> children;
+    private final ImmutableList<Report> children;
     private final String message;
 
-    private ReportContainer(ImmutableList<EauReport> children, String message) {
+    private ReportContainer(ImmutableList<Report> children, String message) {
 	this.children = children;
 	this.message = message;
     }
 
     @SuppressWarnings("unchecked")
     public static ReportContainer of(String message,
-	    Iterable<EauReport> theChildren) {
-	ImmutableList<EauReport> children;
+	    Iterable<Report> theChildren) {
+	ImmutableList<Report> children;
 	if (theChildren instanceof ImmutableList) {
-	    children = (ImmutableList<EauReport>) theChildren;
+	    children = (ImmutableList<Report>) theChildren;
 	} else {
 	    children = ImmutableList.copyOf(theChildren);
 	}
 	return new ReportContainer(children, message);
     }
 
-    public Collection<EauReport> getChildReports() {
+    public Collection<Report> getChildReports() {
 	return children;
     }
 
     public double getMaxPoints() {
 	double ret = 0;
-	for (EauReport er : children) {
+	for (Report er : children) {
 	    ret += er.getMaxPoints();
 	}
 	return ret;
@@ -42,7 +42,7 @@ public class ReportContainer implements EauReport {
 
     public double getMaxPointsBonusIncluded() {
 	double ret = 0;
-	for (EauReport er : children) {
+	for (Report er : children) {
 	    ret += er.getMaxPointsBonusIncluded();
 	}
 	return ret;
@@ -58,7 +58,7 @@ public class ReportContainer implements EauReport {
 
     public double getPoints() {
 	double ret = 0;
-	for (EauReport er : children) {
+	for (Report er : children) {
 	    ret += er.getPoints();
 	}
 	return ret;
@@ -87,7 +87,7 @@ public class ReportContainer implements EauReport {
 	String ret = ident(ident)
 		+ String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
 			getMessage()) + " {\n";
-	for (EauReport er : children) {
+	for (Report er : children) {
 	    if (er == null) {
 		continue;
 	    }

@@ -10,20 +10,20 @@ import org.junit.runner.notification.RunListener;
 
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.Result;
-import eu.ebdit.eau.testing.Status;
-import eu.ebdit.eau.testing.beans.ResultBean;
+import eu.ebdit.eau.Status;
+import eu.ebdit.eau.testing.TestResult;
+import eu.ebdit.eau.testing.beans.TestResultBean;
 
 public class EauRunListener extends RunListener{
     
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
     
-    private List<Result> results = Lists.newArrayList();
-    private ResultBean lastResult;
+    private List<TestResult> results = Lists.newArrayList();
+    private TestResultBean lastResult;
 
     @Override
     public void testStarted(Description description) throws Exception {
-	lastResult = new ResultBean();
+	lastResult = new TestResultBean();
 	lastResult.setStatus(Status.OK);
         lastResult.setMessage("");
 	Matcher m = PATTERN.matcher(description.getDisplayName());
@@ -46,7 +46,7 @@ public class EauRunListener extends RunListener{
 	lastResult = null;
     }
 
-    public Iterable<Result> getResults() {
+    public Iterable<TestResult> getResults() {
 	return results;
     }
 

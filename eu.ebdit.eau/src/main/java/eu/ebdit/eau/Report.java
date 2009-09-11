@@ -2,7 +2,7 @@ package eu.ebdit.eau;
 
 import java.util.Collection;
 
-public interface EauReport {
+public interface Report {
 
     double getMaxPointsBonusIncluded();
 
@@ -16,6 +16,6 @@ public interface EauReport {
 
     String getDetails();
 
-    Collection<EauReport> getChildReports();
+    Collection<Report> getChildReports();
 
 }

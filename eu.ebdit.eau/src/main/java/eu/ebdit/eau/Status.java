@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing;
+package eu.ebdit.eau;
 
 public enum Status {
     OK {

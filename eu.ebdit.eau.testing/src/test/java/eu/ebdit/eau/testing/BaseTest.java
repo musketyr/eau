@@ -9,8 +9,9 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.EauReporter;
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Reporter;
+import eu.ebdit.eau.Report;
+import eu.ebdit.eau.Status;
 
 public class BaseTest {
 
@@ -28,8 +29,8 @@ public class BaseTest {
 
     @Test
     public void testScoring() throws Exception {
-	EauReporter eauReporter = getEva();
-	EauReport er = eauReporter.report();
+	Reporter eauReporter = getEva();
+	Report er = eauReporter.report();
 	// System.out.println(er);
 	assertNotNull(er);
 	assertNotNull(er.getMessage());
@@ -42,7 +43,7 @@ public class BaseTest {
 
     @Test
     public void testSelfCreateResult() throws Exception {
-	Result r = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
+	TestResult r = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
 		METHOD_1_MESSAGE);
 	assertEquals(CLASS_FQNAME, r.getClassFQName());
 	assertEquals(METHOD_NAME_1, r.getTestName());
@@ -61,18 +62,18 @@ public class BaseTest {
 	assertEquals(false, ts.isBonus());
     }
 
-    protected EauReporter getEva() throws Exception {
+    protected Reporter getEva() throws Exception {
 
 	List<TestScore> scoreList = getScoreList();
 	// System.out.println("score list:");
 	// System.out.println(scoreList);
-	List<Result> resultList = getResultList();
+	List<TestResult> resultList = getResultList();
 	// System.out.println("result list:");
 	// System.out.println(resultList);
-	return TestingEau.of(scoreList, resultList);
+	return TestingReporter.of(scoreList, resultList);
     }
 
-    protected List<Result> getResultList() throws Exception {
+    protected List<TestResult> getResultList() throws Exception {
 	return ImmutableList.of(createResult(CLASS_FQNAME, METHOD_NAME_1,
 		Status.OK, METHOD_1_MESSAGE), createResult(CLASS_FQNAME,
 		METHOD_NAME_2, Status.FAILED, METHOD_2_MESSAGE), createResult(
@@ -98,9 +99,9 @@ public class BaseTest {
 	return ts;
     }
 
-    private Result createResult(String classFQName, String methodName,
+    private TestResult createResult(String classFQName, String methodName,
 	    Status status, String message) {
-	Result r1 = mock(Result.class);
+	TestResult r1 = mock(TestResult.class);
 	when(r1.getClassFQName()).thenReturn(classFQName);
 	when(r1.getTestName()).thenReturn(methodName);
 	when(r1.getStatus()).thenReturn(status);
