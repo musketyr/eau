@@ -7,7 +7,7 @@ import eu.ebdit.eau.testing.TestScore
  * @author Vladimir Orany
  *
  */
-@Immutable public final class TestScoreBean implements TestScore{
+public class TestScoreBean implements TestScore{
 
 	boolean bonus
 	double points
