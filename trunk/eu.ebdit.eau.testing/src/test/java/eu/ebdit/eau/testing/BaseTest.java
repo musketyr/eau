@@ -29,7 +29,7 @@ public class BaseTest {
 
     @Test
     public void testScoring() throws Exception {
-	Reporter eauReporter = getEva();
+	Reporter eauReporter = getReporter();
 	Report er = eauReporter.report();
 	// System.out.println(er);
 	assertNotNull(er);
@@ -62,25 +62,18 @@ public class BaseTest {
 	assertEquals(false, ts.isBonus());
     }
 
-    protected Reporter getEva() throws Exception {
-
-	List<TestScore> scoreList = getScoreList();
-	// System.out.println("score list:");
-	// System.out.println(scoreList);
-	List<TestResult> resultList = getResultList();
-	// System.out.println("result list:");
-	// System.out.println(resultList);
-	return TestingReporter.of(scoreList, resultList);
+    protected Reporter getReporter() throws Exception {
+	return TestReporter.of(getScoreList(), (List<TestResult>) getResultList());
     }
 
-    protected List<TestResult> getResultList() throws Exception {
+    protected Iterable<TestResult> getResultList() throws Exception {
 	return ImmutableList.of(createResult(CLASS_FQNAME, METHOD_NAME_1,
 		Status.OK, METHOD_1_MESSAGE), createResult(CLASS_FQNAME,
 		METHOD_NAME_2, Status.FAILED, METHOD_2_MESSAGE), createResult(
 		CLASS_FQNAME, METHOD_NAME_3, Status.ERROR, METHOD_3_MESSAGE));
     }
 
-    protected List<TestScore> getScoreList() throws Exception {
+    protected Iterable<TestScore> getScoreList() throws Exception {
 	return ImmutableList.of(createTestScore(CLASS_FQNAME, METHOD_NAME_1,
 		0.5, SCORE_1_MESSAGE_OK, false), createTestScore(CLASS_FQNAME,
 		METHOD_NAME_2, 0.75, SCORE_2_MESSAGE_OK, false),

@@ -12,27 +12,27 @@ import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Status;
 import eu.ebdit.eau.testing.TestResult;
+import eu.ebdit.eau.testing.TestScore;
+import eu.ebdit.eau.testing.annotations.Bonus;
+import eu.ebdit.eau.testing.annotations.Details;
+import eu.ebdit.eau.testing.annotations.Points;
 import eu.ebdit.eau.testing.beans.TestResultBean;
+import eu.ebdit.eau.testing.beans.TestScoreBean;
 
-public class EauRunListener extends RunListener{
-    
+public class EauRunListener extends RunListener {
+
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
-    
-    private List<TestResult> results = Lists.newArrayList();
-    private TestResultBean lastResult;
 
-    @Override
-    public void testStarted(Description description) throws Exception {
-	lastResult = new TestResultBean();
-	lastResult.setStatus(Status.OK);
-        lastResult.setMessage("");
-	Matcher m = PATTERN.matcher(description.getDisplayName());
-        if (m.matches()) {
-            lastResult.setClassFQName(m.group(2));
-            lastResult.setTestName(m.group(1));
-        } else {
-            throw new AssertionError("Matcher must match!");
-        }
+    private TestResultBean lastResult;
+    private List<TestResult> results = Lists.newArrayList();
+    private List<TestScore> scores = Lists.newArrayList();
+
+    public Iterable<TestResult> getResults() {
+	return results;
+    }
+
+    public Iterable<TestScore> getScores() {
+	return scores;
     }
 
     @Override
@@ -46,20 +46,59 @@ public class EauRunListener extends RunListener{
 	lastResult = null;
     }
 
-    public Iterable<TestResult> getResults() {
-	return results;
+    @Override
+    public void testStarted(Description description) throws Exception {
+	initResult();
+	initNames(description);
+	addScoreIfNeeded(description);
     }
 
     private void handleFailure(Failure failure) {
-        if (failure.getException() instanceof AssertionError) {
-            lastResult.setStatus(Status.FAILED);
-        } else {
-            lastResult.setStatus(Status.ERROR);
-        }
-        lastResult.setMessage(failure.getMessage() == null ? failure.getTrace() : failure.getMessage());
+	if (failure.getException() instanceof AssertionError) {
+	    lastResult.setStatus(Status.FAILED);
+	} else {
+	    lastResult.setStatus(Status.ERROR);
+	}
+	lastResult.setMessage(failure.getMessage() == null ? failure.getTrace()
+		: failure.getMessage());
     }
-    
-    
-    
-    
+
+    private void addScoreIfNeeded(Description description) {
+	TestScoreBean score = new TestScoreBean();
+	score.setClassFQName(lastResult.getClassFQName());
+	score.setTestName(lastResult.getTestName());
+	Points points = description.getAnnotation(Points.class);
+	if (points != null) {
+	    score.setPoints(points.value());
+
+	    eu.ebdit.eau.testing.annotations.Description desc = description
+		    .getAnnotation(eu.ebdit.eau.testing.annotations.Description.class);
+	    if (desc != null) {
+		score.setMessage(desc.value());
+	    }
+	    Details details = description.getAnnotation(Details.class);
+	    if (details != null) {
+		score.setDetails(details.value());
+	    }
+	    score.setBonus(description.getAnnotation(Bonus.class) != null);
+	    scores.add(score);
+	}
+    }
+
+    private void initNames(Description description) throws AssertionError {
+	Matcher m = PATTERN.matcher(description.getDisplayName());
+	if (m.matches()) {
+	    lastResult.setClassFQName(m.group(2));
+	    lastResult.setTestName(m.group(1));
+	} else {
+	    throw new AssertionError("Matcher must match!");
+	}
+    }
+
+    private void initResult() {
+	lastResult = new TestResultBean();
+	lastResult.setStatus(Status.OK);
+	lastResult.setMessage("");
+    }
+
 }
