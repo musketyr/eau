@@ -84,7 +84,7 @@
 						<exclude>**/groovy-stubs/*.java</exclude>
 					</excludes>
 					<excludeRoots>
-						<excludeRoot>target/generated-sources/groovy-stubs</excludeRoot>
+						<excludeRoot>${project.build.directory}/generated-sources/groovy-stubs</excludeRoot>
 					</excludeRoots>
 					<targetJdk>1.5</targetJdk>
 				</configuration>
