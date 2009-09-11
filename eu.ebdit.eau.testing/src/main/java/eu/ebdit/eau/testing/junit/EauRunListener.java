@@ -19,19 +19,17 @@ public class EauRunListener extends RunListener{
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
     
     private List<Result> results = Lists.newArrayList();
-    private Status lastStatus;
-    private String lastMessage;
-    private String lastClassName = null;
-    private String lastTestName = null;
+    private ResultBean lastResult;
 
     @Override
     public void testStarted(Description description) throws Exception {
-        lastStatus = Status.OK;
-        lastMessage = "";
+	lastResult = new ResultBean();
+	lastResult.setStatus(Status.OK);
+        lastResult.setMessage("");
 	Matcher m = PATTERN.matcher(description.getDisplayName());
         if (m.matches()) {
-            lastClassName = m.group(2);
-            lastTestName = m.group(1);
+            lastResult.setClassFQName(m.group(2));
+            lastResult.setTestName(m.group(1));
         } else {
             throw new AssertionError("Matcher must match!");
         }
@@ -44,12 +42,8 @@ public class EauRunListener extends RunListener{
 
     @Override
     public void testFinished(Description description) throws Exception {
-	ResultBean bean = new ResultBean();
-	bean.setClassFQName(lastClassName);
-	bean.setTestName(lastTestName);
-	bean.setStatus(lastStatus);
-	bean.setMessage(lastMessage);
-	results.add(bean);
+	results.add(lastResult);
+	lastResult = null;
     }
 
     public Iterable<Result> getResults() {
@@ -58,11 +52,11 @@ public class EauRunListener extends RunListener{
 
     private void handleFailure(Failure failure) {
         if (failure.getException() instanceof AssertionError) {
-            lastStatus = Status.FAILED;
+            lastResult.setStatus(Status.FAILED);
         } else {
-            lastStatus = Status.ERROR;
+            lastResult.setStatus(Status.ERROR);
         }
-        lastMessage = failure.getMessage() == null ? failure.getTrace() : failure.getMessage();
+        lastResult.setMessage(failure.getMessage() == null ? failure.getTrace() : failure.getMessage());
     }
     
     
