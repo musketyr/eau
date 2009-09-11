@@ -24,9 +24,9 @@ public class TestScoreXMLParser{
 						classFQName: it.parent().'@name', 
 						testName: it.'@name', 
 						points: it.'@points'.toDouble(),
-						bonus: it.'@bonus', 
+						bonus: it.'@bonus'? true : false, 
 						message: it.'@message', 
-						detail: it.text()
+						details: it.text()
 				)
 			}
 			return ret
