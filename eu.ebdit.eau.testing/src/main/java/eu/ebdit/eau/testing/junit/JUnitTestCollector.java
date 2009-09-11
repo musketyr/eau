@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.runner.Description;
+import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
@@ -19,7 +20,19 @@ import eu.ebdit.eau.testing.annotations.Points;
 import eu.ebdit.eau.testing.beans.TestResultBean;
 import eu.ebdit.eau.testing.beans.TestScoreBean;
 
-public class EauRunListener extends RunListener {
+class JUnitTestCollector extends RunListener implements TestCollector {
+
+    private JUnitTestCollector() {
+	// prevents instance creation and subtyping
+    }
+
+    public static TestCollector collectResults(Class<?>... classes) {
+	JUnitTestCollector erl = new JUnitTestCollector();
+	JUnitCore core = new JUnitCore();
+	core.addListener(erl);
+	core.run(classes);
+	return erl;
+    }
 
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
 
@@ -27,10 +40,20 @@ public class EauRunListener extends RunListener {
     private List<TestResult> results = Lists.newArrayList();
     private List<TestScore> scores = Lists.newArrayList();
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see eu.ebdit.eau.testing.junit.TestCollector#getResults()
+     */
     public Iterable<TestResult> getResults() {
 	return results;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see eu.ebdit.eau.testing.junit.TestCollector#getScores()
+     */
     public Iterable<TestScore> getScores() {
 	return scores;
     }

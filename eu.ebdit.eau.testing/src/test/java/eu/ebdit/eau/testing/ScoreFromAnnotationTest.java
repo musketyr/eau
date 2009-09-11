@@ -4,7 +4,7 @@ import java.util.List;
 
 import eu.ebdit.eau.testing.annotations.ScoreAnnotationFinder;
 
-public class ScoreFromAnnotationTest extends BaseTest {
+public class ScoreFromAnnotationTest extends TestReporterTest {
 
     @Override
     protected List<TestScore> getScoreList() throws Exception {
