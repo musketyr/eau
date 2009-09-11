@@ -12,18 +12,18 @@ import eu.ebdit.eau.testing.annotations.Points;
 public class TestClass {
 
 	
-	/* @Test */ @Points(0.5) @Description("Test one is for 0.5 points")
-	public void testOne() throws Exception {
+	@Points(0.5) @Description("Test one is for 0.5 points")
+	@Test public void testOne() throws Exception {
 		
 	}
 	
-	/* @Test */ @Points(0.75)
-	public void testTwo() throws Exception {
-		assertTrue(false);
+	@Points(0.75)
+	@Test public void testTwo() throws Exception {
+		assertTrue("I've failed", false);
 	}
 	
-	/* @Test */@Bonus @Points(1) @Description("Bonus")
-	public void testThree() throws Exception {
+	@Bonus @Points(1) @Description("Bonus")
+	@Test public void testThree() throws Exception {
 		throw new Exception();
 	}
 	
