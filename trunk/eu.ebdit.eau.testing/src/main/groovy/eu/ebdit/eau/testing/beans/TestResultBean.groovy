@@ -1,13 +1,13 @@
 package eu.ebdit.eau.testing.beans
 
-import eu.ebdit.eau.testing.Status
-import eu.ebdit.eau.testing.Result
+import eu.ebdit.eau.Status;
+import eu.ebdit.eau.testing.TestResult
 
 /**
  * @author Vladimír Oraný
  *
  */
-public class ResultBean implements Result{
+public class TestResultBean implements TestResult{
     	String classFQName
 	String message
 	Status status

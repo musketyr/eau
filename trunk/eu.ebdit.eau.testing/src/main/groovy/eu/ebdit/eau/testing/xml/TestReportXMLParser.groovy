@@ -1,14 +1,14 @@
 package eu.ebdit.eau.testing.xml
-import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.testing.TestScoreimport eu.ebdit.eau.testing.Resultimport eu.ebdit.eau.testing.Statusimport eu.ebdit.eau.testing.beans.ResultBean
+import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.Status;import eu.ebdit.eau.testing.TestScoreimport eu.ebdit.eau.testing.TestResultimport eu.ebdit.eau.testing.beans.TestResultBean
 /**
  * @author Vladimir Orany
  *
  */
 public class TestReportXMLParser{
-	List<Result> parse(toBeParsed){
+	List<TestResult> parse(toBeParsed){
 		def testsuite = new XmlParser().parse(toBeParsed);
 		if (testsuite.name() == 'testsuite') {
-			List<Result> ret = []
+			List<TestResult> ret = []
 			testsuite.testcase.each{
 				Status status = Status.OK
 				String message = ''
@@ -20,7 +20,7 @@ public class TestReportXMLParser{
 					status = Status.FAILED
 					message = it.failure.text()
 				}
-				ret << new ResultBean(classFQName: it.'@classname', testName: it.'@name', status: status, message: message)
+				ret << new TestResultBean(classFQName: it.'@classname', testName: it.'@name', status: status, message: message)
 			}
 			return ret
 		}

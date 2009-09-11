@@ -4,7 +4,7 @@
 package eu.ebdit.eau.testing.xml
 
 import eu.ebdit.eau.testing.TestScore
-import eu.ebdit.eau.testing.Result
+import eu.ebdit.eau.testing.TestResult
 import eu.ebdit.eau.testing.beans.TestScoreBean
 
 
@@ -18,7 +18,7 @@ public class TestScoreXMLParser{
 	List<TestScore> parse(toBeParsed){
 		def points = new XmlParser().parse(toBeParsed);
 		if (points.name() == 'points') {
-			List<Result> ret = []
+			List<TestResult> ret = []
 			points.'class'.'test'.each{
 				ret << new TestScoreBean(
 						classFQName: it.parent().'@name', 

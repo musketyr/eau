@@ -6,11 +6,11 @@ import org.junit.runner.JUnitCore;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.testing.Result;
+import eu.ebdit.eau.testing.TestResult;
 
 public class EauJUnitRunner {
 
-    public List<Result> collectFrom(Class<?> classes) {
+    public List<TestResult> collectFrom(Class<?> classes) {
 	EauRunListener erl = new EauRunListener();
 	JUnitCore core = new JUnitCore();
 	core.addListener(erl);

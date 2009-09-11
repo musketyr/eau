@@ -8,17 +8,17 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Report;
 
 public class ReportContainerTest {
 
     private static final String FIXTURE2_MESSAGE = "Fixture2";
     private static final String FIXTURE1_MESSAGE = "Fixture1";
     private static final double EPSILON = 0.01;
-    private EauReport fixture1;
-    private EauReport fixture2;
-    private Iterable<EauReport> fixture1Items;
-    private Iterable<EauReport> fixture2Items;
+    private Report fixture1;
+    private Report fixture2;
+    private Iterable<Report> fixture1Items;
+    private Iterable<Report> fixture2Items;
 
     @Before
     public void setUp() {
@@ -72,17 +72,17 @@ public class ReportContainerTest {
 		fixture1Items).hashCode());
     }
 
-    private Iterable<EauReport> getFixture1Items() {
+    private Iterable<Report> getFixture1Items() {
 	return ImmutableList.of(getReport(2, 1, 2), getReport(3, 2, 4));
     }
 
-    private Iterable<EauReport> getFixture2Items() {
+    private Iterable<Report> getFixture2Items() {
 	return ImmutableList.of(getReport(2, 3, 3), getReport(2, 2, 4));
     }
 
-    private EauReport getReport(double maxPoints, double points,
+    private Report getReport(double maxPoints, double points,
 	    double pointsWithBonuses) {
-	EauReport er = mock(EauReport.class);
+	Report er = mock(Report.class);
 	when(er.getMaxPoints()).thenReturn(maxPoints);
 	when(er.getPoints()).thenReturn(points);
 	when(er.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);

@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.ebdit.eau.EauReport;
+import eu.ebdit.eau.Report;
 
-public class SimpleEauReportTest {
+public class SimpleReportTest {
 
     private static final String F2_MESSAGE = "F2";
     private static final String F1_MESSAGE = "F1";
     private static final double EPSILON = 0.01;
     private static final String F2_DETAILS = "F2 DETAILS";
-    private EauReport f1;
-    private EauReport f2;
+    private Report f1;
+    private Report f2;
 
     @Before
     public void setUp() {
-	f1 = new SimpleEauReport(F1_MESSAGE, 1, 1);
-	f2 = new SimpleEauReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
+	f1 = new SimpleReport(F1_MESSAGE, 1, 1);
+	f2 = new SimpleReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
     }
 
     @Test
@@ -66,10 +66,10 @@ public class SimpleEauReportTest {
 
     @Test
     public void testEquals() throws Exception {
-	assertEquals(new SimpleEauReport(F1_MESSAGE, 1, 2),
-		new SimpleEauReport(F1_MESSAGE, 1, 2));
-	assertEquals(new SimpleEauReport(F1_MESSAGE, 1, 2).hashCode(),
-		new SimpleEauReport(F1_MESSAGE, 1, 2).hashCode());
+	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2),
+		new SimpleReport(F1_MESSAGE, 1, 2));
+	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2).hashCode(),
+		new SimpleReport(F1_MESSAGE, 1, 2).hashCode());
     }
 
     @Test

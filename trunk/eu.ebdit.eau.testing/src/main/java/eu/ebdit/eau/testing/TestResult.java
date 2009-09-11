@@ -1,13 +1,11 @@
 package eu.ebdit.eau.testing;
 
-public interface Result {
+import eu.ebdit.eau.Result;
+
+public interface TestResult extends Result {
 
     String getClassFQName();
 
     String getTestName();
-
-    Status getStatus();
-
-    String getMessage();
 
 }
