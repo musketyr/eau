@@ -44,7 +44,12 @@ public class EauRunListener extends RunListener{
 
     @Override
     public void testFinished(Description description) throws Exception {
-	results.add(ResultBean.of(lastClassName, lastTestName, lastStatus, lastMessage));
+	ResultBean bean = new ResultBean();
+	bean.setClassFQName(lastClassName);
+	bean.setTestName(lastTestName);
+	bean.setStatus(lastStatus);
+	bean.setMessage(lastMessage);
+	results.add(bean);
     }
 
     public Iterable<Result> getResults() {

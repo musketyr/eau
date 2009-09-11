@@ -16,8 +16,4 @@ public class TestScoreBean implements TestScore{
 	String message
 	String details
 	
-	static TestScoreBean of(String className, String testName, double points, String message = '', boolean bonus = false, String details = ''){
-		return new TestScoreBean(classFQName: className, testName: testName, points: points, message: message, bonus: bonus, details: details)
-	}
-	
 }
