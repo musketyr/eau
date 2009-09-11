@@ -7,12 +7,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import eu.ebdit.eau.Eau;
+import eu.ebdit.eau.EauReporter;
 import eu.ebdit.eau.EauReport;
 import eu.ebdit.eau.reports.ReportContainer;
 import eu.ebdit.eau.reports.SimpleEauReport;
 
-public class TestingEau implements Eau {
+public class TestingEau implements EauReporter {
 
     private final Map<String, Map<String, TestScore>> scoreMap;
     private final ImmutableList<Result> resultList;
@@ -50,7 +50,7 @@ public class TestingEau implements Eau {
 	return new SimpleEauReport(message, points, max, maxWB);
     }
 
-    public static Eau of(Iterable<TestScore> scoreList,
+    public static EauReporter of(Iterable<TestScore> scoreList,
 	    Iterable<Result> resultList) {
 	Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
 	for (TestScore s : scoreList) {
