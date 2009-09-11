@@ -9,7 +9,7 @@ public class ScoreFromAnnotationTest extends BaseTest {
     @Override
     protected List<TestScore> getScoreList() throws Exception {
 	ScoreAnnotationFinder finder = new ScoreAnnotationFinder();
-	return finder.check("org.example.TestClass");
+	return finder.check(Class.forName("org.example.TestClass"));
     }
 
     @Override
