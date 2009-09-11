@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.Eau;
+import eu.ebdit.eau.EauReporter;
 import eu.ebdit.eau.EauReport;
 
 public class BaseTest {
@@ -28,8 +28,8 @@ public class BaseTest {
 
     @Test
     public void testScoring() throws Exception {
-	Eau eau = getEva();
-	EauReport er = eau.report();
+	EauReporter eauReporter = getEva();
+	EauReport er = eauReporter.report();
 	// System.out.println(er);
 	assertNotNull(er);
 	assertNotNull(er.getMessage());
@@ -61,7 +61,7 @@ public class BaseTest {
 	assertEquals(false, ts.isBonus());
     }
 
-    protected Eau getEva() throws Exception {
+    protected EauReporter getEva() throws Exception {
 
 	List<TestScore> scoreList = getScoreList();
 	// System.out.println("score list:");
