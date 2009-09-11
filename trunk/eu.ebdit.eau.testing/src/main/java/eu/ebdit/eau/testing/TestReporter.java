@@ -12,12 +12,12 @@ import eu.ebdit.eau.Report;
 import eu.ebdit.eau.reports.ReportContainer;
 import eu.ebdit.eau.reports.SimpleReport;
 
-public class TestingReporter implements Reporter {
+public class TestReporter implements Reporter {
 
     private final Map<String, Map<String, TestScore>> scoreMap;
     private final ImmutableList<TestResult> resultList;
 
-    private TestingReporter(Map<String, Map<String, TestScore>> scoreMap,
+    private TestReporter(Map<String, Map<String, TestScore>> scoreMap,
 	    ImmutableList<TestResult> resultList) {
 	this.scoreMap = scoreMap;
 	this.resultList = resultList;
@@ -61,7 +61,7 @@ public class TestingReporter implements Reporter {
 	    }
 	    map.put(s.getTestName(), s);
 	}
-	return new TestingReporter(newMap, ImmutableList.copyOf(resultList));
+	return new TestReporter(newMap, ImmutableList.copyOf(resultList));
     }
 
 }
