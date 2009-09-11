@@ -36,8 +36,14 @@ public class ScoreAnnotationFinder {
 		details = m.getAnnotation(Details.class).value();
 	    }
 	    boolean bonus = m.isAnnotationPresent(Bonus.class);
-	    scores.add(TestScoreBean.of(clazz.getName(), m.getName(), points,
-		    desc, bonus, details));
+	    TestScoreBean bean = new TestScoreBean();
+	    bean.setClassFQName(clazz.getName());
+	    bean.setTestName(m.getName());
+	    bean.setPoints(points);
+	    bean.setMessage(desc);
+	    bean.setBonus(bonus);
+	    bean.setDetails(details);
+	    scores.add(bean);
 	}
 	}
 	return scores;
