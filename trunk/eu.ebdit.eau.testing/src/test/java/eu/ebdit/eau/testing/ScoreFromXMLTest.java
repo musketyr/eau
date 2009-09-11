@@ -9,7 +9,7 @@ import eu.ebdit.eau.testing.xml.TestScoreXMLParser;
  * @author Vladimir Orany
  * 
  */
-public class ScoreFromXMLTest extends BaseTest {
+public class ScoreFromXMLTest extends TestReporterTest {
 
     protected List<TestScore> getScoreList() throws Exception {
 	return new TestScoreXMLParser().parse(new File(getClass().getResource(

@@ -1,31 +1,31 @@
 package eu.ebdit.eau.testing.junit;
 
-import eu.ebdit.eau.testing.BaseTest;
+import eu.ebdit.eau.testing.TestReporterTest;
 import eu.ebdit.eau.testing.TestResult;
 import eu.ebdit.eau.testing.TestScore;
 
 
-public class EauJUnitRunnerTest extends BaseTest {
+public class JUnitTestCollectorTest extends TestReporterTest {
     
-    private EauRunListener listener;
+    private TestCollector collector;
     
-    public EauJUnitRunnerTest() throws Exception {
+    public JUnitTestCollectorTest() throws Exception {
 	setUpListener();
     }
     
     public final void setUpListener() throws Exception{
-	listener = new EauJUnitRunner().collectResults(Class.forName("org.example.TestClass"));
+	collector = JUnitTestCollector.collectResults(Class.forName("org.example.TestClass"));
     }
     
     
     @Override
     protected Iterable<TestResult> getResultList() throws Exception {
-	return listener.getResults();
+	return collector.getResults();
     }
     
     @Override
     protected Iterable<TestScore> getScoreList() throws Exception {
-        return listener.getScores();
+        return collector.getScores();
     }
     
     @Override

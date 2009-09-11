@@ -12,7 +12,7 @@ import eu.ebdit.eau.testing.xml.TestReportXMLParser;
  * @author Vladimir Orany
  * 
  */
-public class TestFromXMLTest extends BaseTest {
+public class TestFromXMLTest extends TestReporterTest {
 
     protected List<TestResult> getResultList() throws Exception {
 	return new TestReportXMLParser().parse(new File(getClass().getResource(
