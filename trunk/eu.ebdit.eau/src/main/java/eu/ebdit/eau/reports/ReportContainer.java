@@ -12,9 +12,9 @@ public final class ReportContainer implements Report {
     private final String message;
 
     private ReportContainer(final Iterable<Report> theChildren,
-	    final String message) {
+	    final String theMessage) {
 	this.children = ImmutableList.copyOf(theChildren);
-	this.message = message;
+	this.message = theMessage;
     }
 
     public static ReportContainer of(final String message,
@@ -108,7 +108,7 @@ public final class ReportContainer implements Report {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
 	if (this == obj) {
 	    return true;
 	}
