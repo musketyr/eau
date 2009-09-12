@@ -14,7 +14,8 @@ public final class SimpleReport implements Report {
     private final String details;
 
     public SimpleReport(final String message, final double points,
-	    final double max, final double maxWithBonuses, final String details) {
+	    final double max, final double maxWithBonuses, 
+	    final String details) {//NOPMD
 	this.points = points;
 	this.max = max;
 	this.maxWithBonuses = maxWithBonuses;
@@ -23,17 +24,17 @@ public final class SimpleReport implements Report {
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max, final double maxWithBonuses) {
+	    final double max, final double maxWithBonuses) {//NOPMD
 	this(message, points, max, maxWithBonuses, null);
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max, final String details) {
+	    final double max, final String details) {//NOPMD
 	this(message, points, max, max, details);
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max) {
+	    final double max) {//NOPMD
 	this(message, points, max, max, null);
     }
 
@@ -64,7 +65,7 @@ public final class SimpleReport implements Report {
     public double getSuccessPercentage() {
 	double theMax = max;
 	if (theMax == 0) {
-	   theMax = maxWithBonuses;
+	    theMax = maxWithBonuses;
 	}
 	if (theMax == 0) {
 	    return 0;
@@ -99,7 +100,8 @@ public final class SimpleReport implements Report {
 	    return false;
 	}
 	SimpleReport other = (SimpleReport) obj;
-	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max)) {
+	if (Double.doubleToLongBits(max) 
+		!= Double.doubleToLongBits(other.max)) {
 	    return false;
 	}
 	if (Double.doubleToLongBits(maxWithBonuses) != Double
@@ -113,8 +115,8 @@ public final class SimpleReport implements Report {
 	} else if (!message.equals(other.message)) {
 	    return false;
 	}
-	if (Double.doubleToLongBits(points) != Double
-		.doubleToLongBits(other.points)) {
+	if (Double.doubleToLongBits(points) 
+		!= Double.doubleToLongBits(other.points)) {
 	    return false;
 	}
 	return true;
