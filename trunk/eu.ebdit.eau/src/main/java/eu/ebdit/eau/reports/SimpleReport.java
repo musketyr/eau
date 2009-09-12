@@ -62,13 +62,14 @@ public class SimpleReport implements Report {
     }
 
     public double getSuccessPercentage() {
-	if (points * max != 0) {
-	    return points / max;
+	double theMax = max;
+	if (theMax == 0) {
+	   theMax = maxWithBonuses;
 	}
-	if (max == 0 && points != 0) {
-	    return 1;
+	if (theMax == 0) {
+	    return 0;
 	}
-	return 0;
+	return points / theMax;
     }
 
     @Override

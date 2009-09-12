@@ -32,6 +32,12 @@ public class SimpleReportTest {
     public void testSuccessPercentage() throws Exception {
 	assertEquals(1, f1.getSuccessPercentage(), EPSILON);
 	assertEquals(3d / 2d, f2.getSuccessPercentage(), EPSILON);
+	SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 0, 0, 1);
+	assertEquals(0, sr1.getSuccessPercentage(), EPSILON);
+	SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 0, 1);
+	assertEquals(1, sr2.getSuccessPercentage(), EPSILON);
+	SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 0.5, 0, 1);
+	assertEquals(0.5, sr3.getSuccessPercentage(), EPSILON);
     }
 
     @Test
