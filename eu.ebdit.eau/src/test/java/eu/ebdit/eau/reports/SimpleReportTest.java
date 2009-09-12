@@ -59,11 +59,25 @@ public class SimpleReportTest {
     }
 
     @Test
-    public void testdETAILS() throws Exception {
+    public void testDetails() throws Exception {
 	assertNull(f1.getDetails());
 	assertEquals(F2_DETAILS, f2.getDetails());
     }
 
+    @Test
+    public void testConstructors() throws Exception {
+	SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 1, 2, 2, null);
+	SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 2, 2);
+	SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 1, 2);
+	SimpleReport sr4 = new SimpleReport(F1_MESSAGE, 1, 2, null);
+	assertEquals(sr1, sr2);
+	assertEquals(sr1, sr3);
+	assertEquals(sr1, sr4);
+	assertEquals(sr2, sr3);
+	assertEquals(sr2, sr4);
+	assertEquals(sr3, sr4);
+    }
+    
     @Test
     public void testEquals() throws Exception {
 	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2),
