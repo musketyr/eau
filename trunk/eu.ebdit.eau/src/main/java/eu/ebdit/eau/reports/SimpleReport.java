@@ -13,8 +13,8 @@ public class SimpleReport implements Report {
     private final String message;
     private final String details;
 
-    public SimpleReport(String message, double points, double max,
-	    double maxWithBonuses, String details) {
+    public SimpleReport(final String message, final double points, final double max,
+	    final double maxWithBonuses, final String details) {
 	this.points = points;
 	this.max = max;
 	this.maxWithBonuses = maxWithBonuses;
@@ -22,17 +22,17 @@ public class SimpleReport implements Report {
 	this.details = details;
     }
 
-    public SimpleReport(String message, double points, double max,
-	    double maxWithBonuses) {
+    public SimpleReport(final String message, final double points, final double max,
+	    final double maxWithBonuses) {
 	this(message, points, max, maxWithBonuses, null);
     }
 
-    public SimpleReport(String message, double points, double max,
-	    String details) {
+    public SimpleReport(final String message, final double points, final double max,
+	    final String details) {
 	this(message, points, max, max, details);
     }
 
-    public SimpleReport(String message, double points, double max) {
+    public SimpleReport(final String message, final double points, final double max) {
 	this(message, points, max, max, null);
     }
 
@@ -86,27 +86,35 @@ public class SimpleReport implements Report {
     }
 
     @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
+    public boolean equals(final Object obj) {
+	if (this == obj) {
 	    return true;
-	if (obj == null)
+	}
+	if (obj == null) {
 	    return false;
-	if (getClass() != obj.getClass())
+	}
+	if (getClass() != obj.getClass()) {
 	    return false;
+	}
 	SimpleReport other = (SimpleReport) obj;
-	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max))
+	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max)) {
 	    return false;
+	}
 	if (Double.doubleToLongBits(maxWithBonuses) != Double
-		.doubleToLongBits(other.maxWithBonuses))
+		.doubleToLongBits(other.maxWithBonuses)) {
 	    return false;
+	}
 	if (message == null) {
-	    if (other.message != null)
+	    if (other.message != null) {
 		return false;
-	} else if (!message.equals(other.message))
+	    }
+	} else if (!message.equals(other.message)) {
 	    return false;
+	}
 	if (Double.doubleToLongBits(points) != Double
-		.doubleToLongBits(other.points))
+		.doubleToLongBits(other.points)) {
 	    return false;
+	}
 	return true;
     }
 

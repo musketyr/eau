@@ -11,14 +11,14 @@ public class ReportContainer implements Report {
     private final ImmutableList<Report> children;
     private final String message;
 
-    private ReportContainer(ImmutableList<Report> children, String message) {
+    private ReportContainer(final ImmutableList<Report> children, final String message) {
 	this.children = children;
 	this.message = message;
     }
 
     @SuppressWarnings("unchecked")
-    public static ReportContainer of(String message,
-	    Iterable<Report> theChildren) {
+    public static ReportContainer of(final String message,
+	    final Iterable<Report> theChildren) {
 	ImmutableList<Report> children;
 	if (theChildren instanceof ImmutableList) {
 	    children = (ImmutableList<Report>) theChildren;
@@ -75,31 +75,31 @@ public class ReportContainer implements Report {
 
     private static final String IDENT_BLOCK = "   ";
 
-    private static String ident(int ident) {
-	String ret = "";
+    private static String ident(final int ident) {
+	StringBuilder ret = new StringBuilder();
 	for (int i = 0; i < ident; i++) {
-	    ret += IDENT_BLOCK;
+	    ret.append(IDENT_BLOCK);
 	}
-	return ret;
+	return ret.toString();
     }
 
-    private String toString(int ident) {
-	String ret = ident(ident)
-		+ String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
-			getMessage()) + " {\n";
+    private String toString(final int ident) {
+	StringBuilder ret = new StringBuilder();
+	ret.append(ident(ident)).append(String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
+			getMessage())).append(" {\n");
 	for (Report er : children) {
 	    if (er == null) {
 		continue;
 	    }
 	    if (er instanceof ReportContainer) {
-		ret += ((ReportContainer) er).toString(ident + 1);
+		ret.append(((ReportContainer) er).toString(ident + 1));
 	    } else {
-		ret += ident(ident + 1) + er.toString();
+		ret.append(ident(ident + 1) + er.toString());
 	    }
-	    ret += "\n";
+	    ret.append("\n");
 	}
-	ret += ident(ident) + "}";
-	return ret;
+	ret.append(ident(ident)).append("}");
+	return ret.toString();
     }
 
     @Override
@@ -114,23 +114,30 @@ public class ReportContainer implements Report {
 
     @Override
     public boolean equals(Object obj) {
-	if (this == obj)
+	if (this == obj) {
 	    return true;
-	if (obj == null)
+	}
+	if (obj == null) {
 	    return false;
-	if (getClass() != obj.getClass())
+	}
+	if (getClass() != obj.getClass()) {
 	    return false;
+	}
 	ReportContainer other = (ReportContainer) obj;
 	if (children == null) {
-	    if (other.children != null)
+	    if (other.children != null) {
 		return false;
-	} else if (!children.equals(other.children))
+	    }
+	} else if (!children.equals(other.children)) {
 	    return false;
+	}
 	if (message == null) {
-	    if (other.message != null)
+	    if (other.message != null) {
 		return false;
-	} else if (!message.equals(other.message))
+	    }
+	} else if (!message.equals(other.message)) {
 	    return false;
+	}
 	return true;
     }
 
