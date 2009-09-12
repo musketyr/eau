@@ -13,8 +13,8 @@ public class SimpleReport implements Report {
     private final String message;
     private final String details;
 
-    public SimpleReport(final String message, final double points, final double max,
-	    final double maxWithBonuses, final String details) {
+    public SimpleReport(final String message, final double points,
+	    final double max, final double maxWithBonuses, final String details) {
 	this.points = points;
 	this.max = max;
 	this.maxWithBonuses = maxWithBonuses;
@@ -22,17 +22,18 @@ public class SimpleReport implements Report {
 	this.details = details;
     }
 
-    public SimpleReport(final String message, final double points, final double max,
-	    final double maxWithBonuses) {
+    public SimpleReport(final String message, final double points,
+	    final double max, final double maxWithBonuses) {
 	this(message, points, max, maxWithBonuses, null);
     }
 
-    public SimpleReport(final String message, final double points, final double max,
-	    final String details) {
+    public SimpleReport(final String message, final double points,
+	    final double max, final String details) {
 	this(message, points, max, max, details);
     }
 
-    public SimpleReport(final String message, final double points, final double max) {
+    public SimpleReport(final String message, final double points,
+	    final double max) {
 	this(message, points, max, max, null);
     }
 

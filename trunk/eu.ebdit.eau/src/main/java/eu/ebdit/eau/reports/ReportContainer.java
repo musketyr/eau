@@ -11,7 +11,8 @@ public class ReportContainer implements Report {
     private final ImmutableList<Report> children;
     private final String message;
 
-    private ReportContainer(final Iterable<Report> theChildren, final String message) {
+    private ReportContainer(final Iterable<Report> theChildren,
+	    final String message) {
 	this.children = ImmutableList.copyOf(theChildren);
 	this.message = message;
     }
@@ -78,7 +79,8 @@ public class ReportContainer implements Report {
 
     private String toString(final int ident) {
 	StringBuilder ret = new StringBuilder();
-	ret.append(ident(ident)).append(String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
+	ret.append(ident(ident)).append(
+		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
 			getMessage())).append(" {\n");
 	for (Report er : children) {
 	    if (er == null) {
