@@ -5,7 +5,7 @@ import java.util.Collections;
 
 import eu.ebdit.eau.Report;
 
-public class SimpleReport implements Report {
+public final class SimpleReport implements Report {
 
     private final double points;
     private final double max;

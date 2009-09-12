@@ -6,7 +6,7 @@ import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.Report;
 
-public class ReportContainer implements Report {
+public final class ReportContainer implements Report {
 
     private final ImmutableList<Report> children;
     private final String message;
