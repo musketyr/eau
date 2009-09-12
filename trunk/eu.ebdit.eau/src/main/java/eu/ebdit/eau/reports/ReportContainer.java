@@ -11,21 +11,14 @@ public class ReportContainer implements Report {
     private final ImmutableList<Report> children;
     private final String message;
 
-    private ReportContainer(final ImmutableList<Report> children, final String message) {
-	this.children = children;
+    private ReportContainer(final Iterable<Report> theChildren, final String message) {
+	this.children = ImmutableList.copyOf(theChildren);
 	this.message = message;
     }
 
-    @SuppressWarnings("unchecked")
     public static ReportContainer of(final String message,
 	    final Iterable<Report> theChildren) {
-	ImmutableList<Report> children;
-	if (theChildren instanceof ImmutableList) {
-	    children = (ImmutableList<Report>) theChildren;
-	} else {
-	    children = ImmutableList.copyOf(theChildren);
-	}
-	return new ReportContainer(children, message);
+	return new ReportContainer(theChildren, message);
     }
 
     public Collection<Report> getChildReports() {
