@@ -6,8 +6,4 @@
 <suppressions>
   <suppress checks=".*"
              files=".*?/groovy-stubs/.*"/>
-  <suppress checks="TabCharacterCheck" files=".*"/>
-  <suppress checks="WhitespaceAroundCheck" files=".*"/>
-  <suppress checks="TodoCommentCheck" files=".*"/>
-  <suppress checks="AvoidInlineConditionalsCheck" files=".*"/>
 </suppressions>
