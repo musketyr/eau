@@ -48,7 +48,7 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {
 
 	// Perform the compilation task.
 	final boolean ret = task.call();
-	assertTrue(ret);
+	assertTrue(ret);//NOPMD
 	return processor.getScores();
     }
 
