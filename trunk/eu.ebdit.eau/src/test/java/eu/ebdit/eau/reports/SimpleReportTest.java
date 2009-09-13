@@ -43,8 +43,8 @@ public class SimpleReportTest {
 
     @Test
     public void testMaxPointsWithBonuses() {
-	assertEquals(1, fixture1.getMaxPointsBonusIncluded(), EPSILON);//NOPMD
-	assertEquals(5, fixture2.getMaxPointsBonusIncluded(), EPSILON);//NOPMD
+	assertEquals(1, fixture1.getMaxPointsWithBonus(), EPSILON);//NOPMD
+	assertEquals(5, fixture2.getMaxPointsWithBonus(), EPSILON);//NOPMD
     }
 
     @Test
