@@ -23,9 +23,6 @@ public class ScoreAnnotationFinder {
 	final List<TestScore> scores = Lists.newArrayList();
 	for (Method m : clazz.getMethods()) {
 	if (m.isAnnotationPresent(Points.class)) {
-	    if (!m.isAccessible()) {
-		m.setAccessible(true);
-	    }
 	    scores.add(createTestScore(clazz, m));
 	}
 	}

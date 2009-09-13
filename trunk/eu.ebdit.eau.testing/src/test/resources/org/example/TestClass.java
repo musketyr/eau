@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import eu.ebdit.eau.testing.annotations.Bonus;
 import eu.ebdit.eau.testing.annotations.Description;
+import eu.ebdit.eau.testing.annotations.Details;
 import eu.ebdit.eau.testing.annotations.Points;
 
 // THIS CLASS IS FOR TESTING PURPOSE ONLY!
@@ -27,6 +28,11 @@ public class TestClass {
 	}
 	
 	@Bonus @Points(1) @Description("Bonus")
+	@Details(
+		"These are details explaining" +
+		" why you have bonus points for this" +
+		" test."
+	)
 	@Test public void testThree() throws Exception {//NOPMD
 		throw new Exception();//NOPMD
 	}
