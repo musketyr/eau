@@ -21,36 +21,36 @@ import eu.ebdit.eau.testing.beans.TestScoreBean;
 @SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")
 public class ScoreAnnotationProcessor extends AbstractProcessor {
 
-    private final List<TestScore> scores = Lists.newArrayList();
+    private transient final List<TestScore> scores = Lists.newArrayList();
     
     
     @Override
-    public boolean process(Set<? extends TypeElement> annotations,
-	    RoundEnvironment roundEnv) {
-	System.out.println(annotations);
+    public boolean process(final Set<? extends TypeElement> annotations,
+	    final RoundEnvironment roundEnv) {
 	for (Element e : roundEnv.getElementsAnnotatedWith(Points.class)) {
 	    scores.add(getScoreFromElement(e));
 	}
-	return false;
+	return true;
     }
 
-    private TestScoreBean getScoreFromElement(Element e) {
-	Points points = e.getAnnotation(Points.class);
-	Details details = e.getAnnotation(Details.class);
-	Bonus bonus = e.getAnnotation(Bonus.class);
-	Description desc = e.getAnnotation(Description.class);
-	TestScoreBean score = new TestScoreBean();
+    private TestScoreBean getScoreFromElement(final Element element) {
+	final Points points = element.getAnnotation(Points.class);
+	final Details details = element.getAnnotation(Details.class);
+	final Bonus bonus = element.getAnnotation(Bonus.class);
+	final Description desc = element.getAnnotation(Description.class);
+	
+	final TestScoreBean score = new TestScoreBean();
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
 	score.setMessage(desc == null ? "" : desc.value());
-	score.setClassFQName(getClassFQName(e));
+	score.setClassFQName(getClassFQName(element));
 	score.setDetails(details == null ? null : details.value());
-	score.setTestName(e.getSimpleName().toString());
+	score.setTestName(element.getSimpleName().toString());
 	return score;
     }
 
-    private String getClassFQName(Element e) {
-	return e.getEnclosingElement().toString();
+    private String getClassFQName(final Element element) {
+	return element.getEnclosingElement().toString();
     }
 
     public Iterable<TestScore> getScores() {

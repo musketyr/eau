@@ -2,21 +2,19 @@ package eu.ebdit.eau.testing.annotations;
 
 import java.util.List;
 
+import org.junit.Test;
+
 import eu.ebdit.eau.testing.TestReporterTest;
 import eu.ebdit.eau.testing.TestScore;
-import eu.ebdit.eau.testing.annotations.ScoreAnnotationFinder;
 
 public class ScoreFromAnnotationTest extends TestReporterTest {
 
     @Override
-    protected List<TestScore> getScoreList() throws Exception {
-	ScoreAnnotationFinder finder = new ScoreAnnotationFinder();
-	return finder.check(Class.forName("org.example.TestClass"));
+    protected List<TestScore> getScoreList() throws ClassNotFoundException {
+	return new ScoreAnnotationFinder().check(Class.forName("org.example.TestClass"));
     }
 
-    @Override
-    public void testSelfCreateTestScore() throws Exception {
-	// do nothing
-    }
+    @Override @Test
+    public void testSelfCreateTestScore() {/* we don't use mocking so we don't need this test at all */}//NOPMD
 
 }

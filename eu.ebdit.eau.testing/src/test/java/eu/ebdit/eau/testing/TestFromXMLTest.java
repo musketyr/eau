@@ -4,7 +4,10 @@
 package eu.ebdit.eau.testing;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.List;
+
+import org.junit.Test;
 
 import eu.ebdit.eau.testing.xml.TestReportXMLParser;
 
@@ -14,13 +17,11 @@ import eu.ebdit.eau.testing.xml.TestReportXMLParser;
  */
 public class TestFromXMLTest extends TestReporterTest {
 
-    protected List<TestResult> getResultList() throws Exception {
+    protected List<TestResult> getResultList() throws URISyntaxException {
 	return new TestReportXMLParser().parse(new File(getClass().getResource(
 		"/TestClass.xml").toURI()));
     }
 
-    @Override
-    public void testSelfCreateResult() throws Exception {
-	// do nothing
-    }
+    @Override @Test
+    public void testSelfCreateResult(){ /* we are not using mocking in this test so we don't need this test */ } //NOPMD
 }

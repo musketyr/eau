@@ -20,15 +20,15 @@ import eu.ebdit.eau.testing.annotations.Points;
 import eu.ebdit.eau.testing.beans.TestResultBean;
 import eu.ebdit.eau.testing.beans.TestScoreBean;
 
-class JUnitTestCollector extends RunListener implements TestCollector {
+final class JUnitTestCollector extends RunListener implements TestCollector {
 
     private JUnitTestCollector() {
 	// prevents instance creation and subtyping
     }
 
-    public static TestCollector collectResults(Class<?>... classes) {
-	JUnitTestCollector erl = new JUnitTestCollector();
-	JUnitCore core = new JUnitCore();
+    public static TestCollector collectResults(final Class<?>... classes) {
+	final JUnitTestCollector erl = new JUnitTestCollector();
+	final JUnitCore core = new JUnitCore();
 	core.addListener(erl);
 	core.run(classes);
 	return erl;
@@ -36,9 +36,9 @@ class JUnitTestCollector extends RunListener implements TestCollector {
 
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
 
-    private TestResultBean lastResult;
-    private List<TestResult> results = Lists.newArrayList();
-    private List<TestScore> scores = Lists.newArrayList();
+    private transient TestResultBean lastResult;
+    private transient final List<TestResult> results = Lists.newArrayList();
+    private transient final List<TestScore> scores = Lists.newArrayList();
 
     /*
      * (non-Javadoc)
@@ -58,25 +58,25 @@ class JUnitTestCollector extends RunListener implements TestCollector {
 	return scores;
     }
 
-    @Override
-    public void testFailure(Failure failure) throws Exception {
+    @Override //NOPMD
+    public void testFailure(final Failure failure) throws Exception {//NOPMD
 	handleFailure(failure);
     }
 
-    @Override
-    public void testFinished(Description description) throws Exception {
+    @Override //NOPMD
+    public void testFinished(final Description description) throws Exception {//NOPMD
 	results.add(lastResult);
 	lastResult = null;
     }
 
-    @Override
-    public void testStarted(Description description) throws Exception {
+    @Override //NOPMD
+    public void testStarted(final Description description) throws Exception {//NOPMD
 	initResult();
 	initNames(description);
 	addScoreIfNeeded(description);
     }
 
-    private void handleFailure(Failure failure) {
+    private void handleFailure(final Failure failure) {
 	if (failure.getException() instanceof AssertionError) {
 	    lastResult.setStatus(Status.FAILED);
 	} else {
@@ -86,20 +86,20 @@ class JUnitTestCollector extends RunListener implements TestCollector {
 		: failure.getMessage());
     }
 
-    private void addScoreIfNeeded(Description description) {
-	TestScoreBean score = new TestScoreBean();
+    private void addScoreIfNeeded(final Description description) {
+	final TestScoreBean score = new TestScoreBean();
 	score.setClassFQName(lastResult.getClassFQName());
 	score.setTestName(lastResult.getTestName());
-	Points points = description.getAnnotation(Points.class);
+	final Points points = description.getAnnotation(Points.class);
 	if (points != null) {
 	    score.setPoints(points.value());
 
-	    eu.ebdit.eau.testing.annotations.Description desc = description
+	    final eu.ebdit.eau.testing.annotations.Description desc = description
 		    .getAnnotation(eu.ebdit.eau.testing.annotations.Description.class);
 	    if (desc != null) {
 		score.setMessage(desc.value());
 	    }
-	    Details details = description.getAnnotation(Details.class);
+	    final Details details = description.getAnnotation(Details.class);
 	    if (details != null) {
 		score.setDetails(details.value());
 	    }
@@ -108,11 +108,11 @@ class JUnitTestCollector extends RunListener implements TestCollector {
 	}
     }
 
-    private void initNames(Description description) throws AssertionError {
-	Matcher m = PATTERN.matcher(description.getDisplayName());
-	if (m.matches()) {
-	    lastResult.setClassFQName(m.group(2));
-	    lastResult.setTestName(m.group(1));
+    private void initNames(final Description description) throws AssertionError {
+	final Matcher matcher = PATTERN.matcher(description.getDisplayName());
+	if (matcher.matches()) {
+	    lastResult.setClassFQName(matcher.group(2));
+	    lastResult.setTestName(matcher.group(1));
 	} else {
 	    throw new AssertionError("Matcher must match!");
 	}

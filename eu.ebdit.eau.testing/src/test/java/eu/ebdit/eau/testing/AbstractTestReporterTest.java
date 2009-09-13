@@ -9,11 +9,11 @@ import org.junit.Test;
 import eu.ebdit.eau.Report;
 import eu.ebdit.eau.Reporter;
 
-public abstract class BaseTestReporterTest {//NOPMD
+public abstract class AbstractTestReporterTest {
 
     protected static final double EPSILON = 0.01;
 
-    public BaseTestReporterTest() {
+    public AbstractTestReporterTest() {
 	super();
     }
 
