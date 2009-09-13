@@ -2,11 +2,11 @@
 <FindBugsFilter>
      <Match>
      	<Or>
-       		<Class name="eu.ebdit.eau.testing.beans.TestResultBean" />
-       		<Class name="eu.ebdit.eau.testing.beans.TestScoreBean" />
-       		<Class name="eu.ebdit.eau.testing.junit.textui.JUnitTextUI" />
-       		<Class name="eu.ebdit.eau.testing.xml.TestReportXMLParser" />
-       		<Class name="eu.ebdit.eau.testing.xml.TestScoreXMLParser" />
+       		<Class name="~.*TestResultBean.*" />
+       		<Class name="~.*TestScoreBean.*" />
+       		<Class name="~.*JUnitTextUI.*" />
+       		<Class name="~.*TestReportXMLParser.*" />
+       		<Class name="~.*TestScoreXMLParser.*" />
      	</Or>
      </Match>
 </FindBugsFilter>
