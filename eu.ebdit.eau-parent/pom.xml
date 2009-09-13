@@ -84,6 +84,7 @@
 				<configuration>
 					<excludes>**/groovy-stubs/*.java</excludes>
 					<suppressionsLocation>../eu.ebdit.eau-parent/src/main/resources/checkstyle-supressions.xml</suppressionsLocation>
+					<configLocation>../eu.ebdit.eau-parent/src/main/resources/checkstyle.xml</configLocation>
 				</configuration>
 			</plugin>
 			<plugin>
