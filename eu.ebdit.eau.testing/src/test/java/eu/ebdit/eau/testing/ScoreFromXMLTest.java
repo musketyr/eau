@@ -15,7 +15,7 @@ import eu.ebdit.eau.testing.xml.TestScoreXMLParser;
 public class ScoreFromXMLTest extends TestReporterTest {
 
     protected List<TestScore> getScoreList() throws URISyntaxException {
-	return new TestScoreXMLParser().parse(new File(getClass().getResource(
+	return new TestScoreXMLParser().parse(new File(ScoreFromXMLTest.class.getResource(
 		"/TestClass.points.eau.xml").toURI()));
     }
 

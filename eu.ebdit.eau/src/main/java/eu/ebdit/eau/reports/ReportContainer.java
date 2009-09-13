@@ -7,9 +7,9 @@ import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.Report;
 
-@SuppressWarnings("serial")
 public final class ReportContainer implements Report, Serializable {//NOPMD
 
+    private static final long serialVersionUID = 324202196457789090L;
     private final ImmutableList<Report> children;
     private final String message;
 

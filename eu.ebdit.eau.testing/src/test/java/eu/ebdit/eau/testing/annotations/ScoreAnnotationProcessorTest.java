@@ -32,7 +32,7 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {
 
 	// Get the list of java file objects, in this case we have only
 	// one file, TestClass.java
-	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjects(new File(getClass().getResource("/org/example/TestClass.java").toURI()));
+	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjects(new File(ScoreAnnotationProcessorTest.class.getResource("/org/example/TestClass.java").toURI()));
 
 	final CompilationTask task = compiler.getTask(null, fileManager, null, null,
 		null, compilationUnits1);

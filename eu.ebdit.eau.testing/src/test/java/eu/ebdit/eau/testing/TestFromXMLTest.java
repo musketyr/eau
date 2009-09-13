@@ -18,7 +18,7 @@ import eu.ebdit.eau.testing.xml.TestReportXMLParser;
 public class TestFromXMLTest extends TestReporterTest {
 
     protected List<TestResult> getResultList() throws URISyntaxException {
-	return new TestReportXMLParser().parse(new File(getClass().getResource(
+	return new TestReportXMLParser().parse(new File(TestFromXMLTest.class.getResource(
 		"/TestClass.xml").toURI()));
     }
 

@@ -6,9 +6,9 @@ import java.util.Collections;
 
 import eu.ebdit.eau.Report;
 
-@SuppressWarnings("serial")
 public final class SimpleReport implements Report, Serializable {//NOPMD
 
+    private static final long serialVersionUID = -3254636032451267126L;
     private final double points;
     private final double max;
     private final double maxWithBonuses;
