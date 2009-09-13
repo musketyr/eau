@@ -14,8 +14,8 @@ public class SimpleReportTest {
     private static final String F1_MESSAGE = "F1";
     private static final double EPSILON = 0.01;
     private static final String F2_DETAILS = "F2 DETAILS";
-    private transient Report fixture1;
-    private transient Report fixture2;
+    private Report fixture1;
+    private Report fixture2;
 
     @Before
     public void setUp() {
@@ -99,6 +99,14 @@ public class SimpleReportTest {
 		+ F1_MESSAGE, 100d, 1d, 1d), fixture1.toString());
 	assertEquals(String.format("%06.2f%% of %06.2f (%06.2f) - "//NOPMD
 		+ F2_MESSAGE, 150d, 2d, 5d), fixture2.toString());
+    }
+    
+    public Report getFixture1() {
+	return fixture1;
+    }
+    
+    public Report getFixture2() {
+	return fixture2;
     }
 
 }

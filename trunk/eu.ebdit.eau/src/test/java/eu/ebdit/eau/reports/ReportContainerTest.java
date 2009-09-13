@@ -16,8 +16,8 @@ public class ReportContainerTest {
     private static final String FIXTURE2_MESSAGE = "Fixture2";
     private static final String FIXTURE1_MESSAGE = "Fixture1";
     private static final double EPSILON = 0.01;
-    private transient Report fixture1;
-    private transient Report fixture2;
+    private Report fixture1;
+    private Report fixture2;
     private transient Iterable<Report> fixture1Items;
     private transient Iterable<Report> fixture2Items;
 
@@ -88,6 +88,14 @@ public class ReportContainerTest {
 	when(report.getPoints()).thenReturn(points);
 	when(report.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);
 	return report;
+    }
+    
+    public Report getFixture1() {
+	return fixture1;
+    }
+    
+    public Report getFixture2() {
+	return fixture2;
     }
 
 }
