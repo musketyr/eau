@@ -136,9 +136,12 @@
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.0.1</version>
 				<configuration>
+					<includeTests>true</includeTests>
+					<threshold>Default</threshold>
 					<findbugsXmlOutput>true</findbugsXmlOutput>
 					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
 					<xmlOutput>true</xmlOutput>
+					<excludeFilterFile>../eu.ebdit.eau-parent/src/main/resources/findbugs-exclude.xml</excludeFilterFile>
 				</configuration>
 			</plugin>
 			<plugin>
