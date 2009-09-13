@@ -8,7 +8,7 @@ import com.google.common.collect.ImmutableList;
 import eu.ebdit.eau.Report;
 
 @SuppressWarnings("serial")
-public final class ReportContainer implements Report, Serializable {
+public final class ReportContainer implements Report, Serializable {//NOPMD
 
     private final ImmutableList<Report> children;
     private final String message;
@@ -19,7 +19,7 @@ public final class ReportContainer implements Report, Serializable {
 	this.message = theMessage;
     }
 
-    public static ReportContainer of(final String message,
+    public static ReportContainer of(final String message,//NOPMD
 	    final Iterable<Report> theChildren) {
 	return new ReportContainer(theChildren, message);
     }

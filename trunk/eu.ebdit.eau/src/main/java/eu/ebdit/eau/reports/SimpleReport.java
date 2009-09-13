@@ -7,7 +7,7 @@ import java.util.Collections;
 import eu.ebdit.eau.Report;
 
 @SuppressWarnings("serial")
-public final class SimpleReport implements Report, Serializable {
+public final class SimpleReport implements Report, Serializable {//NOPMD
 
     private final double points;
     private final double max;
