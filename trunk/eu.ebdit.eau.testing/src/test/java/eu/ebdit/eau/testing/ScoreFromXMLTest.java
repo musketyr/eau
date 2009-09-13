@@ -28,7 +28,7 @@ public class ScoreFromXMLTest extends TestReporterTest {
     public void testCannotParse() throws Exception {
 	try {
 	    new TestScoreXMLParser().parse(new File(TestFromXMLTest.class
-		    .getResource("/TestClass.points.eau.xml").toURI()));
+		    .getResource("/TestClass.xml").toURI()));
 	    fail("Should throw exception");
 	} catch (IllegalArgumentException exception) {
 	    assertTrue(exception.getMessage().startsWith(CANNOT_PARSE));
