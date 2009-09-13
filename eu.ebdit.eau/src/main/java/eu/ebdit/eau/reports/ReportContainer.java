@@ -36,10 +36,10 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return ret;
     }
 
-    public double getMaxPointsBonusIncluded() {
+    public double getMaxPointsWithBonus() {
 	double ret = 0;
 	for (Report er : children) {
-	    ret += er.getMaxPointsBonusIncluded();
+	    ret += er.getMaxPointsWithBonus();
 	}
 	return ret;
     }

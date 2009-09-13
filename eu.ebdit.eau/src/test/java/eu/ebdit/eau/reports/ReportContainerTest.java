@@ -43,8 +43,8 @@ public class ReportContainerTest {
 
     @Test
     public void testMaxPointsWithBonuses() {
-	assertEquals(6, fixture1.getMaxPointsBonusIncluded(), EPSILON);
-	assertEquals(7, fixture2.getMaxPointsBonusIncluded(), EPSILON);
+	assertEquals(6, fixture1.getMaxPointsWithBonus(), EPSILON);
+	assertEquals(7, fixture2.getMaxPointsWithBonus(), EPSILON);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ReportContainerTest {
 	final Report report = mock(Report.class);
 	when(report.getMaxPoints()).thenReturn(maxPoints);
 	when(report.getPoints()).thenReturn(points);
-	when(report.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);
+	when(report.getMaxPointsWithBonus()).thenReturn(pointsWithBonuses);
 	return report;
     }
     

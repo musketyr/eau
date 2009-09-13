@@ -47,7 +47,7 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
 	return max;
     }
 
-    public double getMaxPointsBonusIncluded() {
+    public double getMaxPointsWithBonus() {
 	return maxWithBonuses;
     }
 
@@ -126,6 +126,6 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
     public String toString() {
 	return String.format("%06.2f%% of %06.2f (%06.2f) - %s",
 		getSuccessPercentage() * 100, getMaxPoints(),
-		getMaxPointsBonusIncluded(), getMessage());
+		getMaxPointsWithBonus(), getMessage());
     }
 }

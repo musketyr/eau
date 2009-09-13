@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public interface Report {
 
-    double getMaxPointsBonusIncluded();
+    double getMaxPointsWithBonus();
 
     double getMaxPoints();
 
