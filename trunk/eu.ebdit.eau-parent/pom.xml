@@ -92,6 +92,8 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
+					<linkXref>true</linkXref>
+					<includeTests>true</includeTests>
 					<excludes>
 						<exclude>**/TestClass.java</exclude>
 						<exclude>**/groovy-stubs/*.java</exclude>
@@ -111,6 +113,7 @@
 						<ruleset>/rulesets/finalizers.xml</ruleset>
 						<ruleset>/rulesets/imports.xml</ruleset>
 						<ruleset>/rulesets/javabeans.xml</ruleset>
+						<ruleset>/rulesets/junit.xml</ruleset>
 						<ruleset>/rulesets/logging-java.xml</ruleset>
 						<ruleset>/rulesets/logging-jakarta-commons.xml</ruleset>
 						<ruleset>/rulesets/naming.xml</ruleset>
