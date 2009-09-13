@@ -88,7 +88,7 @@ final class JUnitTestCollector extends RunListener implements TestCollector {
 
     private void addScoreIfNeeded(final Description description) {
 	final TestScoreBean score = new TestScoreBean();
-	score.setClassFQName(lastResult.getClassFQName());
+	score.setClassName(lastResult.getClassName());
 	score.setTestName(lastResult.getTestName());
 	final Points points = description.getAnnotation(Points.class);
 	if (points != null) {
@@ -111,7 +111,7 @@ final class JUnitTestCollector extends RunListener implements TestCollector {
     private void initNames(final Description description) throws AssertionError {
 	final Matcher matcher = PATTERN.matcher(description.getDisplayName());
 	if (matcher.matches()) {
-	    lastResult.setClassFQName(matcher.group(2));
+	    lastResult.setClassName(matcher.group(2));
 	    lastResult.setTestName(matcher.group(1));
 	} else {
 	    throw new AssertionError("Matcher must match!");

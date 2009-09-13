@@ -43,13 +43,13 @@ public class ScoreAnnotationProcessor extends AbstractProcessor {
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
 	score.setMessage(desc == null ? "" : desc.value());
-	score.setClassFQName(getClassFQName(element));
+	score.setClassName(getClassName(element));
 	score.setDetails(details == null ? null : details.value());
 	score.setTestName(element.getSimpleName().toString());
 	return score;
     }
 
-    private String getClassFQName(final Element element) {
+    private String getClassName(final Element element) {
 	return element.getEnclosingElement().toString();
     }
 

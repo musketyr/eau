@@ -11,7 +11,7 @@ public class TestScoreBean implements TestScore{
 
 	boolean bonus
 	double points
-	String classFQName
+	String className
 	String testName
 	String message
 	String details

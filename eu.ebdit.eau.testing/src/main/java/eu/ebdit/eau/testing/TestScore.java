@@ -4,7 +4,7 @@ import eu.ebdit.eau.Score;
 
 public interface TestScore extends Score {
 
-    String getClassFQName();
+    String getClassName();
 
     String getTestName();
 

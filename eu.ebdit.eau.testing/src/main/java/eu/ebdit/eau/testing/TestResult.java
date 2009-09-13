@@ -4,7 +4,7 @@ import eu.ebdit.eau.Result;
 
 public interface TestResult extends Result {
 
-    String getClassFQName();
+    String getClassName();
 
     String getTestName();
 

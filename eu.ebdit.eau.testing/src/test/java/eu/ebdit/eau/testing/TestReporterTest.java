@@ -30,7 +30,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
     public void testSelfCreateResult() {
 	final TestResult result = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
 		METHOD_1_MESSAGE);
-	assertEquals(CLASS_FQNAME, result.getClassFQName());//NOPMD
+	assertEquals(CLASS_FQNAME, result.getClassName());//NOPMD
 	assertEquals(METHOD_NAME_1, result.getTestName());//NOPMD
 	assertEquals(Status.OK, result.getStatus());//NOPMD
 	assertEquals(METHOD_1_MESSAGE, result.getMessage());//NOPMD
@@ -40,7 +40,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
     public void testSelfCreateTestScore() {
 	final TestScore score = createTestScore(CLASS_FQNAME, METHOD_NAME_1, 0.5,
 		SCORE_1_MESSAGE_OK, false);
-	assertEquals(CLASS_FQNAME, score.getClassFQName());//NOPMD
+	assertEquals(CLASS_FQNAME, score.getClassName());//NOPMD
 	assertEquals(METHOD_NAME_1, score.getTestName());//NOPMD
 	assertEquals(0.5, score.getPoints(), EPSILON);//NOPMD
 	assertEquals(SCORE_1_MESSAGE_OK, score.getMessage());//NOPMD
@@ -62,10 +62,10 @@ public class TestReporterTest extends AbstractTestReporterTest {
 			SCORE_3_MESSAGE_OK, true));
     }
 
-    private TestScore createTestScore(final String classFQName, final String testName,
+    private TestScore createTestScore(final String className, final String testName,
 	    final double score, final String message, final boolean bonus) {
 	final TestScore testScore = mock(TestScore.class);
-	when(testScore.getClassFQName()).thenReturn(classFQName);
+	when(testScore.getClassName()).thenReturn(className);
 	when(testScore.getTestName()).thenReturn(testName);
 	when(testScore.getPoints()).thenReturn(score);
 	when(testScore.getMessage()).thenReturn(message);
@@ -73,10 +73,10 @@ public class TestReporterTest extends AbstractTestReporterTest {
 	return testScore;
     }
 
-    private TestResult createResult(final String classFQName, final String methodName,
+    private TestResult createResult(final String className, final String methodName,
 	    final Status status, final String message) {
 	final TestResult result = mock(TestResult.class);
-	when(result.getClassFQName()).thenReturn(classFQName);
+	when(result.getClassName()).thenReturn(className);
 	when(result.getTestName()).thenReturn(methodName);
 	when(result.getStatus()).thenReturn(status);
 	when(result.getMessage()).thenReturn(message);

@@ -39,7 +39,7 @@ public class ScoreAnnotationFinder {
 	details = method.getAnnotation(Details.class).value();
 	}
 	final TestScoreBean bean = new TestScoreBean();
-	bean.setClassFQName(clazz.getName());
+	bean.setClassName(clazz.getName());
 	bean.setTestName(method.getName());
 	bean.setPoints(method.getAnnotation(Points.class).value());
 	bean.setMessage(desc);
