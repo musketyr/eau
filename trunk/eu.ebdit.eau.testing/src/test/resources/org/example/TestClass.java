@@ -1,7 +1,7 @@
 package org.example;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*;//NOPMD
 
 import org.junit.Test;
 
@@ -17,21 +17,21 @@ public class TestClass {
 
 	
 	@Points(0.5) @Description("Test one is for 0.5 points")
-	@Test public void testOne() throws Exception {
+	@Test public void testOne() throws Exception {//NOPMD
 		
 	}
 	
 	@Points(0.75)
-	@Test public void testTwo() throws Exception {
-		assertTrue("I've failed", false);
+	@Test public void testTwo() throws Exception {//NOPMD
+		assertTrue("I've failed", false);//NOPMD
 	}
 	
 	@Bonus @Points(1) @Description("Bonus")
-	@Test public void testThree() throws Exception {
-		throw new Exception();
+	@Test public void testThree() throws Exception {//NOPMD
+		throw new Exception();//NOPMD
 	}
 	
-	@Test public void testDummy(){
+	@Test public void testDummy(){//NOPMD
 		// ok :)
 	}
 	
