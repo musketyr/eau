@@ -1,7 +1,8 @@
 package eu.ebdit.eau.reports;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +16,10 @@ public class ReportContainerTest {
     private static final String FIXTURE2_MESSAGE = "Fixture2";
     private static final String FIXTURE1_MESSAGE = "Fixture1";
     private static final double EPSILON = 0.01;
-    private Report fixture1;
-    private Report fixture2;
-    private Iterable<Report> fixture1Items;
-    private Iterable<Report> fixture2Items;
+    private transient Report fixture1;
+    private transient Report fixture2;
+    private transient Iterable<Report> fixture1Items;
+    private transient Iterable<Report> fixture2Items;
 
     @Before
     public void setUp() {
@@ -29,46 +30,46 @@ public class ReportContainerTest {
     }
 
     @Test
-    public void testMaxPoints() throws Exception {
+    public void testMaxPoints() {
 	assertEquals(5, fixture1.getMaxPoints(), EPSILON);
 	assertEquals(4, fixture2.getMaxPoints(), EPSILON);
     }
 
     @Test
-    public void testSuccessPercentage() throws Exception {
+    public void testSuccessPercentage() {
 	assertEquals(3d / 5d, fixture1.getSuccessPercentage(), EPSILON);
 	assertEquals(5d / 4d, fixture2.getSuccessPercentage(), EPSILON);
     }
 
     @Test
-    public void testMaxPointsWithBonuses() throws Exception {
+    public void testMaxPointsWithBonuses() {
 	assertEquals(6, fixture1.getMaxPointsBonusIncluded(), EPSILON);
 	assertEquals(7, fixture2.getMaxPointsBonusIncluded(), EPSILON);
     }
 
     @Test
-    public void testPoints() throws Exception {
+    public void testPoints()  {
 	assertEquals(3, fixture1.getPoints(), EPSILON);
 	assertEquals(5, fixture2.getPoints(), EPSILON);
     }
 
     @Test
-    public void testChildren() throws Exception {
-	assertEquals(fixture1Items, fixture1.getChildReports());
-	assertEquals(fixture2Items, fixture2.getChildReports());
+    public void testChildren() {
+	assertEquals(fixture1Items, fixture1.getChildReports());//NOPMD
+	assertEquals(fixture2Items, fixture2.getChildReports());//NOPMD
     }
 
     @Test
-    public void testMessage() throws Exception {
-	assertEquals(FIXTURE1_MESSAGE, fixture1.getMessage());
-	assertEquals(FIXTURE2_MESSAGE, fixture2.getMessage());
+    public void testMessage() {
+	assertEquals(FIXTURE1_MESSAGE, fixture1.getMessage());//NOPMD
+	assertEquals(FIXTURE2_MESSAGE, fixture2.getMessage());//NOPMD
     }
 
     @Test
-    public void testEqualsAndHashCode() throws Exception {
-	assertEquals(fixture1, ReportContainer.of(FIXTURE1_MESSAGE,
+    public void testEqualsAndHashCode() {
+	assertEquals(fixture1, ReportContainer.of(FIXTURE1_MESSAGE, //NOPMD
 		fixture1Items));
-	assertEquals(fixture1.hashCode(), ReportContainer.of(FIXTURE1_MESSAGE,
+	assertEquals(fixture1.hashCode(), ReportContainer.of(FIXTURE1_MESSAGE, //NOPMD
 		fixture1Items).hashCode());
     }
 
@@ -80,13 +81,13 @@ public class ReportContainerTest {
 	return ImmutableList.of(getReport(2, 3, 3), getReport(2, 2, 4));
     }
 
-    private Report getReport(double maxPoints, double points,
-	    double pointsWithBonuses) {
-	Report er = mock(Report.class);
-	when(er.getMaxPoints()).thenReturn(maxPoints);
-	when(er.getPoints()).thenReturn(points);
-	when(er.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);
-	return er;
+    private Report getReport(final double maxPoints, final double points,
+	    final double pointsWithBonuses) {
+	final Report report = mock(Report.class);
+	when(report.getMaxPoints()).thenReturn(maxPoints);
+	when(report.getPoints()).thenReturn(points);
+	when(report.getMaxPointsBonusIncluded()).thenReturn(pointsWithBonuses);
+	return report;
     }
 
 }

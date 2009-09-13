@@ -1,6 +1,7 @@
 package eu.ebdit.eau.reports;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,91 +14,91 @@ public class SimpleReportTest {
     private static final String F1_MESSAGE = "F1";
     private static final double EPSILON = 0.01;
     private static final String F2_DETAILS = "F2 DETAILS";
-    private Report f1;
-    private Report f2;
+    private transient Report fixture1;
+    private transient Report fixture2;
 
     @Before
     public void setUp() {
-	f1 = new SimpleReport(F1_MESSAGE, 1, 1);
-	f2 = new SimpleReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
+	fixture1 = new SimpleReport(F1_MESSAGE, 1, 1);
+	fixture2 = new SimpleReport(F2_MESSAGE, 3, 2, 5, F2_DETAILS);
     }
 
     @Test
-    public void testMaxPoints() throws Exception {
-	assertEquals(1, f1.getMaxPoints(), EPSILON);
-	assertEquals(2, f2.getMaxPoints(), EPSILON);
+    public void testMaxPoints()  {
+	assertEquals(1, fixture1.getMaxPoints(), EPSILON);//NOPMD
+	assertEquals(2, fixture2.getMaxPoints(), EPSILON);//NOPMD
     }
 
     @Test
-    public void testSuccessPercentage() throws Exception {
-	assertEquals(1, f1.getSuccessPercentage(), EPSILON);
-	assertEquals(3d / 2d, f2.getSuccessPercentage(), EPSILON);
-	SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 0, 0, 1);
-	assertEquals(0, sr1.getSuccessPercentage(), EPSILON);
-	SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 0, 1);
-	assertEquals(1, sr2.getSuccessPercentage(), EPSILON);
-	SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 0.5, 0, 1);
-	assertEquals(0.5, sr3.getSuccessPercentage(), EPSILON);
+    public void testSuccessPercentage() {
+	assertEquals(1, fixture1.getSuccessPercentage(), EPSILON);//NOPMD
+	assertEquals(3d / 2d, fixture2.getSuccessPercentage(), EPSILON);//NOPMD
+	final SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 0, 0, 1);//NOPMD
+	assertEquals(0, sr1.getSuccessPercentage(), EPSILON);//NOPMD
+	final SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 0, 1);//NOPMD
+	assertEquals(1, sr2.getSuccessPercentage(), EPSILON);//NOPMD
+	final SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 0.5, 0, 1);//NOPMD
+	assertEquals(0.5, sr3.getSuccessPercentage(), EPSILON);//NOPMD
     }
 
     @Test
-    public void testMaxPointsWithBonuses() throws Exception {
-	assertEquals(1, f1.getMaxPointsBonusIncluded(), EPSILON);
-	assertEquals(5, f2.getMaxPointsBonusIncluded(), EPSILON);
+    public void testMaxPointsWithBonuses() {
+	assertEquals(1, fixture1.getMaxPointsBonusIncluded(), EPSILON);//NOPMD
+	assertEquals(5, fixture2.getMaxPointsBonusIncluded(), EPSILON);//NOPMD
     }
 
     @Test
-    public void testPoints() throws Exception {
-	assertEquals(1, f1.getPoints(), EPSILON);
-	assertEquals(3, f2.getPoints(), EPSILON);
+    public void testPoints(){
+	assertEquals(1, fixture1.getPoints(), EPSILON);//NOPMD
+	assertEquals(3, fixture2.getPoints(), EPSILON);//NOPMD
     }
 
     @Test
-    public void testChildren() throws Exception {
-	assertEquals(0, f1.getChildReports().size());
-	assertEquals(0, f2.getChildReports().size());
+    public void testChildren(){
+	assertEquals(0, fixture1.getChildReports().size());//NOPMD
+	assertEquals(0, fixture2.getChildReports().size());//NOPMD
     }
 
     @Test
-    public void testMessage() throws Exception {
-	assertEquals(F1_MESSAGE, f1.getMessage());
-	assertEquals(F2_MESSAGE, f2.getMessage());
+    public void testMessage(){
+	assertEquals(F1_MESSAGE, fixture1.getMessage());//NOPMD
+	assertEquals(F2_MESSAGE, fixture2.getMessage());//NOPMD
     }
 
     @Test
-    public void testDetails() throws Exception {
-	assertNull(f1.getDetails());
-	assertEquals(F2_DETAILS, f2.getDetails());
+    public void testDetails(){
+	assertNull(fixture1.getDetails());//NOPMD
+	assertEquals(F2_DETAILS, fixture2.getDetails());//NOPMD
     }
 
     @Test
-    public void testConstructors() throws Exception {
-	SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 1, 2, 2, null);
-	SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 2, 2);
-	SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 1, 2);
-	SimpleReport sr4 = new SimpleReport(F1_MESSAGE, 1, 2, null);
-	assertEquals(sr1, sr2);
-	assertEquals(sr1, sr3);
-	assertEquals(sr1, sr4);
-	assertEquals(sr2, sr3);
-	assertEquals(sr2, sr4);
-	assertEquals(sr3, sr4);
+    public void testConstructors()  {
+	final SimpleReport sr1 = new SimpleReport(F1_MESSAGE, 1, 2, 2, null);
+	final SimpleReport sr2 = new SimpleReport(F1_MESSAGE, 1, 2, 2);
+	final SimpleReport sr3 = new SimpleReport(F1_MESSAGE, 1, 2);
+	final SimpleReport sr4 = new SimpleReport(F1_MESSAGE, 1, 2, null);
+	assertEquals(sr1, sr2);//NOPMD
+	assertEquals(sr1, sr3);//NOPMD
+	assertEquals(sr1, sr4);//NOPMD
+	assertEquals(sr2, sr3);//NOPMD
+	assertEquals(sr2, sr4);//NOPMD
+	assertEquals(sr3, sr4);//NOPMD
     }
     
     @Test
-    public void testEquals() throws Exception {
-	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2),
+    public void testEquals() {
+	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2),//NOPMD
 		new SimpleReport(F1_MESSAGE, 1, 2));
-	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2).hashCode(),
+	assertEquals(new SimpleReport(F1_MESSAGE, 1, 2).hashCode(),//NOPMD
 		new SimpleReport(F1_MESSAGE, 1, 2).hashCode());
     }
 
     @Test
-    public void testToString() throws Exception {
-	assertEquals(String.format("%06.2f%% of %06.2f (%06.2f) - "
-		+ F1_MESSAGE, 100d, 1d, 1d), f1.toString());
-	assertEquals(String.format("%06.2f%% of %06.2f (%06.2f) - "
-		+ F2_MESSAGE, 150d, 2d, 5d), f2.toString());
+    public void testToString() {
+	assertEquals(String.format("%06.2f%% of %06.2f (%06.2f) - "//NOPMD
+		+ F1_MESSAGE, 100d, 1d, 1d), fixture1.toString());
+	assertEquals(String.format("%06.2f%% of %06.2f (%06.2f) - "//NOPMD
+		+ F2_MESSAGE, 150d, 2d, 5d), fixture2.toString());
     }
 
 }
