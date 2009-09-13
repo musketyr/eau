@@ -1,11 +1,13 @@
 package eu.ebdit.eau.reports;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 
 import eu.ebdit.eau.Report;
 
-public final class SimpleReport implements Report {
+@SuppressWarnings("serial")
+public final class SimpleReport implements Report, Serializable {
 
     private final double points;
     private final double max;
@@ -88,7 +90,7 @@ public final class SimpleReport implements Report {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final Object obj) { //NOPMD
 	if (this == obj) {
 	    return true;
 	}
@@ -98,7 +100,7 @@ public final class SimpleReport implements Report {
 	if (getClass() != obj.getClass()) {
 	    return false;
 	}
-	SimpleReport other = (SimpleReport) obj;
+	final SimpleReport other = (SimpleReport) obj;
 	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max)) {
 	    return false;
 	}
