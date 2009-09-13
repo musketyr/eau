@@ -53,8 +53,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>${targetJre}</source>
+					<target>${targetJre}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -101,7 +101,7 @@
 					<excludeRoots>
 						<excludeRoot>${project.build.directory}/generated-sources/groovy-stubs</excludeRoot>
 					</excludeRoots>
-					<targetJdk>1.5</targetJdk>
+					<targetJdk>${targetJre}</targetJdk>
 					<rulesets>
 						<!-- Two rule sets that come bundled with PMD -->
 						<ruleset>/rulesets/basic.xml</ruleset>
@@ -167,5 +167,7 @@
 			</plugins>
 		</plugins>
 	</reporting>
-
+	<properties>
+		<targetJre>1.6</targetJre>
+	</properties>
 </project>
