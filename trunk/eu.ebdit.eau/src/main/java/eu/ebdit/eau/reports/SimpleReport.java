@@ -14,8 +14,7 @@ public final class SimpleReport implements Report {
     private final String details;
 
     public SimpleReport(final String message, final double points,
-	    final double max, final double maxWithBonuses, 
-	    final String details) {//NOPMD
+	    final double max, final double maxWithBonuses, final String details) {
 	this.points = points;
 	this.max = max;
 	this.maxWithBonuses = maxWithBonuses;
@@ -24,17 +23,17 @@ public final class SimpleReport implements Report {
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max, final double maxWithBonuses) {//NOPMD
+	    final double max, final double maxWithBonuses) {
 	this(message, points, max, maxWithBonuses, null);
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max, final String details) {//NOPMD
+	    final double max, final String details) {
 	this(message, points, max, max, details);
     }
 
     public SimpleReport(final String message, final double points,
-	    final double max) {//NOPMD
+	    final double max) {
 	this(message, points, max, max, null);
     }
 
@@ -65,7 +64,7 @@ public final class SimpleReport implements Report {
     public double getSuccessPercentage() {
 	double theMax = max;
 	if (theMax == 0) {
-	    theMax = maxWithBonuses;
+	   theMax = maxWithBonuses;
 	}
 	if (theMax == 0) {
 	    return 0;
@@ -75,16 +74,16 @@ public final class SimpleReport implements Report {
 
     @Override
     public int hashCode() {
-	final int prime = 31;//NOPMD
+	final int prime = 31;
 	int result = 1;
 	long temp;
 	temp = Double.doubleToLongBits(max);
-	result = prime * result + (int) (temp ^ (temp >>> 32));//NOPMD
+	result = prime * result + (int) (temp ^ (temp >>> 32));
 	temp = Double.doubleToLongBits(maxWithBonuses);
-	result = prime * result + (int) (temp ^ (temp >>> 32));//NOPMD
+	result = prime * result + (int) (temp ^ (temp >>> 32));
 	result = prime * result + ((message == null) ? 0 : message.hashCode());
 	temp = Double.doubleToLongBits(points);
-	result = prime * result + (int) (temp ^ (temp >>> 32));//NOPMD
+	result = prime * result + (int) (temp ^ (temp >>> 32));
 	return result;
     }
 
@@ -100,8 +99,7 @@ public final class SimpleReport implements Report {
 	    return false;
 	}
 	SimpleReport other = (SimpleReport) obj;
-	if (Double.doubleToLongBits(max) 
-		!= Double.doubleToLongBits(other.max)) {
+	if (Double.doubleToLongBits(max) != Double.doubleToLongBits(other.max)) {
 	    return false;
 	}
 	if (Double.doubleToLongBits(maxWithBonuses) != Double
@@ -115,8 +113,8 @@ public final class SimpleReport implements Report {
 	} else if (!message.equals(other.message)) {
 	    return false;
 	}
-	if (Double.doubleToLongBits(points) 
-		!= Double.doubleToLongBits(other.points)) {
+	if (Double.doubleToLongBits(points) != Double
+		.doubleToLongBits(other.points)) {
 	    return false;
 	}
 	return true;
