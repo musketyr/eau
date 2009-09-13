@@ -1,12 +1,14 @@
 package eu.ebdit.eau.reports;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.Report;
 
-public final class ReportContainer implements Report {
+@SuppressWarnings("serial")
+public final class ReportContainer implements Report, Serializable {
 
     private final ImmutableList<Report> children;
     private final String message;
@@ -70,7 +72,7 @@ public final class ReportContainer implements Report {
     private static final String IDENT_BLOCK = "   ";
 
     private static String ident(final int ident) {
-	StringBuilder ret = new StringBuilder();
+	final StringBuilder ret = new StringBuilder();
 	for (int i = 0; i < ident; i++) {
 	    ret.append(IDENT_BLOCK);
 	}
@@ -78,7 +80,7 @@ public final class ReportContainer implements Report {
     }
 
     private String toString(final int ident) {
-	StringBuilder ret = new StringBuilder();
+	final StringBuilder ret = new StringBuilder();
 	ret.append(ident(ident)).append(
 		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
 			getMessage())).append(" {\n");
@@ -108,7 +110,7 @@ public final class ReportContainer implements Report {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final Object obj) { //NOPMD
 	if (this == obj) {
 	    return true;
 	}
@@ -118,7 +120,7 @@ public final class ReportContainer implements Report {
 	if (getClass() != obj.getClass()) {
 	    return false;
 	}
-	ReportContainer other = (ReportContainer) obj;
+	final ReportContainer other = (ReportContainer) obj;
 	if (children == null) {
 	    if (other.children != null) {
 		return false;
