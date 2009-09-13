@@ -8,7 +8,7 @@ import eu.ebdit.eau.testing.TestResult
  *
  */
 public class TestResultBean implements TestResult{
-    	String classFQName
+    	String className
 	String message
 	Status status
 	String testName	

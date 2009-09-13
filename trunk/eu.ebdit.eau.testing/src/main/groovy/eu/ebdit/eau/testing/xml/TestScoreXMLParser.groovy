@@ -21,7 +21,7 @@ public class TestScoreXMLParser{
 			List<TestResult> ret = []
 			points.'class'.'test'.each{
 				ret << new TestScoreBean(
-						classFQName: it.parent().'@name', 
+						className: it.parent().'@name', 
 						testName: it.'@name', 
 						points: it.'@points'.toDouble(),
 						bonus: it.'@bonus'? true : false, 

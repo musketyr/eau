@@ -26,7 +26,7 @@ public final class TestReporter implements Reporter {
     public Report report() {
 	final List<Report> children = Lists.newArrayList();
 	for (TestResult r : resultList) {
-	    Map<String, TestScore> map = scoreMap.get(r.getClassFQName());
+	    Map<String, TestScore> map = scoreMap.get(r.getClassName());
 	    if (map == null) {
 		map = Maps.newHashMap();
 	    }
@@ -52,10 +52,10 @@ public final class TestReporter implements Reporter {
 	    final Iterable<TestResult> resultList) {
 	final Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
 	for (TestScore s : scoreList) {
-	    Map<String, TestScore> map = newMap.get(s.getClassFQName());
+	    Map<String, TestScore> map = newMap.get(s.getClassName());
 	    if (map == null) {
 		map = Maps.newHashMap();
-		newMap.put(s.getClassFQName(), map);
+		newMap.put(s.getClassName(), map);
 	    }
 	    map.put(s.getTestName(), s);
 	}

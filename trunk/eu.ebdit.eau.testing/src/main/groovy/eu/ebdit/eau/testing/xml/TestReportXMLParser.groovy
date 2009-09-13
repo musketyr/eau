@@ -20,7 +20,7 @@ public class TestReportXMLParser{
 					status = Status.FAILED
 					message = it.failure.text()
 				}
-				ret << new TestResultBean(classFQName: it.'@classname', testName: it.'@name', status: status, message: message)
+				ret << new TestResultBean(className: it.'@classname', testName: it.'@name', status: status, message: message)
 			}
 			return ret
 		}
