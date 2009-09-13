@@ -6,6 +6,6 @@ public interface TestScore extends Score {
 
     String getClassFQName();
 
-    String getMessage();
+    String getTestName();
 
 }

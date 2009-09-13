@@ -2,8 +2,8 @@ package eu.ebdit.eau;
 
 public interface Score {
 
-    String getTestName();
-
+    String getMessage();
+    
     double getPoints();
 
     boolean isBonus();
