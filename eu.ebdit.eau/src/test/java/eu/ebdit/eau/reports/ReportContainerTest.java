@@ -55,8 +55,8 @@ public class ReportContainerTest {
 
     @Test
     public void testChildren() {
-	assertEquals(fixture1Items, fixture1.getChildReports());//NOPMD
-	assertEquals(fixture2Items, fixture2.getChildReports());//NOPMD
+	assertEquals(fixture1Items, fixture1.getReports());//NOPMD
+	assertEquals(fixture2Items, fixture2.getReports());//NOPMD
     }
 
     @Test

@@ -55,8 +55,8 @@ public class SimpleReportTest {
 
     @Test
     public void testChildren(){
-	assertEquals(0, fixture1.getChildReports().size());//NOPMD
-	assertEquals(0, fixture2.getChildReports().size());//NOPMD
+	assertEquals(0, fixture1.getReports().size());//NOPMD
+	assertEquals(0, fixture2.getReports().size());//NOPMD
     }
 
     @Test
