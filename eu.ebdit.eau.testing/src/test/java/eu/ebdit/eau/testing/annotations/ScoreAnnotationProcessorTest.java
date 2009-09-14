@@ -36,28 +36,19 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	final StandardJavaFileManager fileManager = compiler
 		.getStandardFileManager(null, null, null);
 
-	final Iterable<? extends File> cpath = fileManager
-		.getLocation(StandardLocation.CLASS_PATH);
-
-	System.out.println(cpath);
-	System.out.println(new File("/").getAbsolutePath());
-	System.out.println(new File(".").getAbsolutePath());
-	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
-	final File testClassesRoot = new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI());
-	System.out.println(testClassesRoot);
-	
-	final List<File> newCpath = Lists.newArrayList(cpath.iterator());
+	final List<File> newCpath = Lists
+		.newArrayList(((Iterable<? extends File>) fileManager
+			.getLocation(StandardLocation.CLASS_PATH)).iterator());
 	newCpath.add(new File(Joiner.on(File.separator).join(
 		System.getenv("M2_REPO"), "junit", "junit", "4.5",
 		"junit-4.5.jar")));
-	newCpath.add(testClassesRoot);
-	final File classesRoot = new File(testClassesRoot.getParentFile().getAbsolutePath() + File.separator + "classes" + File.separator);
-	System.out.println(classesRoot);
-	newCpath.add(classesRoot);
+	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource(
+		"/").toURI()));
+	newCpath.add(new File(new File(ScoreAnnotationProcessorTest.class
+		.getResource("/").toURI()).getParentFile().getAbsolutePath()
+		+ File.separator + "classes" + File.separator));
 	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
 
-	System.out.println("new class path: " + fileManager.getLocation(StandardLocation.CLASS_PATH));
-	
 	// Get the list of java file objects, in this case we have only
 	// one file, TestClass.java
 	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
