@@ -40,8 +40,8 @@ public class TestReporterTest extends AbstractTestReporterTest {
     public void testSelfCreateTestScore() {
 	final TestScore score = createTestScore(CLASS_FQNAME, METHOD_NAME_1, 0.5,
 		SCORE_1_MESSAGE_OK, false);
-	assertEquals(CLASS_FQNAME, score.getClassName());//NOPMD
-	assertEquals(METHOD_NAME_1, score.getTestName());//NOPMD
+	assertEquals(CLASS_FQNAME, score.getSuiteName());//NOPMD
+	assertEquals(METHOD_NAME_1, score.getCheckName());//NOPMD
 	assertEquals(0.5, score.getPoints(), EPSILON);//NOPMD
 	assertEquals(SCORE_1_MESSAGE_OK, score.getMessage());//NOPMD
 	assertEquals(false, score.isBonus());//NOPMD
@@ -65,8 +65,8 @@ public class TestReporterTest extends AbstractTestReporterTest {
     private TestScore createTestScore(final String className, final String testName,
 	    final double score, final String message, final boolean bonus) {
 	final TestScore testScore = mock(TestScore.class);
-	when(testScore.getClassName()).thenReturn(className);
-	when(testScore.getTestName()).thenReturn(testName);
+	when(testScore.getSuiteName()).thenReturn(className);
+	when(testScore.getCheckName()).thenReturn(testName);
 	when(testScore.getPoints()).thenReturn(score);
 	when(testScore.getMessage()).thenReturn(message);
 	when(testScore.isBonus()).thenReturn(bonus);

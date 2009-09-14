@@ -40,8 +40,8 @@ public class ScoreAnnotationCollector {
 	    details = method.getAnnotation(Details.class).value();
 	}
 	final TestScoreBean bean = new TestScoreBean();
-	bean.setClassName(clazz.getName());
-	bean.setTestName(method.getName());
+	bean.setSuiteName(clazz.getName());
+	bean.setCheckName(method.getName());
 	bean.setPoints(method.getAnnotation(Points.class).value());
 	bean.setMessage(desc);
 	bean.setBonus(method.isAnnotationPresent(Bonus.class));

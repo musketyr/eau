@@ -54,12 +54,12 @@ public final class TestReporter implements Reporter {
 	    final Iterable<TestResult> resultList) {
 	final Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
 	for (TestScore s : scoreList) {
-	    Map<String, TestScore> map = newMap.get(s.getClassName());
+	    Map<String, TestScore> map = newMap.get(s.getSuiteName());
 	    if (map == null) {
 		map = Maps.newHashMap();
-		newMap.put(s.getClassName(), map);
+		newMap.put(s.getSuiteName(), map);
 	    }
-	    map.put(s.getTestName(), s);
+	    map.put(s.getCheckName(), s);
 	}
 	return new TestReporter(newMap, ImmutableList.copyOf(resultList));
     }

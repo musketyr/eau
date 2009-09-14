@@ -44,9 +44,9 @@ public class ScoreAnnotationProcessor extends AbstractProcessor implements
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
 	score.setMessage(desc == null ? "" : desc.value());
-	score.setClassName(getClassName(element));
+	score.setSuiteName(getClassName(element));
 	score.setDetails(details == null ? null : details.value());
-	score.setTestName(element.getSimpleName().toString());
+	score.setCheckName(element.getSimpleName().toString());
 	return score;
     }
 
