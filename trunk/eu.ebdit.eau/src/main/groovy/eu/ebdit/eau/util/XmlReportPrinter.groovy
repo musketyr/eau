@@ -1,4 +1,4 @@
-package eu.ebdit.eau.printers
+package eu.ebdit.eau.util
 
 import eu.ebdit.eau.Report;
 import groovy.xml.MarkupBuilder;
