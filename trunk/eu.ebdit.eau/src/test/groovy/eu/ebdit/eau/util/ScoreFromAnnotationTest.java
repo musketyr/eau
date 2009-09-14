@@ -1,4 +1,4 @@
-package eu.ebdit.eau.annotations;
+package eu.ebdit.eau.util;
 
 import java.util.List;
 
