@@ -1,7 +1,6 @@
 package eu.ebdit.eau.reports;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import com.google.common.collect.ImmutableList;
 
@@ -10,12 +9,12 @@ import eu.ebdit.eau.Report;
 public final class ReportContainer implements Report, Serializable {//NOPMD
 
     private static final long serialVersionUID = 324202196457789090L;
-    private final ImmutableList<Report> children;
+    private final ImmutableList<Report> reports;
     private final String message;
 
     private ReportContainer(final Iterable<Report> theChildren,
 	    final String theMessage) {
-	this.children = ImmutableList.copyOf(theChildren);
+	this.reports = ImmutableList.copyOf(theChildren);
 	this.message = theMessage;
     }
 
@@ -24,13 +23,13 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return new ReportContainer(theChildren, message);
     }
 
-    public Collection<Report> getReports() {
-	return children;
+    public ImmutableList<Report> getReports() {
+	return reports;
     }
 
     public double getMaxPoints() {
 	double ret = 0;
-	for (Report er : children) {
+	for (Report er : reports) {
 	    ret += er.getMaxPoints();
 	}
 	return ret;
@@ -38,7 +37,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 
     public double getMaxPointsWithBonus() {
 	double ret = 0;
-	for (Report er : children) {
+	for (Report er : reports) {
 	    ret += er.getMaxPointsWithBonus();
 	}
 	return ret;
@@ -54,7 +53,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 
     public double getPoints() {
 	double ret = 0;
-	for (Report er : children) {
+	for (Report er : reports) {
 	    ret += er.getPoints();
 	}
 	return ret;
@@ -84,7 +83,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	ret.append(ident(ident)).append(
 		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
 			getMessage())).append(" {\n");
-	for (Report er : children) {
+	for (Report er : reports) {
 	    if (er == null) {
 		continue;
 	    }
@@ -104,7 +103,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	final int prime = 31;
 	int result = 1;
 	result = prime * result
-		+ ((children == null) ? 0 : children.hashCode());
+		+ ((reports == null) ? 0 : reports.hashCode());
 	result = prime * result + ((message == null) ? 0 : message.hashCode());
 	return result;
     }
@@ -121,11 +120,11 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	    return false;
 	}
 	final ReportContainer other = (ReportContainer) obj;
-	if (children == null) {
-	    if (other.children != null) {
+	if (reports == null) {
+	    if (other.reports != null) {
 		return false;
 	    }
-	} else if (!children.equals(other.children)) {
+	} else if (!reports.equals(other.reports)) {
 	    return false;
 	}
 	if (message == null) {
