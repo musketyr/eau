@@ -1,5 +1,5 @@
 
-package eu.ebdit.eau.printers;
+package eu.ebdit.eau.util;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.*;
@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.After;
 
 import eu.ebdit.eau.Report;
+import eu.ebdit.eau.util.XmlReportPrinter;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
