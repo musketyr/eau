@@ -43,13 +43,17 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	System.out.println(new File("/").getAbsolutePath());
 	System.out.println(new File(".").getAbsolutePath());
 	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
-	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
+	final File testClassesRoot = new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI());
+	System.out.println(testClassesRoot);
 	
 	final List<File> newCpath = Lists.newArrayList(cpath.iterator());
 	newCpath.add(new File(Joiner.on(File.separator).join(
 		System.getenv("M2_REPO"), "junit", "junit", "4.5",
 		"junit-4.5.jar")));
-	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
+	newCpath.add(testClassesRoot);
+	final File classesRoot = new File(testClassesRoot.getParentFile().getAbsolutePath() + File.separator + "classes" + File.separator);
+	System.out.println(classesRoot);
+	newCpath.add(classesRoot);
 	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
 
 	System.out.println("new class path: " + fileManager.getLocation(StandardLocation.CLASS_PATH));
