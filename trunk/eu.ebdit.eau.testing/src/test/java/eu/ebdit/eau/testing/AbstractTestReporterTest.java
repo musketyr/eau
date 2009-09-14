@@ -27,7 +27,7 @@ public abstract class AbstractTestReporterTest {
         assertEquals(1.25, report.getMaxPoints(), EPSILON);//NOPMD
         assertEquals(2.25, report.getMaxPointsWithBonus(), EPSILON);//NOPMD
         assertEquals(0.4, report.getSuccessPercentage(), EPSILON);//NOPMD
-        assertEquals(3, report.getChildReports().size());//NOPMD
+        assertEquals(3, report.getReports().size());//NOPMD
     }
 
     protected abstract Reporter getReporter() throws Exception;//NOPMD

@@ -17,6 +17,14 @@
     <artifactId>eau</artifactId>
     <name>Eau - Evaluation Automation Utility</name>
     <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+    	<dependency>
+    		<groupId>xmlunit</groupId>
+    		<artifactId>xmlunit</artifactId>
+    		<version>1.2</version>
+    		<scope>test</scope>
+    	</dependency>
+    </dependencies>
 
 
 

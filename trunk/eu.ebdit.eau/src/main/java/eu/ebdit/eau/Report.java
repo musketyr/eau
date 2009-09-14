@@ -16,6 +16,6 @@ public interface Report {
 
     String getDetails();
 
-    Collection<Report> getChildReports();
+    Collection<Report> getReports();
 
 }

@@ -39,7 +39,7 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
 	this(message, points, max, max, null);
     }
 
-    public Collection<Report> getChildReports() {
+    public Collection<Report> getReports() {
 	return Collections.emptyList();
     }
 

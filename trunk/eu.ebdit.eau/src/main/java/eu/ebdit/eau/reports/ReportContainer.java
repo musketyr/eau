@@ -24,7 +24,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return new ReportContainer(theChildren, message);
     }
 
-    public Collection<Report> getChildReports() {
+    public Collection<Report> getReports() {
 	return children;
     }
 
