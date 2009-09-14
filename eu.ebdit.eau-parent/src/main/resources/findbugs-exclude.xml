@@ -7,7 +7,7 @@
        		<Class name="~.*JUnitTextUI.*" />
        		<Class name="~.*TestReportXMLParser.*" />
        		<Class name="~.*TestScoreXMLParser.*" />
-       		<Class name="~.*XMLReportPrinter.*" />
+       		<Class name="~.*XmlReportPrinter.*" />
        		<Class name="~.*XmlReportPrinterTest.*" />
      	</Or>
      </Match>
