@@ -13,7 +13,6 @@ import java.util.List;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.reports.TestReporterTest;
 import eu.ebdit.eau.testing.xml.TestReportXMLParser;
 
 /**
