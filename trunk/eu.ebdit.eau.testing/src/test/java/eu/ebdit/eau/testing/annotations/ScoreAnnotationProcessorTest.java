@@ -39,6 +39,12 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	final Iterable<? extends File> cpath = fileManager
 		.getLocation(StandardLocation.CLASS_PATH);
 
+	System.out.println(cpath);
+	System.out.println(new File("/").getAbsolutePath());
+	System.out.println(new File(".").getAbsolutePath());
+	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
+	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
+	
 	final File junitPath = new File(Joiner.on(File.separator).join(
 		System.getenv("M2_REPO"), "junit", "junit", "4.5",
 		"junit-4.5.jar"));
