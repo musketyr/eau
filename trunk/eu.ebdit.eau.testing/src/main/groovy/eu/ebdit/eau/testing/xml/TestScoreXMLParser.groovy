@@ -3,9 +3,9 @@
  */
 package eu.ebdit.eau.testing.xml
 
-import eu.ebdit.eau.testing.TestScore
-import eu.ebdit.eau.testing.TestResult
-import eu.ebdit.eau.testing.beans.TestScoreBean
+import eu.ebdit.eau.Score
+import eu.ebdit.eau.Result
+import eu.ebdit.eau.testing.beans.ScoreBean
 
 
 
@@ -13,18 +13,18 @@ import eu.ebdit.eau.testing.beans.TestScoreBean
  * @author Vladimir Orany
  *
  */
-public class TestScoreXMLParser{
+public class ScoreXMLParser{
 	
-	List<TestScore> parse(toBeParsed){
+	List<Score> parse(toBeParsed){
 		def points = new XmlParser().parse(toBeParsed);
 
 		if (points.name() != 'score') {
 		    throw new IllegalArgumentException("Cannot parse $toBeParsed");
 		}
 		
-		List<TestResult> ret = []
+		List<Score> ret = []
 		points.'suite'.'check'.each{
-			ret << new TestScoreBean(
+			ret << new ScoreBean(
 			suiteName: it.parent().'@name', 
 			checkName: it.'@name', 
 			points: it.'@points'.toDouble(),

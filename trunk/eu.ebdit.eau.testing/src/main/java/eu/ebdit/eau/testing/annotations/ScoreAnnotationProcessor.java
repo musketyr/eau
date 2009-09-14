@@ -14,16 +14,16 @@ import javax.lang.model.element.TypeElement;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.TestScore;
-import eu.ebdit.eau.testing.TestScoreCollector;
-import eu.ebdit.eau.testing.beans.TestScoreBean;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.testing.ScoreCollector;
+import eu.ebdit.eau.testing.beans.ScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")
 public class ScoreAnnotationProcessor extends AbstractProcessor implements
-	TestScoreCollector {
+	ScoreCollector {
 
-    private transient final List<TestScore> scores = Lists.newArrayList();
+    private transient final List<Score> scores = Lists.newArrayList();
 
     @Override
     public final boolean process(final Set<? extends TypeElement> annotations,
@@ -34,13 +34,13 @@ public class ScoreAnnotationProcessor extends AbstractProcessor implements
 	return true;
     }
 
-    private TestScoreBean getScoreFromElement(final Element element) {
+    private ScoreBean getScoreFromElement(final Element element) {
 	final Points points = element.getAnnotation(Points.class);
 	final Details details = element.getAnnotation(Details.class);
 	final Bonus bonus = element.getAnnotation(Bonus.class);
 	final Description desc = element.getAnnotation(Description.class);
 
-	final TestScoreBean score = new TestScoreBean();
+	final ScoreBean score = new ScoreBean();
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
 	score.setMessage(desc == null ? "" : desc.value());
@@ -54,7 +54,7 @@ public class ScoreAnnotationProcessor extends AbstractProcessor implements
 	return element.getEnclosingElement().toString();
     }
 
-    public final Iterable<TestScore> getScores() {
+    public final Iterable<Score> getScores() {
 	return ImmutableList.copyOf(scores);
     }
 

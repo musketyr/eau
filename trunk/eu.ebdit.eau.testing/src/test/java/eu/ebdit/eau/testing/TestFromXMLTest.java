@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import eu.ebdit.eau.Result;
 import eu.ebdit.eau.testing.xml.TestReportXMLParser;
 
 /**
@@ -22,7 +23,7 @@ public class TestFromXMLTest extends TestReporterTest {
 
     private static final String CANNOT_PARSE = "Cannot parse ";
 
-    protected List<TestResult> getResultList() throws URISyntaxException {
+    protected List<Result> getResultList() throws URISyntaxException {
 	return new TestReportXMLParser().parse(new File(TestFromXMLTest.class
 		.getResource("/TestClass.xml").toURI()));
     }

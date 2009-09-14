@@ -19,13 +19,13 @@ import javax.tools.JavaCompiler.CompilationTask;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
+import eu.ebdit.eau.Score;
 import eu.ebdit.eau.testing.TestReporterTest;
-import eu.ebdit.eau.testing.TestScore;
 
 public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 
     @Override
-    protected Iterable<TestScore> getScoreList() throws URISyntaxException,
+    protected Iterable<Score> getScoreList() throws URISyntaxException,
 	    IOException {// NOPMD
 	final ScoreAnnotationProcessor processor = new ScoreAnnotationProcessor();
 

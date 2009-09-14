@@ -1,13 +1,13 @@
 
 package eu.ebdit.eau.testing.beans
 
-import eu.ebdit.eau.testing.TestScore
+import eu.ebdit.eau.Score
 
 /**
  * @author Vladimir Orany
  *
  */
-public class TestScoreBean implements TestScore{
+public class ScoreBean implements Score{
 
 	boolean bonus
 	double points

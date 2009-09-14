@@ -6,30 +6,30 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.TestScore;
-import eu.ebdit.eau.testing.beans.TestScoreBean;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.testing.beans.ScoreBean;
 
 public class ScoreAnnotationCollector {
 
-    public final List<TestScore> check(final Class<?>... classes) {
-	final List<TestScore> ret = Lists.newArrayList();
+    public final List<Score> check(final Class<?>... classes) {
+	final List<Score> ret = Lists.newArrayList();
 	for (Class<?> cl : classes) {
 	    ret.addAll(checkClass(cl));
 	}
 	return ImmutableList.copyOf(ret);
     }
 
-    private List<TestScore> checkClass(final Class<?> clazz) {
-	final List<TestScore> scores = Lists.newArrayList();
+    private List<Score> checkClass(final Class<?> clazz) {
+	final List<Score> scores = Lists.newArrayList();
 	for (Method m : clazz.getMethods()) {
 	    if (m.isAnnotationPresent(Points.class)) {
-		scores.add(createTestScore(clazz, m));
+		scores.add(createScore(clazz, m));
 	    }
 	}
 	return scores;
     }
 
-    private TestScoreBean createTestScore(final Class<?> clazz,
+    private ScoreBean createScore(final Class<?> clazz,
 	    final Method method) {
 	String desc = null;
 	if (method.isAnnotationPresent(Description.class)) {
@@ -39,7 +39,7 @@ public class ScoreAnnotationCollector {
 	if (method.isAnnotationPresent(Details.class)) {
 	    details = method.getAnnotation(Details.class).value();
 	}
-	final TestScoreBean bean = new TestScoreBean();
+	final ScoreBean bean = new ScoreBean();
 	bean.setSuiteName(clazz.getName());
 	bean.setCheckName(method.getName());
 	bean.setPoints(method.getAnnotation(Points.class).value());

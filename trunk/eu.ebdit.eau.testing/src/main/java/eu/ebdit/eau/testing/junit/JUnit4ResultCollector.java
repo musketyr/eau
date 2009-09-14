@@ -9,36 +9,36 @@ import org.junit.runner.notification.RunListener;
 
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.TestResult;
-import eu.ebdit.eau.testing.TestResultCollector;
-import eu.ebdit.eau.testing.TestScore;
-import eu.ebdit.eau.testing.beans.TestResultBean;
+import eu.ebdit.eau.Result;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.testing.ResultCollector;
+import eu.ebdit.eau.testing.beans.ResultBean;
 
-final class JUnit4TestResultCollector extends RunListener implements
-	TestResultCollector {
+final class JUnit4ResultCollector extends RunListener implements
+	ResultCollector {
 
-    private JUnit4TestResultCollector() {
+    private JUnit4ResultCollector() {
 	// prevents instance creation and subtyping
     }
 
-    public static TestResultCollector collectResults(final Class<?>... classes) {
-	final JUnit4TestResultCollector erl = new JUnit4TestResultCollector();
+    public static ResultCollector collectResults(final Class<?>... classes) {
+	final JUnit4ResultCollector erl = new JUnit4ResultCollector();
 	final JUnitCore core = new JUnitCore();
 	core.addListener(erl);
 	core.run(classes);
 	return erl;
     }
 
-    private transient TestResultBean lastResult;
-    private final transient List<TestResult> results = Lists.newArrayList();
-    private final transient List<TestScore> scores = Lists.newArrayList();
+    private transient ResultBean lastResult;
+    private final transient List<Result> results = Lists.newArrayList();
+    private final transient List<Score> scores = Lists.newArrayList();
 
     /*
      * (non-Javadoc)
      * 
      * @see eu.ebdit.eau.testing.junit.TestCollector#getResults()
      */
-    public Iterable<TestResult> getResults() {
+    public Iterable<Result> getResults() {
 	return results;
     }
 
@@ -47,7 +47,7 @@ final class JUnit4TestResultCollector extends RunListener implements
      * 
      * @see eu.ebdit.eau.testing.junit.TestCollector#getScores()
      */
-    public Iterable<TestScore> getScores() {
+    public Iterable<Score> getScores() {
 	return scores;
     }
 
