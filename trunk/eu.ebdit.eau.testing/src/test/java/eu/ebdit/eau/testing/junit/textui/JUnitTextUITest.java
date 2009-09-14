@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class JUnitTextUITest {
 
-    @Test public void testRunMain(){
+    @Test public void testRunMain(){//NOPMD
 	JUnitTextUI.main("org.example.TestClass", "no.such.Class");
     }
     

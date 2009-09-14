@@ -28,13 +28,13 @@ public class TestFromXMLTest extends TestReporterTest {
     }
 
     @Test
-    public void testCannotParse() throws Exception {
+    public void testCannotParse() throws URISyntaxException {
 	try {
 	    new TestReportXMLParser().parse(new File(TestFromXMLTest.class
 		    .getResource("/TestClass.points.eau.xml").toURI()));
 	    fail("Should throw exception");
 	} catch (IllegalArgumentException exception) {
-	    assertTrue(exception.getMessage().startsWith(CANNOT_PARSE));
+	    assertTrue(exception.getMessage().startsWith(CANNOT_PARSE));//NOPMD
 	}
 
     }

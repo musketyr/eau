@@ -22,40 +22,40 @@ public final class JUnit3TestResultCollector extends BaseTestRunner implements
     public static TestResultCollector collectResults(final Class<?>... classes) {
 	final JUnit3TestResultCollector erl = new JUnit3TestResultCollector();
 	for (Class<?> clazz : classes) {
-	    Test test = erl.getTest(clazz.getName());
+	    final Test test = erl.getTest(clazz.getName());
 	    erl.doRun(test);
 	}
 	return erl;
     }
 
-    private TestResultBean lastResult;
-    private Collection<TestResult> results = Lists.newArrayList();
+    private transient TestResultBean lastResult;
+    final transient private Collection<TestResult> results = Lists.newArrayList();
 
-    public junit.framework.TestResult doRun(Test suite) {
+    public junit.framework.TestResult doRun(final Test suite) {
 	final junit.framework.TestResult result = createResult();
 	suite.run(result);
 	return result;
     }
 
-    @Override
-    public void testEnded(String testName) {
+    @Override //NOPMD
+    public void testEnded(final String testName) {
 	handleTestFinished();
     }
 
-    @Override
-    public void testStarted(String testName) {
+    @Override //NOPMD
+    public void testStarted(final String testName) {
 	lastResult = JUnitTestHelper.initResult();
 	JUnitTestHelper.initNames(lastResult, testName);
     }
 
-    @Override
-    public void testFailed(int status, Test test, Throwable t) {
-	JUnitTestHelper.handleStatus(lastResult, t);
-	lastResult.setMessage(getFilteredTrace(t));
+    @Override //NOPMD
+    public void testFailed(final int status, final Test test, final Throwable trowable) {
+	JUnitTestHelper.handleStatus(lastResult, trowable);
+	lastResult.setMessage(getFilteredTrace(trowable));
     }
 
     @Override
-    protected void runFailed(String message) { /* not needed */}
+    protected void runFailed(final String message) { /* not needed */}
 
     @Override
     public Iterable<TestResult> getResults() {

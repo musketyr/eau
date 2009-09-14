@@ -1,6 +1,6 @@
 package eu.ebdit.eau.testing.junit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 import java.util.Arrays;
 
@@ -18,9 +18,9 @@ public class JUnitTestReporterTest extends AbstractTestReporterTest{
     }
     @Test
     public void testClasses() throws ClassNotFoundException {
-	Class<?>[] classes = new Class<?>[]{Class.forName("org.example.TestClass")};
-	Class<?>[] original = Arrays.copyOf(classes, classes.length);
-	JUnitTestReporter reporter = (JUnitTestReporter) JUnitTestReporter.of(classes);
+	final Class<?>[] classes = new Class<?>[]{Class.forName("org.example.TestClass")};
+	final Class<?>[] original = Arrays.copyOf(classes, classes.length);
+	final JUnitTestReporter reporter = (JUnitTestReporter) JUnitTestReporter.of(classes);
 	assertArrayEquals(original, reporter.getClasses());//NOPMD
 	classes[0] = getClass();
 	assertArrayEquals(original, reporter.getClasses());//NOPMD
