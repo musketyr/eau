@@ -29,8 +29,8 @@ public class JUnit4TestScoreCollector extends RunListener implements
     private void addScoreIfNeeded(final Description description) {
 	final TestResultBean helper = JUnitTestHelper.initNames(new TestResultBean(), description.getDisplayName());
 	final TestScoreBean score = new TestScoreBean();
-	score.setClassName(helper.getClassName());
-	score.setTestName(helper.getTestName());
+	score.setSuiteName(helper.getClassName());
+	score.setCheckName(helper.getTestName());
 	final Points points = description.getAnnotation(Points.class);
 	if (points != null) {
 	    score.setPoints(points.value());
