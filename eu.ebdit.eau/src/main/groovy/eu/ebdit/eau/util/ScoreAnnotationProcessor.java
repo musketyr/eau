@@ -23,7 +23,7 @@ import eu.ebdit.eau.annotations.Points;
 import eu.ebdit.eau.beans.ScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
-@SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")
+@SupportedAnnotationTypes("eu.ebdit.eau.annotations.*")
 public class ScoreAnnotationProcessor extends AbstractProcessor implements
 	ScoreCollector {
 
