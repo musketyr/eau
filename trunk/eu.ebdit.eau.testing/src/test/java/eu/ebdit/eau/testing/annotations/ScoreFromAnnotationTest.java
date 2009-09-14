@@ -11,7 +11,7 @@ public class ScoreFromAnnotationTest extends TestReporterTest {
 
     @Override
     protected List<TestScore> getScoreList() throws ClassNotFoundException {
-	return new ScoreAnnotationFinder().check(Class.forName("org.example.TestClass"));
+	return new ScoreAnnotationCollector().check(Class.forName("org.example.TestClass"));
     }
 
     @Override @Test

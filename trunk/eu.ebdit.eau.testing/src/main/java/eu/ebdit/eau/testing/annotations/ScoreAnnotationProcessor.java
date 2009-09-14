@@ -15,11 +15,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.testing.TestScore;
+import eu.ebdit.eau.testing.TestScoreCollector;
 import eu.ebdit.eau.testing.beans.TestScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")
-public class ScoreAnnotationProcessor extends AbstractProcessor {
+public class ScoreAnnotationProcessor extends AbstractProcessor implements TestScoreCollector{
 
     private transient final List<TestScore> scores = Lists.newArrayList();
     
