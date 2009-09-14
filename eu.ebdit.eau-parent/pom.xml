@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.5</version>
+			<version>${junitVersion}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -169,5 +169,6 @@
 	</reporting>
 	<properties>
 		<targetJre>1.6</targetJre>
+		<junitVersion>4.5</junitVersion>
 	</properties>
 </project>

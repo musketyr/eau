@@ -21,8 +21,17 @@ public final class JUnitTestReporter implements Reporter {
     }
 
     public Report report() {
-	final TestResultCollector col = JUnit4TestResultCollector.collectResults(classes);
+	final TestResultCollector col = getCollector();
 	return TestReporter.of(new ScoreAnnotationCollector().check(classes), col.getResults()).report();
+    }
+
+    private TestResultCollector getCollector() {
+	try {
+	    Class.forName("org.junit.JUnitCore");
+	    return JUnit4TestResultCollector.collectResults(classes);
+	} catch (ClassNotFoundException e) {
+	    return JUnit3TestResultCollector.collectResults(classes);
+	}
     }
 
     public Class<?>[] getClasses() {
