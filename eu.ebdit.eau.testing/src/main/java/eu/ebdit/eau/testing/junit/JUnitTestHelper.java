@@ -23,8 +23,8 @@ final class JUnitTestHelper {
 	return result;
     }
 
-    static TestResultBean initNames(final TestResultBean result, final String testNameWithClassName) throws AssertionError {
-	final Matcher matcher = PATTERN.matcher(testNameWithClassName);
+    static TestResultBean initNames(final TestResultBean result, final String withClassName) throws AssertionError {
+	final Matcher matcher = PATTERN.matcher(withClassName);
 	if (matcher.matches()) {
 	    result.setClassName(matcher.group(2));
 	    result.setTestName(matcher.group(1));
@@ -35,7 +35,7 @@ final class JUnitTestHelper {
     }
 
     static TestResultBean initResult() {
-	TestResultBean result = new TestResultBean();
+	final TestResultBean result = new TestResultBean();
 	result.setStatus(Status.OK);
 	result.setMessage("");
 	return result;

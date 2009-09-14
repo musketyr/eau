@@ -17,7 +17,7 @@ import javax.tools.JavaCompiler.CompilationTask;
 import eu.ebdit.eau.testing.TestReporterTest;
 import eu.ebdit.eau.testing.TestScore;
 
-public class ScoreAnnotationProcessorTest extends TestReporterTest {
+public class ScoreAnnotationProcessorTest extends TestReporterTest {//NOPMD
 
     @Override
     protected Iterable<TestScore> getScoreList() throws URISyntaxException  {//NOPMD

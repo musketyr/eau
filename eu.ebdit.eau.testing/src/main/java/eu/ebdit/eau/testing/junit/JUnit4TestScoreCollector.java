@@ -19,10 +19,10 @@ import eu.ebdit.eau.testing.beans.TestScoreBean;
 public class JUnit4TestScoreCollector extends RunListener implements
 	TestScoreCollector {
 
-    private final Collection<TestScore> scores = Lists.newArrayList();
+    private final Collection<TestScore> scores = Lists.newArrayList();//NOPMD
     
-    @Override
-    public void testStarted(Description description) throws Exception {
+    @Override //NOPMD
+    public void testStarted(final Description description) {
         addScoreIfNeeded(description);
     }
     
