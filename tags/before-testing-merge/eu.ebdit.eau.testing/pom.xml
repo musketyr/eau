@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Generated from archetype; please customize.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<artifactId>eau-parent</artifactId>
+		<groupId>eu.ebdit</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../eu.ebdit.eau-parent/pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+    <groupId>eu.ebdit</groupId>
+    <artifactId>eau.testing</artifactId>
+    <name>Eau Testing Subproject</name>
+    <version>0.0.1-SNAPSHOT</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4.3</version>
+        <configuration>
+          <excludes>
+            <exclude>**/TestClass.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+    <dependencies>
+        <dependency>
+        	<groupId>eu.ebdit</groupId>
+        	<artifactId>eau</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+        	<groupId>junit</groupId>
+        	<artifactId>junit</artifactId>
+        	<version>${junitVersion}</version>
+        	<optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>

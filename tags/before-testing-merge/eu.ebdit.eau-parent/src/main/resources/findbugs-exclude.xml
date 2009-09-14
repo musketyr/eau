@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+     <Match>
+     	<Or>
+       		<Class name="~.*ResultBean.*" />
+       		<Class name="~.*ScoreBean.*" />
+       		<Class name="~.*JUnitTextUI.*" />
+       		<Class name="~.*ReportXMLParser.*" />
+       		<Class name="~.*ScoreXMLParser.*" />
+       		<Class name="~.*ReportPrinter.*" />
+       		<Class name="~.*ReportPrinterTest.*" />
+     	</Or>
+     </Match>
+</FindBugsFilter>
