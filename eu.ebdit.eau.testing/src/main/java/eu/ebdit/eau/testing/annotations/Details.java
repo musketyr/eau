@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 /**
  * Detailed description of given test.
- * 
  * @author Vladimir Orany
  */
 @Target(ElementType.METHOD)

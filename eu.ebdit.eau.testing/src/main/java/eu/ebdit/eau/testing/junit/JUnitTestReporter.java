@@ -10,19 +10,20 @@ import eu.ebdit.eau.testing.annotations.ScoreAnnotationCollector;
 
 public final class JUnitTestReporter implements Reporter {
 
-    private final Class<?>[] classes;//NOPMD
+    private final Class<?>[] classes; // NOPMD
 
     private JUnitTestReporter(final Class<?>[] classes) {
 	this.classes = Arrays.copyOf(classes, classes.length);
     }
 
-    public static Reporter of(final Class<?>... classes) {//NOPMD
+    public static Reporter of(final Class<?>... classes) {// NOPMD
 	return new JUnitTestReporter(classes);
     }
 
     public Report report() {
 	final TestResultCollector col = getCollector();
-	return TestReporter.of(new ScoreAnnotationCollector().check(classes), col.getResults()).report();
+	return TestReporter.of(new ScoreAnnotationCollector().check(classes),
+		col.getResults()).report();
     }
 
     private TestResultCollector getCollector() {
@@ -37,5 +38,5 @@ public final class JUnitTestReporter implements Reporter {
     public Class<?>[] getClasses() {
 	return Arrays.copyOf(classes, classes.length);
     }
-    
+
 }

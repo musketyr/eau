@@ -7,14 +7,15 @@ import eu.ebdit.eau.Status;
 import eu.ebdit.eau.testing.beans.TestResultBean;
 
 final class JUnitTestHelper {
-    
+
     private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
-    
+
     private JUnitTestHelper() {
 	// prevents instance creation and subtyping
     }
-    
-    static TestResultBean handleStatus(final TestResultBean result, final Throwable exception) {
+
+    static TestResultBean handleStatus(final TestResultBean result,
+	    final Throwable exception) {
 	if (exception instanceof AssertionError) {
 	    result.setStatus(Status.FAILED);
 	} else {
@@ -23,7 +24,8 @@ final class JUnitTestHelper {
 	return result;
     }
 
-    static TestResultBean initNames(final TestResultBean result, final String withClassName) throws AssertionError {
+    static TestResultBean initNames(final TestResultBean result,
+	    final String withClassName) {
 	final Matcher matcher = PATTERN.matcher(withClassName);
 	if (matcher.matches()) {
 	    result.setClassName(matcher.group(2));

@@ -20,13 +20,13 @@ import eu.ebdit.eau.testing.beans.TestScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")
-public class ScoreAnnotationProcessor extends AbstractProcessor implements TestScoreCollector{
+public class ScoreAnnotationProcessor extends AbstractProcessor implements
+	TestScoreCollector {
 
     private transient final List<TestScore> scores = Lists.newArrayList();
-    
-    
+
     @Override
-    public boolean process(final Set<? extends TypeElement> annotations,
+    public final boolean process(final Set<? extends TypeElement> annotations,
 	    final RoundEnvironment roundEnv) {
 	for (Element e : roundEnv.getElementsAnnotatedWith(Points.class)) {
 	    scores.add(getScoreFromElement(e));
@@ -39,7 +39,7 @@ public class ScoreAnnotationProcessor extends AbstractProcessor implements TestS
 	final Details details = element.getAnnotation(Details.class);
 	final Bonus bonus = element.getAnnotation(Bonus.class);
 	final Description desc = element.getAnnotation(Description.class);
-	
+
 	final TestScoreBean score = new TestScoreBean();
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
@@ -54,7 +54,7 @@ public class ScoreAnnotationProcessor extends AbstractProcessor implements TestS
 	return element.getEnclosingElement().toString();
     }
 
-    public Iterable<TestScore> getScores() {
+    public final Iterable<TestScore> getScores() {
 	return ImmutableList.copyOf(scores);
     }
 

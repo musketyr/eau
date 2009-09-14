@@ -14,8 +14,8 @@ import eu.ebdit.eau.reports.SimpleReport;
 
 public final class TestReporter implements Reporter {
 
-    private transient final Map<String, Map<String, TestScore>> scoreMap;
-    private transient final ImmutableList<TestResult> resultList;
+    private final transient Map<String, Map<String, TestScore>> scoreMap;
+    private final transient ImmutableList<TestResult> resultList;
 
     private TestReporter(final Map<String, Map<String, TestScore>> scoreMap,
 	    final ImmutableList<TestResult> resultList) {
@@ -39,16 +39,18 @@ public final class TestReporter implements Reporter {
 	return ReportContainer.of("Test Reporter", children);
     }
 
-    private Report getEvaReport(final TestScore testScore, final TestResult result) {
-	final String message = testScore.getMessage() == null ? result.getMessage() : testScore
-		.getMessage();
-	final double points = result.getStatus().isOK() ? testScore.getPoints() : 0;
+    private Report getEvaReport(final TestScore testScore,
+	    final TestResult result) {
+	final String message = testScore.getMessage() == null ? result
+		.getMessage() : testScore.getMessage();
+	final double points = result.getStatus().isOK() ? testScore.getPoints()
+		: 0;
 	final double max = testScore.isBonus() ? 0 : testScore.getPoints();
 	final double maxWB = testScore.getPoints();
 	return new SimpleReport(message, points, max, maxWB);
     }
 
-    public static Reporter of(final Iterable<TestScore> scoreList, //NOPMD
+    public static Reporter of(final Iterable<TestScore> scoreList, // NOPMD
 	    final Iterable<TestResult> resultList) {
 	final Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
 	for (TestScore s : scoreList) {
