@@ -52,6 +52,8 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
 	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
 
+	System.out.println("new class path: " + fileManager.getLocation(StandardLocation.CLASS_PATH));
+	
 	// Get the list of java file objects, in this case we have only
 	// one file, TestClass.java
 	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
