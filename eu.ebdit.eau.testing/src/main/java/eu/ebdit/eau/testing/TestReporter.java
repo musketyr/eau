@@ -36,7 +36,7 @@ public final class TestReporter implements Reporter {
 	    }
 
 	}
-	return ReportContainer.of("TestingEva Report", children);
+	return ReportContainer.of("Test Reporter", children);
     }
 
     private Report getEvaReport(final TestScore testScore, final TestResult result) {

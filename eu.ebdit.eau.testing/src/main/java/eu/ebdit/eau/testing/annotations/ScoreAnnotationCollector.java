@@ -9,7 +9,7 @@ import com.google.common.collect.Lists;
 import eu.ebdit.eau.testing.TestScore;
 import eu.ebdit.eau.testing.beans.TestScoreBean;
 
-public class ScoreAnnotationFinder {
+public class ScoreAnnotationCollector {
 
     public List<TestScore> check(final Class<?>... classes){
 	final List<TestScore> ret = Lists.newArrayList();

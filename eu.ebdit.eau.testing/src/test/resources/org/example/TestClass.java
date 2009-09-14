@@ -1,7 +1,7 @@
 package org.example;
 
 
-import static org.junit.Assert.*;//NOPMD
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import eu.ebdit.eau.testing.annotations.Points;
 // IT IS NOT COMPILED AUTOMATICALLY
 // RESULTING CLASS FILE MUST BE COPIED IT SRC/TEST/RESOURCES/ORG/EXAMPLE DIRECTORY
 // MANUALLY
-public class TestClass {
+public class TestClass extends TestCase {
 
 	
 	@Points(0.5) @Description("Test one is for 0.5 points")

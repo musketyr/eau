@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import eu.ebdit.eau.Report;
 import eu.ebdit.eau.Reporter;
+import eu.ebdit.eau.testing.TestResultCollector;
 import eu.ebdit.eau.testing.TestReporter;
+import eu.ebdit.eau.testing.annotations.ScoreAnnotationCollector;
 
 public final class JUnitTestReporter implements Reporter {
 
@@ -19,8 +21,8 @@ public final class JUnitTestReporter implements Reporter {
     }
 
     public Report report() {
-	final TestCollector col = JUnitTestCollector.collectResults(classes);
-	return TestReporter.of(col.getScores(), col.getResults()).report();
+	final TestResultCollector col = JUnit4TestResultCollector.collectResults(classes);
+	return TestReporter.of(new ScoreAnnotationCollector().check(classes), col.getResults()).report();
     }
 
     public Class<?>[] getClasses() {
