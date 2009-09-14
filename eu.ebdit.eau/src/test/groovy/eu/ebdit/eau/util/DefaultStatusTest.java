@@ -1,4 +1,4 @@
-package eu.ebdit.eau;
+package eu.ebdit.eau.util;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import eu.ebdit.eau.util.DefaultStatus;
 
-public class StatusTest {
+public class DefaultStatusTest {
 
     @Test
     public void testIsOK() {
