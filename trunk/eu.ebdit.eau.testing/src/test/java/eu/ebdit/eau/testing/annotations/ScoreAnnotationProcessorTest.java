@@ -49,7 +49,7 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	newCpath.add(new File(Joiner.on(File.separator).join(
 		System.getenv("M2_REPO"), "junit", "junit", "4.5",
 		"junit-4.5.jar")));
-	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
+	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
 	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
 
 	// Get the list of java file objects, in this case we have only
