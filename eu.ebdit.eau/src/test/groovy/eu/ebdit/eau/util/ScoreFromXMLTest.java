@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.reports.TestReporterTest;
-import eu.ebdit.eau.util.ScoreXMLParser;
+import eu.ebdit.eau.util.XmlScoreParser;
 
 /**
  * @author Vladimir Orany
@@ -22,14 +22,14 @@ public class ScoreFromXMLTest extends TestReporterTest {
     private static final String CANNOT_PARSE = "Cannot parse ";
 
     protected List<Score> getScoreList() throws URISyntaxException {
-	return new ScoreXMLParser().parse(new File(ScoreFromXMLTest.class.getResource(
+	return new XmlScoreParser().parse(new File(ScoreFromXMLTest.class.getResource(
 		"/TestClass.points.eau.xml").toURI()));
     }
 
     @Test
     public void testCannotParse() throws URISyntaxException {
 	try {
-	    new ScoreXMLParser().parse(new File(ScoreFromXMLTest.class.getResource(
+	    new XmlScoreParser().parse(new File(ScoreFromXMLTest.class.getResource(
 		"/TestClass.xml").toURI()));
 	    fail("Should throw exception");
 	} catch (IllegalArgumentException exception) {

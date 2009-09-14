@@ -1,12 +1,12 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import java.util.Arrays;
 
 import eu.ebdit.eau.Report;
 import eu.ebdit.eau.Reporter;
+import eu.ebdit.eau.ResultCollector;
 import eu.ebdit.eau.reports.TestReporter;
-import eu.ebdit.eau.testing.ResultCollector;
-import eu.ebdit.eau.testing.annotations.ScoreAnnotationCollector;
+import eu.ebdit.eau.util.ScoreAnnotationCollector;
 
 public final class JUnitTestReporter implements Reporter {
 

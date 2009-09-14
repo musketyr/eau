@@ -1,6 +1,5 @@
-package eu.ebdit.eau.testing;
+package eu.ebdit.eau;
 
-import eu.ebdit.eau.Score;
 
 public interface ScoreCollector {
 

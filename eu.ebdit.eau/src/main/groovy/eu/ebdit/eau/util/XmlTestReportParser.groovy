@@ -1,10 +1,10 @@
-package eu.ebdit.eau.testing.xml
-import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.Scoreimport eu.ebdit.eau.Resultimport eu.ebdit.eau.beans.ResultBean;import eu.ebdit.eau.util.DefaultStatus;
+package eu.ebdit.eau.util
+import java.lang.IllegalArgumentExceptionimport eu.ebdit.eau.Scoreimport eu.ebdit.eau.Resultimport eu.ebdit.eau.beans.ResultBean;
 /**
  * @author Vladimir Orany
  *
  */
-public class TestReportXMLParser{
+public class XmlTestReportParser{
 	List<Result> parse(toBeParsed){
 		def testsuite = new XmlParser().parse(toBeParsed);
 		if (testsuite.name() == 'testsuite') {

@@ -1,9 +1,9 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.testing.TestReporterTest;
+import eu.ebdit.eau.reports.TestReporterTest;
 
 
 

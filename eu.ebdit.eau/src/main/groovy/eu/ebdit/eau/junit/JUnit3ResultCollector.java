@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import java.util.Collection;
 
@@ -9,8 +9,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.ResultCollector;
 import eu.ebdit.eau.beans.ResultBean;
-import eu.ebdit.eau.testing.ResultCollector;
 
 public final class JUnit3ResultCollector extends BaseTestRunner implements
 	ResultCollector {

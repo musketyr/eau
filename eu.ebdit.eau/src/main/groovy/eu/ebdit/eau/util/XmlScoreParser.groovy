@@ -13,7 +13,7 @@ import eu.ebdit.eau.beans.ScoreBean;
  * @author Vladimir Orany
  *
  */
-public class ScoreXMLParser{
+public class XmlScoreParser{
 	
 	List<Score> parse(toBeParsed){
 		def points = new XmlParser().parse(toBeParsed);

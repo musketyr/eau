@@ -1,6 +1,6 @@
-package eu.ebdit.eau.testing.junit.textui
+package eu.ebdit.eau.util
 
-import eu.ebdit.eau.testing.junit.JUnitTestReporter;
+import eu.ebdit.eau.junit.JUnitTestReporter;
 
 public class JUnitTextUI {
 

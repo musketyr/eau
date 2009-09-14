@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import eu.ebdit.eau.Reporter;
-import eu.ebdit.eau.testing.AbstractTestReporterTest;
+import eu.ebdit.eau.reports.AbstractTestReporterTest;
 
 
 public class JUnitTestReporterTest extends AbstractTestReporterTest{

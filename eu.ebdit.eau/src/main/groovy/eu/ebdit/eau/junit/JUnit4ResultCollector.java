@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.junit.runner.notification.RunListener;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.ResultCollector;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ResultBean;
-import eu.ebdit.eau.testing.ResultCollector;
 
 final class JUnit4ResultCollector extends RunListener implements
 	ResultCollector {

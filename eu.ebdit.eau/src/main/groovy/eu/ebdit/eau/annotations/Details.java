@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.annotations;
+package eu.ebdit.eau.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
