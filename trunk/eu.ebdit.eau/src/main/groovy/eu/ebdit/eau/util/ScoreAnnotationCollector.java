@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.annotations;
+package eu.ebdit.eau.util;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -7,6 +7,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.annotations.Bonus;
+import eu.ebdit.eau.annotations.Description;
+import eu.ebdit.eau.annotations.Details;
+import eu.ebdit.eau.annotations.Points;
 import eu.ebdit.eau.beans.ScoreBean;
 
 public class ScoreAnnotationCollector {

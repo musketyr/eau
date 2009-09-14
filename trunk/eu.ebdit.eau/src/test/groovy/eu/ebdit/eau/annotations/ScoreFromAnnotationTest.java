@@ -1,11 +1,12 @@
-package eu.ebdit.eau.testing.annotations;
+package eu.ebdit.eau.annotations;
 
 import java.util.List;
 
 import org.junit.Test;
 
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.testing.TestReporterTest;
+import eu.ebdit.eau.reports.TestReporterTest;
+import eu.ebdit.eau.util.ScoreAnnotationCollector;
 
 public class ScoreFromAnnotationTest extends TestReporterTest {
 

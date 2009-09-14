@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.annotations;
+package eu.ebdit.eau.annotations;
 
 import static org.junit.Assert.assertTrue;
 
@@ -20,7 +20,8 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.testing.TestReporterTest;
+import eu.ebdit.eau.reports.TestReporterTest;
+import eu.ebdit.eau.util.ScoreAnnotationProcessor;
 
 public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 

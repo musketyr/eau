@@ -5,10 +5,10 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import eu.ebdit.eau.testing.annotations.Bonus;
-import eu.ebdit.eau.testing.annotations.Description;
-import eu.ebdit.eau.testing.annotations.Details;
-import eu.ebdit.eau.testing.annotations.Points;
+import eu.ebdit.eau.annotations.Bonus;
+import eu.ebdit.eau.annotations.Description;
+import eu.ebdit.eau.annotations.Details;
+import eu.ebdit.eau.annotations.Points;
 
 // THIS CLASS IS FOR TESTING PURPOSE ONLY!
 // IT IS NOT COMPILED AUTOMATICALLY

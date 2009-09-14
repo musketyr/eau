@@ -1,4 +1,4 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

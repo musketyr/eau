@@ -32,14 +32,14 @@ public final class TestReporter implements Reporter {
 	    }
 	    final Score score = map.get(r.getCheckName());
 	    if (score != null) {
-		children.add(getEvaReport(score, r));
+		children.add(getReport(score, r));
 	    }
 
 	}
 	return ReportContainer.of("Test Reporter", children);
     }
 
-    private Report getEvaReport(final Score Score,
+    private Report getReport(final Score Score,
 	    final Result result) {
 	final String message = Score.getMessage() == null ? result
 		.getMessage() : Score.getMessage();

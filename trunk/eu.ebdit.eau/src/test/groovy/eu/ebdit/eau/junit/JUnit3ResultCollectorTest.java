@@ -1,9 +1,10 @@
-package eu.ebdit.eau.testing.junit;
+package eu.ebdit.eau.junit;
 
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.testing.TestReporterTest;
+import eu.ebdit.eau.junit.JUnit3ResultCollector;
+import eu.ebdit.eau.reports.TestReporterTest;
 
 public class JUnit3ResultCollectorTest extends TestReporterTest {
 

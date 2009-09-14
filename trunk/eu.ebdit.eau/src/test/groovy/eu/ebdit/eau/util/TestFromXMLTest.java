@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.ebdit.eau.testing;
+package eu.ebdit.eau.util;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -13,7 +13,8 @@ import java.util.List;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.testing.xml.TestReportXMLParser;
+import eu.ebdit.eau.reports.TestReporterTest;
+import eu.ebdit.eau.util.XmlTestReportParser;
 
 /**
  * @author Vladimir Orany
@@ -24,14 +25,14 @@ public class TestFromXMLTest extends TestReporterTest {
     private static final String CANNOT_PARSE = "Cannot parse ";
 
     protected List<Result> getResultList() throws URISyntaxException {
-	return new TestReportXMLParser().parse(new File(TestFromXMLTest.class
+	return new XmlTestReportParser().parse(new File(TestFromXMLTest.class
 		.getResource("/TestClass.xml").toURI()));
     }
 
     @Test
     public void testCannotParse() throws URISyntaxException {
 	try {
-	    new TestReportXMLParser().parse(new File(TestFromXMLTest.class
+	    new XmlTestReportParser().parse(new File(TestFromXMLTest.class
 		    .getResource("/TestClass.points.eau.xml").toURI()));
 	    fail("Should throw exception");
 	} catch (IllegalArgumentException exception) {
