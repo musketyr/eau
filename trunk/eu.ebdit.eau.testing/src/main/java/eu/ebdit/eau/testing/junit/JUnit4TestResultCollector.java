@@ -14,7 +14,8 @@ import eu.ebdit.eau.testing.TestResultCollector;
 import eu.ebdit.eau.testing.TestScore;
 import eu.ebdit.eau.testing.beans.TestResultBean;
 
-final class JUnit4TestResultCollector extends RunListener implements TestResultCollector {
+final class JUnit4TestResultCollector extends RunListener implements
+	TestResultCollector {
 
     private JUnit4TestResultCollector() {
 	// prevents instance creation and subtyping
@@ -29,8 +30,8 @@ final class JUnit4TestResultCollector extends RunListener implements TestResultC
     }
 
     private transient TestResultBean lastResult;
-    private transient final List<TestResult> results = Lists.newArrayList();
-    private transient final List<TestScore> scores = Lists.newArrayList();
+    private final transient List<TestResult> results = Lists.newArrayList();
+    private final transient List<TestScore> scores = Lists.newArrayList();
 
     /*
      * (non-Javadoc)
@@ -50,13 +51,15 @@ final class JUnit4TestResultCollector extends RunListener implements TestResultC
 	return scores;
     }
 
-    @Override //NOPMD
-    public void testFailure(final Failure failure) throws Exception {//NOPMD
+    @Override
+    // NOPMD
+    public void testFailure(final Failure failure) throws Exception {// NOPMD
 	handleFailure(failure);
     }
 
-    @Override //NOPMD
-    public void testFinished(final Description description) throws Exception {//NOPMD
+    @Override
+    // NOPMD
+    public void testFinished(final Description description) throws Exception {// NOPMD
 	handleTestFinished();
     }
 
@@ -65,14 +68,14 @@ final class JUnit4TestResultCollector extends RunListener implements TestResultC
 	lastResult = null;
     }
 
-    
-    @Override //NOPMD
-    public void testStarted(final Description description) throws Exception {//NOPMD
+    @Override
+    // NOPMD
+    public void testStarted(final Description description) throws Exception {// NOPMD
 	lastResult = JUnitTestHelper.initResult();
 	initNames(description);
     }
 
-    private void initNames(final Description description) throws AssertionError {
+    private void initNames(final Description description){
 	JUnitTestHelper.initNames(lastResult, description.getDisplayName());
     }
 
@@ -82,7 +85,5 @@ final class JUnit4TestResultCollector extends RunListener implements TestResultC
 	lastResult.setMessage(failure.getMessage() == null ? failure.getTrace()
 		: failure.getMessage());
     }
-
-
 
 }

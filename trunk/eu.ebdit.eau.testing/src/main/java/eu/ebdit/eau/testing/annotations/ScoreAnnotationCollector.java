@@ -11,32 +11,33 @@ import eu.ebdit.eau.testing.beans.TestScoreBean;
 
 public class ScoreAnnotationCollector {
 
-    public List<TestScore> check(final Class<?>... classes){
+    public final List<TestScore> check(final Class<?>... classes) {
 	final List<TestScore> ret = Lists.newArrayList();
 	for (Class<?> cl : classes) {
 	    ret.addAll(checkClass(cl));
 	}
 	return ImmutableList.copyOf(ret);
     }
-    
+
     private List<TestScore> checkClass(final Class<?> clazz) {
 	final List<TestScore> scores = Lists.newArrayList();
 	for (Method m : clazz.getMethods()) {
-	if (m.isAnnotationPresent(Points.class)) {
-	    scores.add(createTestScore(clazz, m));
-	}
+	    if (m.isAnnotationPresent(Points.class)) {
+		scores.add(createTestScore(clazz, m));
+	    }
 	}
 	return scores;
     }
 
-    private TestScoreBean createTestScore(final Class<?> clazz, final Method method) {
+    private TestScoreBean createTestScore(final Class<?> clazz,
+	    final Method method) {
 	String desc = null;
 	if (method.isAnnotationPresent(Description.class)) {
-	desc = method.getAnnotation(Description.class).value();
+	    desc = method.getAnnotation(Description.class).value();
 	}
 	String details = null;
 	if (method.isAnnotationPresent(Details.class)) {
-	details = method.getAnnotation(Details.class).value();
+	    details = method.getAnnotation(Details.class).value();
 	}
 	final TestScoreBean bean = new TestScoreBean();
 	bean.setClassName(clazz.getName());

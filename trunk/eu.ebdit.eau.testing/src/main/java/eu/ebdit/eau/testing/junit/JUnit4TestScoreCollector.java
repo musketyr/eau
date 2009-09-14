@@ -22,7 +22,7 @@ public class JUnit4TestScoreCollector extends RunListener implements
     private final Collection<TestScore> scores = Lists.newArrayList();//NOPMD
     
     @Override //NOPMD
-    public void testStarted(final Description description) {
+    public final void testStarted(final Description description) {
         addScoreIfNeeded(description);
     }
     
@@ -50,7 +50,7 @@ public class JUnit4TestScoreCollector extends RunListener implements
     }
 
     @Override
-    public Iterable<TestScore> getScores() {
+    public final Iterable<TestScore> getScores() {
         return ImmutableList.copyOf(scores);
     }
     

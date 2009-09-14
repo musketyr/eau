@@ -7,9 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Number of points obtained whether the test is successful.
- * 
  * @author Vladimir Orany
- * 
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

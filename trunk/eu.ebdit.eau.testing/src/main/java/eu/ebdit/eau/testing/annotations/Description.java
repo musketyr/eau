@@ -8,7 +8,6 @@ import java.lang.annotation.Target;
 /**
  * Meaningful description of the test. For example "Working addition" for test
  * checking whether calculator adds appropriately.
- * 
  * @author Vladimir Orany
  */
 @Target(ElementType.METHOD)
