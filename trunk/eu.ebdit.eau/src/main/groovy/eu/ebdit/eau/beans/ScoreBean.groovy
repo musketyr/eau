@@ -1,5 +1,5 @@
 
-package eu.ebdit.eau.testing.beans
+package eu.ebdit.eau.beans
 
 import eu.ebdit.eau.Score
 

@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.testing.beans.ScoreBean;
+import eu.ebdit.eau.beans.ScoreBean;
 
 public class ScoreAnnotationCollector {
 

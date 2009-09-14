@@ -5,7 +5,7 @@ package eu.ebdit.eau.testing.xml
 
 import eu.ebdit.eau.Score
 import eu.ebdit.eau.Result
-import eu.ebdit.eau.testing.beans.ScoreBean
+import eu.ebdit.eau.beans.ScoreBean;
 
 
 

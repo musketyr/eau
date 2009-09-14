@@ -1,7 +1,7 @@
-package eu.ebdit.eau.testing.beans
+package eu.ebdit.eau.beans
 
-import eu.ebdit.eau.Status;
 import eu.ebdit.eau.Result
+import eu.ebdit.eau.Status
 
 /**
  * @author Vladimír Oranı

@@ -2,13 +2,13 @@
 <FindBugsFilter>
      <Match>
      	<Or>
-       		<Class name="~.*TestResultBean.*" />
-       		<Class name="~.*TestScoreBean.*" />
+       		<Class name="~.*ResultBean.*" />
+       		<Class name="~.*ScoreBean.*" />
        		<Class name="~.*JUnitTextUI.*" />
-       		<Class name="~.*TestReportXMLParser.*" />
-       		<Class name="~.*TestScoreXMLParser.*" />
-       		<Class name="~.*XmlReportPrinter.*" />
-       		<Class name="~.*XmlReportPrinterTest.*" />
+       		<Class name="~.*ReportXMLParser.*" />
+       		<Class name="~.*ScoreXMLParser.*" />
+       		<Class name="~.*ReportPrinter.*" />
+       		<Class name="~.*ReportPrinterTest.*" />
      	</Or>
      </Match>
 </FindBugsFilter>

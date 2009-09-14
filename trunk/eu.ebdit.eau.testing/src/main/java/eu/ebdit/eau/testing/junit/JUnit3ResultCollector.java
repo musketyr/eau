@@ -9,8 +9,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.testing.ResultCollector;
-import eu.ebdit.eau.testing.beans.ResultBean;
 
 public final class JUnit3ResultCollector extends BaseTestRunner implements
 	ResultCollector {

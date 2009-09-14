@@ -3,8 +3,8 @@ package eu.ebdit.eau.testing.junit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import eu.ebdit.eau.Status;
-import eu.ebdit.eau.testing.beans.ResultBean;
+import eu.ebdit.eau.beans.ResultBean;
+import eu.ebdit.eau.util.DefaultStatus;
 
 final class JUnitTestHelper {
 
@@ -17,9 +17,9 @@ final class JUnitTestHelper {
     static ResultBean handleStatus(final ResultBean result,
 	    final Throwable exception) {
 	if (exception instanceof AssertionError) {
-	    result.setStatus(Status.FAILED);
+	    result.setStatus(DefaultStatus.FAILED);
 	} else {
-	    result.setStatus(Status.ERROR);
+	    result.setStatus(DefaultStatus.ERROR);
 	}
 	return result;
     }
@@ -38,7 +38,7 @@ final class JUnitTestHelper {
 
     static ResultBean initResult() {
 	final ResultBean result = new ResultBean();
-	result.setStatus(Status.OK);
+	result.setStatus(DefaultStatus.OK);
 	result.setMessage("");
 	return result;
     }

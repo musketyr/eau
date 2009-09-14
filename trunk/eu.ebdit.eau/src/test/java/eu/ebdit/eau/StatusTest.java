@@ -5,13 +5,15 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import eu.ebdit.eau.util.DefaultStatus;
+
 public class StatusTest {
 
     @Test
     public void testIsOK() {
-	assertTrue(Status.OK.isOK());//NOPMD
-	assertFalse(Status.FAILED.isOK());//NOPMD
-	assertFalse(Status.ERROR.isOK());//NOPMD
+	assertTrue(DefaultStatus.OK.isOK());//NOPMD
+	assertFalse(DefaultStatus.FAILED.isOK());//NOPMD
+	assertFalse(DefaultStatus.ERROR.isOK());//NOPMD
     }
 
 }

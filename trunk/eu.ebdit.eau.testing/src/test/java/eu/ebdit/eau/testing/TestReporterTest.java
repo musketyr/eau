@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 import eu.ebdit.eau.Reporter;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.Status;
+import eu.ebdit.eau.util.DefaultStatus;
 
 public class TestReporterTest extends AbstractTestReporterTest {
 
@@ -30,11 +30,11 @@ public class TestReporterTest extends AbstractTestReporterTest {
 
     @Test
     public void testSelfCreateResult() {
-	final Result result = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
+	final Result result = createResult(CLASS_FQNAME, METHOD_NAME_1, DefaultStatus.OK,
 		METHOD_1_MESSAGE);
 	assertEquals(CLASS_FQNAME, result.getSuiteName());//NOPMD
 	assertEquals(METHOD_NAME_1, result.getCheckName());//NOPMD
-	assertEquals(Status.OK, result.getStatus());//NOPMD
+	assertEquals(DefaultStatus.OK, result.getStatus());//NOPMD
 	assertEquals(METHOD_1_MESSAGE, result.getMessage());//NOPMD
     }
 
@@ -51,9 +51,9 @@ public class TestReporterTest extends AbstractTestReporterTest {
 
     protected Iterable<Result> getResultList() throws Exception {//NOPMD
 	return ImmutableList.of(createResult(CLASS_FQNAME, METHOD_NAME_1,
-		Status.OK, METHOD_1_MESSAGE), createResult(CLASS_FQNAME,
-		METHOD_NAME_2, Status.FAILED, METHOD_2_MESSAGE), createResult(
-		CLASS_FQNAME, METHOD_NAME_3, Status.ERROR, METHOD_3_MESSAGE));
+		DefaultStatus.OK, METHOD_1_MESSAGE), createResult(CLASS_FQNAME,
+		METHOD_NAME_2, DefaultStatus.FAILED, METHOD_2_MESSAGE), createResult(
+		CLASS_FQNAME, METHOD_NAME_3, DefaultStatus.ERROR, METHOD_3_MESSAGE));
     }
 
     protected Iterable<Score> getScoreList() throws Exception {//NOPMD
@@ -76,7 +76,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
     }
 
     private Result createResult(final String className, final String methodName,
-	    final Status status, final String message) {
+	    final DefaultStatus status, final String message) {
 	final Result result = mock(Result.class);
 	when(result.getSuiteName()).thenReturn(className);
 	when(result.getCheckName()).thenReturn(methodName);

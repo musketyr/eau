@@ -15,8 +15,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.beans.ScoreBean;
 import eu.ebdit.eau.testing.ScoreCollector;
-import eu.ebdit.eau.testing.beans.ScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.testing.annotations.*")

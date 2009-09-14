@@ -9,12 +9,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.beans.ResultBean;
+import eu.ebdit.eau.beans.ScoreBean;
 import eu.ebdit.eau.testing.ScoreCollector;
 import eu.ebdit.eau.testing.annotations.Bonus;
 import eu.ebdit.eau.testing.annotations.Details;
 import eu.ebdit.eau.testing.annotations.Points;
-import eu.ebdit.eau.testing.beans.ResultBean;
-import eu.ebdit.eau.testing.beans.ScoreBean;
 
 public class JUnit4ScoreCollector extends RunListener implements
 	ScoreCollector {

@@ -11,8 +11,8 @@ import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.testing.ResultCollector;
-import eu.ebdit.eau.testing.beans.ResultBean;
 
 final class JUnit4ResultCollector extends RunListener implements
 	ResultCollector {
