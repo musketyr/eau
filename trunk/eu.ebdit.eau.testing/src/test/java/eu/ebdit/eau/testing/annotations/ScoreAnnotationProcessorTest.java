@@ -45,12 +45,11 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
 	System.out.println(new File(ScoreAnnotationProcessorTest.class.getResource("/").toURI()));
 	
-	final File junitPath = new File(Joiner.on(File.separator).join(
-		System.getenv("M2_REPO"), "junit", "junit", "4.5",
-		"junit-4.5.jar"));
-
 	final List<File> newCpath = Lists.newArrayList(cpath.iterator());
-	newCpath.add(junitPath);
+	newCpath.add(new File(Joiner.on(File.separator).join(
+		System.getenv("M2_REPO"), "junit", "junit", "4.5",
+		"junit-4.5.jar")));
+	newCpath.add(new File(ScoreAnnotationProcessorTest.class.getResource(".").toURI()));
 	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
 
 	// Get the list of java file objects, in this case we have only
