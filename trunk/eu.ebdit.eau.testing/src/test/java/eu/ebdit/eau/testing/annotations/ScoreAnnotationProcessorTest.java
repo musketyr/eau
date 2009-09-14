@@ -4,10 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +16,8 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.testing.TestReporterTest;
 import eu.ebdit.eau.testing.TestScore;
@@ -38,21 +36,26 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	final StandardJavaFileManager fileManager = compiler
 		.getStandardFileManager(null, null, null);
 
-	System.out.println(fileManager.getLocation(StandardLocation.CLASS_PATH));
-	
+	final Iterable<? extends File> cpath = fileManager
+		.getLocation(StandardLocation.CLASS_PATH);
+
+	final File junitPath = new File(Joiner.on(File.separator).join(
+		System.getenv("M2_REPO"), "junit", "junit", "4.5",
+		"junit-4.5.jar"));
+
+	final List<File> newCpath = Lists.newArrayList(cpath.iterator());
+	newCpath.add(junitPath);
+	fileManager.setLocation(StandardLocation.CLASS_PATH, newCpath);
+
 	// Get the list of java file objects, in this case we have only
 	// one file, TestClass.java
 	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
 		.getJavaFileObjects(new File(ScoreAnnotationProcessorTest.class
 			.getResource("/org/example/TestClass.java").toURI()));
-	
-	//final String $ = File.pathSeparator;
-	Iterable<String> options = ImmutableList.of();//ImmutableList.of("-cp \"" + cpath + ";%M2_REPO%" + $ + "junit" + $ + "junit" + $ + "4.5" + $ + "junit-4.5.jar\"");
-	
+
 	final CompilationTask task = compiler.getTask(null, fileManager, null,
-		options, null, compilationUnits1);
-	
-	
+		null, null, compilationUnits1);
+
 	// Create a list to hold annotation processors
 	final List<Processor> processors = new LinkedList<Processor>();
 
@@ -67,33 +70,5 @@ public class ScoreAnnotationProcessorTest extends TestReporterTest {// NOPMD
 	assertTrue(ret);// NOPMD
 	return processor.getScores();
     }
-
-//    public static void addFile(String s) throws IOException {
-//	File f = new File(s);
-//	addFile(f);
-//    }// end method
-//
-//    @SuppressWarnings("deprecation")
-//    public static void addFile(File f) throws IOException {
-//	addURL(f.toURL());
-//    }// end method
-//
-//    public static void addURL(URL u) throws IOException {
-//
-//	URLClassLoader sysloader = (URLClassLoader) ClassLoader
-//		.getSystemClassLoader();
-//	Class<?> sysclass = URLClassLoader.class;
-//
-//	try {
-//	    Method method = sysclass.getDeclaredMethod("addURL", new Class[]{URL.class});
-//	    method.setAccessible(true);
-//	    method.invoke(sysloader, new Object[] { u });
-//	} catch (Throwable t) {
-//	    t.printStackTrace();
-//	    throw new IOException(
-//		    "Error, could not add URL to system classloader");
-//	}// end try catch
-//
-//    }// end method
 
 }
