@@ -7,5 +7,9 @@ public interface Score {
     double getPoints();
 
     boolean isBonus();
+    
+    String getSuiteName();
+
+    String getCheckName();
 
 }

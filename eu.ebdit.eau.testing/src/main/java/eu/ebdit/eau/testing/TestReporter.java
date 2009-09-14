@@ -9,28 +9,30 @@ import com.google.common.collect.Maps;
 
 import eu.ebdit.eau.Reporter;
 import eu.ebdit.eau.Report;
+import eu.ebdit.eau.Result;
+import eu.ebdit.eau.Score;
 import eu.ebdit.eau.reports.ReportContainer;
 import eu.ebdit.eau.reports.SimpleReport;
 
 public final class TestReporter implements Reporter {
 
-    private final transient Map<String, Map<String, TestScore>> scoreMap;
-    private final transient ImmutableList<TestResult> resultList;
+    private final transient Map<String, Map<String, Score>> scoreMap;
+    private final transient ImmutableList<Result> resultList;
 
-    private TestReporter(final Map<String, Map<String, TestScore>> scoreMap,
-	    final ImmutableList<TestResult> resultList) {
+    private TestReporter(final Map<String, Map<String, Score>> scoreMap,
+	    final ImmutableList<Result> resultList) {
 	this.scoreMap = scoreMap;
 	this.resultList = resultList;
     }
 
     public Report report() {
 	final List<Report> children = Lists.newArrayList();
-	for (TestResult r : resultList) {
-	    Map<String, TestScore> map = scoreMap.get(r.getClassName());
+	for (Result r : resultList) {
+	    Map<String, Score> map = scoreMap.get(r.getSuiteName());
 	    if (map == null) {
 		map = Maps.newHashMap();
 	    }
-	    final TestScore score = map.get(r.getTestName());
+	    final Score score = map.get(r.getCheckName());
 	    if (score != null) {
 		children.add(getEvaReport(score, r));
 	    }
@@ -39,22 +41,22 @@ public final class TestReporter implements Reporter {
 	return ReportContainer.of("Test Reporter", children);
     }
 
-    private Report getEvaReport(final TestScore testScore,
-	    final TestResult result) {
-	final String message = testScore.getMessage() == null ? result
-		.getMessage() : testScore.getMessage();
-	final double points = result.getStatus().isOK() ? testScore.getPoints()
+    private Report getEvaReport(final Score Score,
+	    final Result result) {
+	final String message = Score.getMessage() == null ? result
+		.getMessage() : Score.getMessage();
+	final double points = result.getStatus().isOK() ? Score.getPoints()
 		: 0;
-	final double max = testScore.isBonus() ? 0 : testScore.getPoints();
-	final double maxWB = testScore.getPoints();
+	final double max = Score.isBonus() ? 0 : Score.getPoints();
+	final double maxWB = Score.getPoints();
 	return new SimpleReport(message, points, max, maxWB);
     }
 
-    public static Reporter of(final Iterable<TestScore> scoreList, // NOPMD
-	    final Iterable<TestResult> resultList) {
-	final Map<String, Map<String, TestScore>> newMap = Maps.newHashMap();
-	for (TestScore s : scoreList) {
-	    Map<String, TestScore> map = newMap.get(s.getSuiteName());
+    public static Reporter of(final Iterable<Score> scoreList, // NOPMD
+	    final Iterable<Result> resultList) {
+	final Map<String, Map<String, Score>> newMap = Maps.newHashMap();
+	for (Score s : scoreList) {
+	    Map<String, Score> map = newMap.get(s.getSuiteName());
 	    if (map == null) {
 		map = Maps.newHashMap();
 		newMap.put(s.getSuiteName(), map);

@@ -9,7 +9,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import eu.ebdit.eau.testing.xml.TestScoreXMLParser;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.testing.xml.ScoreXMLParser;
 
 /**
  * @author Vladimir Orany
@@ -19,15 +20,15 @@ public class ScoreFromXMLTest extends TestReporterTest {
 
     private static final String CANNOT_PARSE = "Cannot parse ";
 
-    protected List<TestScore> getScoreList() throws URISyntaxException {
-	return new TestScoreXMLParser().parse(new File(ScoreFromXMLTest.class.getResource(
+    protected List<Score> getScoreList() throws URISyntaxException {
+	return new ScoreXMLParser().parse(new File(ScoreFromXMLTest.class.getResource(
 		"/TestClass.points.eau.xml").toURI()));
     }
 
     @Test
     public void testCannotParse() throws URISyntaxException {
 	try {
-	    new TestScoreXMLParser().parse(new File(TestFromXMLTest.class
+	    new ScoreXMLParser().parse(new File(TestFromXMLTest.class
 		    .getResource("/TestClass.xml").toURI()));
 	    fail("Should throw exception");
 	} catch (IllegalArgumentException exception) {
@@ -37,5 +38,5 @@ public class ScoreFromXMLTest extends TestReporterTest {
     }
     
     @Override @Test
-    public void testSelfCreateTestScore() { /* we are not using mocking in this class so we don't need this test*/} //NOPMD
+    public void testSelfCreateScore() { /* we are not using mocking in this class so we don't need this test*/} //NOPMD
 }

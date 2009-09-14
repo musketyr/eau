@@ -8,18 +8,18 @@ import org.junit.runner.notification.RunListener;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.TestScore;
-import eu.ebdit.eau.testing.TestScoreCollector;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.testing.ScoreCollector;
 import eu.ebdit.eau.testing.annotations.Bonus;
 import eu.ebdit.eau.testing.annotations.Details;
 import eu.ebdit.eau.testing.annotations.Points;
-import eu.ebdit.eau.testing.beans.TestResultBean;
-import eu.ebdit.eau.testing.beans.TestScoreBean;
+import eu.ebdit.eau.testing.beans.ResultBean;
+import eu.ebdit.eau.testing.beans.ScoreBean;
 
-public class JUnit4TestScoreCollector extends RunListener implements
-	TestScoreCollector {
+public class JUnit4ScoreCollector extends RunListener implements
+	ScoreCollector {
 
-    private final Collection<TestScore> scores = Lists.newArrayList();//NOPMD
+    private final Collection<Score> scores = Lists.newArrayList();//NOPMD
     
     @Override //NOPMD
     public final void testStarted(final Description description) {
@@ -27,10 +27,10 @@ public class JUnit4TestScoreCollector extends RunListener implements
     }
     
     private void addScoreIfNeeded(final Description description) {
-	final TestResultBean helper = JUnitTestHelper.initNames(new TestResultBean(), description.getDisplayName());
-	final TestScoreBean score = new TestScoreBean();
-	score.setSuiteName(helper.getClassName());
-	score.setCheckName(helper.getTestName());
+	final ResultBean helper = JUnitTestHelper.initNames(new ResultBean(), description.getDisplayName());
+	final ScoreBean score = new ScoreBean();
+	score.setSuiteName(helper.getSuiteName());
+	score.setCheckName(helper.getCheckName());
 	final Points points = description.getAnnotation(Points.class);
 	if (points != null) {
 	    score.setPoints(points.value());
@@ -50,7 +50,7 @@ public class JUnit4TestScoreCollector extends RunListener implements
     }
 
     @Override
-    public final Iterable<TestScore> getScores() {
+    public final Iterable<Score> getScores() {
         return ImmutableList.copyOf(scores);
     }
     

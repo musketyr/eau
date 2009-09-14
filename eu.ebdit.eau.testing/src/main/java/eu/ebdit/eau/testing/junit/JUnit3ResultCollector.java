@@ -8,19 +8,19 @@ import junit.runner.BaseTestRunner;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.testing.TestResult;
-import eu.ebdit.eau.testing.TestResultCollector;
-import eu.ebdit.eau.testing.beans.TestResultBean;
+import eu.ebdit.eau.Result;
+import eu.ebdit.eau.testing.ResultCollector;
+import eu.ebdit.eau.testing.beans.ResultBean;
 
-public final class JUnit3TestResultCollector extends BaseTestRunner implements
-	TestResultCollector {
+public final class JUnit3ResultCollector extends BaseTestRunner implements
+	ResultCollector {
 
-    private JUnit3TestResultCollector() {
+    private JUnit3ResultCollector() {
 	// prevents instance creation and subtyping
     }
 
-    public static TestResultCollector collectResults(final Class<?>... classes) {
-	final JUnit3TestResultCollector erl = new JUnit3TestResultCollector();
+    public static ResultCollector collectResults(final Class<?>... classes) {
+	final JUnit3ResultCollector erl = new JUnit3ResultCollector();
 	for (Class<?> clazz : classes) {
 	    final Test test = erl.getTest(clazz.getName());
 	    erl.doRun(test);
@@ -28,8 +28,8 @@ public final class JUnit3TestResultCollector extends BaseTestRunner implements
 	return erl;
     }
 
-    private transient TestResultBean lastResult;
-    private final transient  Collection<TestResult> results = Lists
+    private transient ResultBean lastResult;
+    private final transient  Collection<Result> results = Lists
 	    .newArrayList();
 
     public final junit.framework.TestResult doRun(final Test suite) {
@@ -64,7 +64,7 @@ public final class JUnit3TestResultCollector extends BaseTestRunner implements
     }
 
     @Override
-    public final Iterable<TestResult> getResults() {
+    public final Iterable<Result> getResults() {
 	return ImmutableList.copyOf(results);
     }
 

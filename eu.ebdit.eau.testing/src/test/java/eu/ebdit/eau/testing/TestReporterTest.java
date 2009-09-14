@@ -11,6 +11,8 @@ import org.junit.Test;
 import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.Reporter;
+import eu.ebdit.eau.Result;
+import eu.ebdit.eau.Score;
 import eu.ebdit.eau.Status;
 
 public class TestReporterTest extends AbstractTestReporterTest {
@@ -28,17 +30,17 @@ public class TestReporterTest extends AbstractTestReporterTest {
 
     @Test
     public void testSelfCreateResult() {
-	final TestResult result = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
+	final Result result = createResult(CLASS_FQNAME, METHOD_NAME_1, Status.OK,
 		METHOD_1_MESSAGE);
-	assertEquals(CLASS_FQNAME, result.getClassName());//NOPMD
-	assertEquals(METHOD_NAME_1, result.getTestName());//NOPMD
+	assertEquals(CLASS_FQNAME, result.getSuiteName());//NOPMD
+	assertEquals(METHOD_NAME_1, result.getCheckName());//NOPMD
 	assertEquals(Status.OK, result.getStatus());//NOPMD
 	assertEquals(METHOD_1_MESSAGE, result.getMessage());//NOPMD
     }
 
     @Test
-    public void testSelfCreateTestScore() {
-	final TestScore score = createTestScore(CLASS_FQNAME, METHOD_NAME_1, 0.5,
+    public void testSelfCreateScore() {
+	final Score score = createScore(CLASS_FQNAME, METHOD_NAME_1, 0.5,
 		SCORE_1_MESSAGE_OK, false);
 	assertEquals(CLASS_FQNAME, score.getSuiteName());//NOPMD
 	assertEquals(METHOD_NAME_1, score.getCheckName());//NOPMD
@@ -47,37 +49,37 @@ public class TestReporterTest extends AbstractTestReporterTest {
 	assertEquals(false, score.isBonus());//NOPMD
     }
 
-    protected Iterable<TestResult> getResultList() throws Exception {//NOPMD
+    protected Iterable<Result> getResultList() throws Exception {//NOPMD
 	return ImmutableList.of(createResult(CLASS_FQNAME, METHOD_NAME_1,
 		Status.OK, METHOD_1_MESSAGE), createResult(CLASS_FQNAME,
 		METHOD_NAME_2, Status.FAILED, METHOD_2_MESSAGE), createResult(
 		CLASS_FQNAME, METHOD_NAME_3, Status.ERROR, METHOD_3_MESSAGE));
     }
 
-    protected Iterable<TestScore> getScoreList() throws Exception {//NOPMD
-	return ImmutableList.of(createTestScore(CLASS_FQNAME, METHOD_NAME_1,
-		0.5, SCORE_1_MESSAGE_OK, false), createTestScore(CLASS_FQNAME,
+    protected Iterable<Score> getScoreList() throws Exception {//NOPMD
+	return ImmutableList.of(createScore(CLASS_FQNAME, METHOD_NAME_1,
+		0.5, SCORE_1_MESSAGE_OK, false), createScore(CLASS_FQNAME,
 		METHOD_NAME_2, 0.75, SCORE_2_MESSAGE_OK, false),
-		createTestScore(CLASS_FQNAME, METHOD_NAME_3, 1,
+		createScore(CLASS_FQNAME, METHOD_NAME_3, 1,
 			SCORE_3_MESSAGE_OK, true));
     }
 
-    private TestScore createTestScore(final String className, final String testName,
+    private Score createScore(final String className, final String testName,
 	    final double score, final String message, final boolean bonus) {
-	final TestScore testScore = mock(TestScore.class);
-	when(testScore.getSuiteName()).thenReturn(className);
-	when(testScore.getCheckName()).thenReturn(testName);
-	when(testScore.getPoints()).thenReturn(score);
-	when(testScore.getMessage()).thenReturn(message);
-	when(testScore.isBonus()).thenReturn(bonus);
-	return testScore;
+	final Score Score = mock(Score.class);
+	when(Score.getSuiteName()).thenReturn(className);
+	when(Score.getCheckName()).thenReturn(testName);
+	when(Score.getPoints()).thenReturn(score);
+	when(Score.getMessage()).thenReturn(message);
+	when(Score.isBonus()).thenReturn(bonus);
+	return Score;
     }
 
-    private TestResult createResult(final String className, final String methodName,
+    private Result createResult(final String className, final String methodName,
 	    final Status status, final String message) {
-	final TestResult result = mock(TestResult.class);
-	when(result.getClassName()).thenReturn(className);
-	when(result.getTestName()).thenReturn(methodName);
+	final Result result = mock(Result.class);
+	when(result.getSuiteName()).thenReturn(className);
+	when(result.getCheckName()).thenReturn(methodName);
 	when(result.getStatus()).thenReturn(status);
 	when(result.getMessage()).thenReturn(message);
 	return result;
@@ -85,7 +87,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
 
     @Override
     protected Reporter getReporter() throws Exception {//NOPMD
-        return TestReporter.of(getScoreList(), (List<TestResult>) getResultList());
+        return TestReporter.of(getScoreList(), (List<Result>) getResultList());
     }
 
 }

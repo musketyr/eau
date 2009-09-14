@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import eu.ebdit.eau.Status;
-import eu.ebdit.eau.testing.beans.TestResultBean;
+import eu.ebdit.eau.testing.beans.ResultBean;
 
 final class JUnitTestHelper {
 
@@ -14,7 +14,7 @@ final class JUnitTestHelper {
 	// prevents instance creation and subtyping
     }
 
-    static TestResultBean handleStatus(final TestResultBean result,
+    static ResultBean handleStatus(final ResultBean result,
 	    final Throwable exception) {
 	if (exception instanceof AssertionError) {
 	    result.setStatus(Status.FAILED);
@@ -24,20 +24,20 @@ final class JUnitTestHelper {
 	return result;
     }
 
-    static TestResultBean initNames(final TestResultBean result,
+    static ResultBean initNames(final ResultBean result,
 	    final String withClassName) {
 	final Matcher matcher = PATTERN.matcher(withClassName);
 	if (matcher.matches()) {
-	    result.setClassName(matcher.group(2));
-	    result.setTestName(matcher.group(1));
+	    result.setSuiteName(matcher.group(2));
+	    result.setCheckName(matcher.group(1));
 	} else {
 	    throw new AssertionError("Matcher must match!");
 	}
 	return result;
     }
 
-    static TestResultBean initResult() {
-	final TestResultBean result = new TestResultBean();
+    static ResultBean initResult() {
+	final ResultBean result = new ResultBean();
 	result.setStatus(Status.OK);
 	result.setMessage("");
 	return result;
