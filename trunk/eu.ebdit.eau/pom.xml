@@ -114,6 +114,7 @@
 				<configuration>
 					<linkXref>true</linkXref>
 					<includeTests>true</includeTests>
+					<includes>**/groovy/*.java</includes>
 					<excludes>
 						<exclude>**/TestClass.java</exclude>
 						<exclude>**/groovy-stubs/*.java</exclude>
