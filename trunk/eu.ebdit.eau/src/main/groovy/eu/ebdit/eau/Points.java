@@ -1,4 +1,4 @@
-package eu.ebdit.eau.annotations;
+package eu.ebdit.eau;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,12 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Detailed description of given test.
+ * Number of points obtained whether the test is successful.
  * @author Vladimir Orany
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Details {
-    /** @returns detailed description of given test */
-    String value();
+public @interface Points {
+    /** @returns the number of points */
+    double value();
 }
