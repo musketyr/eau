@@ -115,7 +115,7 @@
 					<linkXref>true</linkXref>
 					<includeTests>true</includeTests>
 					<includes>
-						<include>**/groovy/*.java</include>
+						<include>/**/*.java</include>
 					</includes>
 					<excludes>
 						<exclude>**/TestClass.java</exclude>
