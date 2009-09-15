@@ -1,0 +1,140 @@
+package eu.ebdit.eau.reports;
+
+import java.io.Serializable;
+
+import com.google.common.collect.ImmutableList;
+
+import eu.ebdit.eau.Report;
+
+public final class ReportContainer implements Report, Serializable {//NOPMD
+
+    private static final long serialVersionUID = 324202196457789090L;
+    private final ImmutableList<Report> reports;
+    private final String message;
+
+    private ReportContainer(final Iterable<Report> theChildren,
+	    final String theMessage) {
+	this.reports = ImmutableList.copyOf(theChildren);
+	this.message = theMessage;
+    }
+
+    public static ReportContainer of(final String message,//NOPMD
+	    final Iterable<Report> theChildren) {
+	return new ReportContainer(theChildren, message);
+    }
+
+    public ImmutableList<Report> getReports() {
+	return reports;
+    }
+
+    public double getMaxPoints() {
+	double ret = 0;
+	for (Report er : reports) {
+	    ret += er.getMaxPoints();
+	}
+	return ret;
+    }
+
+    public double getMaxPointsWithBonus() {
+	double ret = 0;
+	for (Report er : reports) {
+	    ret += er.getMaxPointsWithBonus();
+	}
+	return ret;
+    }
+
+    public String getMessage() {
+	return message;
+    }
+
+    public String getDetails() {
+	return toString();
+    }
+
+    public double getPoints() {
+	double ret = 0;
+	for (Report er : reports) {
+	    ret += er.getPoints();
+	}
+	return ret;
+    }
+
+    public double getSuccessPercentage() {
+	return getPoints() / getMaxPoints();
+    }
+
+    @Override
+    public String toString() {
+	return toString(0);
+    }
+
+    private static final String IDENT_BLOCK = "   ";
+
+    private static String ident(final int ident) {
+	final StringBuilder ret = new StringBuilder();
+	for (int i = 0; i < ident; i++) {
+	    ret.append(IDENT_BLOCK);
+	}
+	return ret.toString();
+    }
+
+    private String toString(final int ident) {
+	final StringBuilder ret = new StringBuilder();
+	ret.append(ident(ident)).append(
+		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
+			getMessage())).append(" {\n");
+	for (Report er : reports) {
+	    if (er == null) {
+		continue;
+	    }
+	    if (er instanceof ReportContainer) {
+		ret.append(((ReportContainer) er).toString(ident + 1));
+	    } else {
+		ret.append(ident(ident + 1) + er.toString());
+	    }
+	    ret.append("\n");
+	}
+	ret.append(ident(ident)).append("}");
+	return ret.toString();
+    }
+
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result
+		+ ((reports == null) ? 0 : reports.hashCode());
+	result = prime * result + ((message == null) ? 0 : message.hashCode());
+	return result;
+    }
+
+    @Override
+    public boolean equals(final Object obj) { //NOPMD
+	if (this == obj) {
+	    return true;
+	}
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final ReportContainer other = (ReportContainer) obj;
+	if (reports == null) {
+	    if (other.reports != null) {
+		return false;
+	    }
+	} else if (!reports.equals(other.reports)) {
+	    return false;
+	}
+	if (message == null) {
+	    if (other.message != null) {
+		return false;
+	    }
+	} else if (!message.equals(other.message)) {
+	    return false;
+	}
+	return true;
+    }
+
+}
