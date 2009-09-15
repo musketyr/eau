@@ -6,8 +6,9 @@
        		<Class name="~.*ScoreBean.*" />
        		<Class name="~.*JUnitTextUI.*" />
        		<Class name="~.*ReportXMLParser.*" />
-       		<Class name="~.*ScoreXMLParser.*" />
+       		<Class name="~.*XmlScoreParser.*" />
        		<Class name="~.*ReportPrinter.*" />
+       		<Class name="~.*XmlTestReport.*" />
        		<Class name="~.*ReportPrinterTest.*" />
      	</Or>
      </Match>
