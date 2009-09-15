@@ -7,6 +7,7 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Score;
@@ -38,6 +39,6 @@ public class ScoreFromXMLTest extends TestReporterTest {
 
     }
     
-    @Override @Test
+    @Override @Test @Ignore
     public void testSelfCreateScore() { /* we are not using mocking in this class so we don't need this test*/} //NOPMD
 }

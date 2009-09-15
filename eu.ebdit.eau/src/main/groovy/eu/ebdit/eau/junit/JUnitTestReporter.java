@@ -28,7 +28,7 @@ public final class JUnitTestReporter implements Reporter {
 
     private ResultCollector getCollector() {
 	try {
-	    Class.forName("org.junit.JUnitCore");
+	    Class.forName("org.junit.Test");
 	    return JUnit4ResultCollector.collectResults(classes);
 	} catch (ClassNotFoundException e) {
 	    return JUnit3ResultCollector.collectResults(classes);
