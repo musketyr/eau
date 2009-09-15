@@ -2,6 +2,7 @@ package eu.ebdit.eau.util;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Score;
@@ -15,7 +16,7 @@ public class ScoreFromAnnotationTest extends TestReporterTest {
 	return new ScoreAnnotationCollector().check(Class.forName("org.example.TestClass"));
     }
 
-    @Override @Test
+    @Override @Test @Ignore
     public void testSelfCreateScore() {/* we don't use mocking so we don't need this test at all */}//NOPMD
 
 }

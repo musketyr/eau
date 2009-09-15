@@ -1,5 +1,6 @@
 package eu.ebdit.eau.junit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
@@ -13,7 +14,7 @@ public class JUnit3ResultCollectorTest extends TestReporterTest {
 	return JUnit3ResultCollector.collectResults(Class.forName("org.example.TestClass")).getResults();
     }
     
-    @Override @Test
+    @Override @Test @Ignore
     public void testSelfCreateResult() { //NOPMD
         // not needed
     }

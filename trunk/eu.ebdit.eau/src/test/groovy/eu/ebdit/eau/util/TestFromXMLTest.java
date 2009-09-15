@@ -10,6 +10,7 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
@@ -42,7 +43,7 @@ public class TestFromXMLTest extends TestReporterTest {
     }
 
     @Override
-    @Test
+    @Test @Ignore
     public void testSelfCreateResult() { // NOPMD
 	/*
 	 * we are not using mocking in this test so we don't need this test
