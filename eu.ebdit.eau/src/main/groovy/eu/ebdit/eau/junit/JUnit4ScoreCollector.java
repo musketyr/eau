@@ -8,11 +8,11 @@ import org.junit.runner.notification.RunListener;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
+import eu.ebdit.eau.Bonus;
+import eu.ebdit.eau.Details;
+import eu.ebdit.eau.Points;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.ScoreCollector;
-import eu.ebdit.eau.annotations.Bonus;
-import eu.ebdit.eau.annotations.Details;
-import eu.ebdit.eau.annotations.Points;
 import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.beans.ScoreBean;
 
@@ -35,8 +35,8 @@ public class JUnit4ScoreCollector extends RunListener implements
 	if (points != null) {
 	    score.setPoints(points.value());
 
-	    final eu.ebdit.eau.annotations.Description desc = description
-		    .getAnnotation(eu.ebdit.eau.annotations.Description.class);
+	    final eu.ebdit.eau.Description desc = description
+		    .getAnnotation(eu.ebdit.eau.Description.class);
 	    if (desc != null) {
 		score.setMessage(desc.value());
 	    }
