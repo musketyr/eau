@@ -55,15 +55,16 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     // NOPMD
     public void testFailed(final int status, final Test test,
 	    final Throwable trowable) {
-	JUnitTestHelper.handleStatus(lastResult, trowable);
+	lastResult.setPassed(false);
 	lastResult.setMessage(getFilteredTrace(trowable));
     }
 
     @Override
     // NOPMD
     public void testStarted(final String testName) {
-	lastResult = JUnitTestHelper.initResult();
-	JUnitTestHelper.initNames(lastResult, testName);
+	lastResult = new ResultBean();
+	lastResult.init();
+	lastResult.setFullName(testName);
     }
 
     @Override
