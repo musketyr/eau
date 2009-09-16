@@ -2,7 +2,9 @@ package eu.ebdit.eau;
 
 /**
  * Collects information of specified type <code>T</code> from object specified
- * by method parameters using the {@link #collectFrom(Object)} method.
+ * by method parameters using the {@link #collectFrom(Object)} method. All
+ * public implementations must have public constructors to allow initialization
+ * over reflection
  * 
  * @author Vladimír Oraný
  * @param <T>
