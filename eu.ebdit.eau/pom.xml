@@ -200,6 +200,7 @@
 	</reporting>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJre>1.6</targetJre>
 		<junitVersion>4.5</junitVersion>
 	</properties>

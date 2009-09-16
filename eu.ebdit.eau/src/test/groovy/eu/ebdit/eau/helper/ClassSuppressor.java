@@ -11,16 +11,19 @@ public final class ClassSuppressor {
     private final Collection<String> packages = Lists.newArrayList();
     private final Collection<String> regexs = Lists.newArrayList();;
 
-    public void suppressClass(String suppressedClass) {
+    public ClassSuppressor suppressClass(String suppressedClass) {
 	classes.add(suppressedClass);
+	return this;
     }
 
-    public void suppressPackage(String suppressedPackage) {
+    public ClassSuppressor suppressPackage(String suppressedPackage) {
 	packages.add(suppressedPackage);
+	return this;
     }
 
-    public void suppressByRegExp(String regExp) {
+    public ClassSuppressor suppressByRegExp(String regExp) {
 	regexs.add(regExp);
+	return this;
     }
 
     public <T> T runSuppressed(Callable<T> job) {
@@ -32,7 +35,7 @@ public final class ClassSuppressor {
 		restoreLoader(original);
 	    }
 	} catch (Exception e) {
-	    throw new RuntimeException(e);
+	    throw new RuntimeException(e); // NOPMD
 	}
 
     }
