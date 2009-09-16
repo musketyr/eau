@@ -1,36 +1,43 @@
 package eu.ebdit.eau.junit;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import junit.framework.Test;
 import junit.runner.BaseTestRunner;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.ResultCollector;
 import eu.ebdit.eau.beans.ResultBean;
+import eu.ebdit.eau.util.Classes;
 
 public final class JUnit3ResultCollector extends BaseTestRunner implements
-	ResultCollector {
-
-    private JUnit3ResultCollector() {
-	// prevents instance creation and subtyping
-    }
-
-    public static ResultCollector collectResults(final Class<?>... classes) {
-	final JUnit3ResultCollector erl = new JUnit3ResultCollector();
-	for (Class<?> clazz : classes) {
-	    final Test test = erl.getTest(clazz.getName());
-	    erl.doRun(test);
-	}
-	return erl;
-    }
+	Collector<Result> {
 
     private transient ResultBean lastResult;
-    private final transient  Collection<Result> results = Lists
-	    .newArrayList();
+
+    private transient Collection<Result> results = Lists.newArrayList();
+
+    @Override
+    public boolean canCollectFrom(final Object... input) {
+	return !Iterables.isEmpty(Classes.asClassIterable(input));
+    }
+
+    @Override
+    public Iterable<Result> collectFrom(final Object... input) {
+	if (!canCollectFrom(input)) {
+	    return Collections.emptyList();
+	}
+	reset();
+	for (Class<?> clazz : Classes.asClassIterable(input)) {
+	    final Test test = getTest(clazz.getName());
+	    doRun(test);
+	}
+	return results;
+    }
 
     public final junit.framework.TestResult doRun(final Test suite) {
 	final junit.framework.TestResult result = createResult();
@@ -46,13 +53,6 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
 
     @Override
     // NOPMD
-    public void testStarted(final String testName) {
-	lastResult = JUnitTestHelper.initResult();
-	JUnitTestHelper.initNames(lastResult, testName);
-    }
-
-    @Override
-    // NOPMD
     public void testFailed(final int status, final Test test,
 	    final Throwable trowable) {
 	JUnitTestHelper.handleStatus(lastResult, trowable);
@@ -60,12 +60,14 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     }
 
     @Override
-    protected void runFailed(final String message) { /* not needed */
+    // NOPMD
+    public void testStarted(final String testName) {
+	lastResult = JUnitTestHelper.initResult();
+	JUnitTestHelper.initNames(lastResult, testName);
     }
 
     @Override
-    public final Iterable<Result> getResults() {
-	return ImmutableList.copyOf(results);
+    protected void runFailed(final String message) { /* not needed */
     }
 
     private junit.framework.TestResult createResult() {
@@ -77,6 +79,11 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     private void handleTestFinished() {
 	results.add(lastResult);
 	lastResult = null;
+    }
+
+    private void reset() {
+	lastResult = null;
+	results = Lists.newArrayList();
     }
 
 }
