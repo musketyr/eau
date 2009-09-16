@@ -10,13 +10,11 @@ public class JUnitResultCollectorTest extends AbstractResultCollectorTest {
     protected Iterable<Result> getResults(){
 	ClassSuppressor suppressor = new ClassSuppressor();
 	suppressor.suppressClass("org.junit.Test");
-	return suppressor.runSuppressed(new Callable<Iterable<Result>>() {
-	    @Override
-	    public Iterable<Result> call() throws Exception {
-		return new JUnitResultCollector().collectFrom(Class
+	return suppressor.runSuppressed{
+	    return new JUnitResultCollector().collectFrom(Class
 			.forName("org.example.TestClass"));
-	    }
-	});
+	    
+	}
     }
 
 }
