@@ -20,8 +20,7 @@ import eu.ebdit.eau.util.Classes;
 final class JUnit4ResultCollector extends RunListener implements
 	Collector<Result> {
 
-    @Override
-    public boolean canCollectFrom(final Object input) {
+    private boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
     
@@ -78,12 +77,12 @@ final class JUnit4ResultCollector extends RunListener implements
     // NOPMD
     public void testStarted(final Description description) throws Exception {// NOPMD
 	lastResult = new ResultBean();
-	lastResult.setPassed(true);
+	lastResult.setSuccess(true);
 	lastResult.setFullName(description.getDisplayName());
     }
     
     private void handleFailure(final Failure failure) {
-	lastResult.setPassed(false);
+	lastResult.setSuccess(false);
 	lastResult.setMessage(failure.getMessage() == null ? failure.getTrace()
 		: failure.getMessage());
     }

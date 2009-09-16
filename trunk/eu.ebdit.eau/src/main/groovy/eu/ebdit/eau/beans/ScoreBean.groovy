@@ -13,7 +13,7 @@ public class ScoreBean implements Score{
 	double points
 	String suiteName
 	String checkName
-	String message
+	String description
 	String details
 	
 }

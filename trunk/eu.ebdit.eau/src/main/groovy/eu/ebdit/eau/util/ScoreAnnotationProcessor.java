@@ -45,7 +45,7 @@ public class ScoreAnnotationProcessor extends AbstractProcessor {
 	final ScoreBean score = new ScoreBean();
 	score.setBonus(bonus != null);
 	score.setPoints(points.value());
-	score.setMessage(desc == null ? null : desc.value());
+	score.setDescription(desc == null ? null : desc.value());
 	score.setSuiteName(getClassName(element));
 	score.setDetails(details == null ? null : details.value());
 	score.setCheckName(element.getSimpleName().toString());

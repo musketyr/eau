@@ -61,8 +61,8 @@ public class SimpleReportTest {
 
     @Test
     public void testMessage(){
-	assertEquals(F1_MESSAGE, fixture1.getMessage());//NOPMD
-	assertEquals(F2_MESSAGE, fixture2.getMessage());//NOPMD
+	assertEquals(F1_MESSAGE, fixture1.getDescription());//NOPMD
+	assertEquals(F2_MESSAGE, fixture2.getDescription());//NOPMD
     }
 
     @Test

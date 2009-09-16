@@ -10,11 +10,11 @@ import eu.ebdit.eau.util.AbstractResultCollectorTest;
 
 
 public class JUnit4ResultCollectorTest extends AbstractResultCollectorTest {
-    
-
-    @Override
-    protected Iterable<Result> getResults() {
-	return new JUnit4ResultCollector().collectFrom(Class.forName("org.example.TestClass"));
-    }
-
+	
+	
+	@Override
+	protected Iterable<Result> getResults() {
+		return new JUnit4ResultCollector().collectFrom(Class.forName("org.example.TestClass"));
+	}
+	
 }

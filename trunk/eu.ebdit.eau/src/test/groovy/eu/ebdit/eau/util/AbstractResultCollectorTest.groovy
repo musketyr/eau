@@ -28,16 +28,16 @@ public abstract class AbstractResultCollectorTest {
 			    || result.checkName == 'testDummy'
 			) {
 				assertEquals(null, result.message)
-				assertTrue(result.passed())
+				assertTrue(result.isSuccess())
 			} else if (result.getCheckName() == 'testTwo') {
 				assertTrue(result.message.contains("I've failed"));
-				assertFalse(result.passed())
+				assertFalse(result.isSuccess())
 			} else if (result.getCheckName() == 'testThree') {
 				assertTrue("Should start with \n\n${cleanUpWhitespaces(TEST_3_FAILURE_START)}\n" +
 					" but was \n\n${cleanUpWhitespaces(result.message)}",
 					cleanUpWhitespaces(result.message).startsWith(
 						cleanUpWhitespaces(TEST_3_FAILURE_START)))
-				assertFalse(result.passed())
+				assertFalse(result.isSuccess())
 			}  else {
 				fail("No other names allowed")
 			}

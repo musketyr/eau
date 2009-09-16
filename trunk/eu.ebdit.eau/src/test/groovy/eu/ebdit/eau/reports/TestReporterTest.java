@@ -34,7 +34,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
 		METHOD_1_MESSAGE);
 	assertEquals(CLASS_FQNAME, result.getSuiteName());//NOPMD
 	assertEquals(METHOD_NAME_1, result.getCheckName());//NOPMD
-	assertTrue(result.passed());//NOPMD
+	assertTrue(result.isSuccess());//NOPMD
 	assertEquals(METHOD_1_MESSAGE, result.getMessage());//NOPMD
     }
 
@@ -45,7 +45,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
 	assertEquals(CLASS_FQNAME, score.getSuiteName());//NOPMD
 	assertEquals(METHOD_NAME_1, score.getCheckName());//NOPMD
 	assertEquals(0.5, score.getPoints(), EPSILON);//NOPMD
-	assertEquals(SCORE_1_MESSAGE_OK, score.getMessage());//NOPMD
+	assertEquals(SCORE_1_MESSAGE_OK, score.getDescription());//NOPMD
 	assertEquals(false, score.isBonus());//NOPMD
     }
 
@@ -70,7 +70,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
 	when(Score.getSuiteName()).thenReturn(className);
 	when(Score.getCheckName()).thenReturn(testName);
 	when(Score.getPoints()).thenReturn(score);
-	when(Score.getMessage()).thenReturn(message);
+	when(Score.getDescription()).thenReturn(message);
 	when(Score.isBonus()).thenReturn(bonus);
 	return Score;
     }
@@ -80,7 +80,7 @@ public class TestReporterTest extends AbstractTestReporterTest {
 	final Result result = mock(Result.class);
 	when(result.getSuiteName()).thenReturn(className);
 	when(result.getCheckName()).thenReturn(methodName);
-	when(result.passed()).thenReturn(passed);
+	when(result.isSuccess()).thenReturn(passed);
 	when(result.getMessage()).thenReturn(message);
 	return result;
     }

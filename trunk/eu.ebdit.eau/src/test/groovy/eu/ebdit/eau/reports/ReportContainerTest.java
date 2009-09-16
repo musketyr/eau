@@ -61,8 +61,8 @@ public class ReportContainerTest {
 
     @Test
     public void testMessage() {
-	assertEquals(FIXTURE1_MESSAGE, fixture1.getMessage());//NOPMD
-	assertEquals(FIXTURE2_MESSAGE, fixture2.getMessage());//NOPMD
+	assertEquals(FIXTURE1_MESSAGE, fixture1.getDescription());//NOPMD
+	assertEquals(FIXTURE2_MESSAGE, fixture2.getDescription());//NOPMD
     }
 
     @Test

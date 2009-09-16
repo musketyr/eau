@@ -22,7 +22,7 @@ public abstract class AbstractTestReporterTest {
         final Reporter reporter = getReporter();
         final Report report = reporter.report();
         assertNotNull(report);//NOPMD
-        assertNotNull(report.getMessage());//NOPMD
+        assertNotNull(report.getDescription());//NOPMD
         assertEquals(0.5, report.getPoints(), EPSILON);//NOPMD
         assertEquals(1.25, report.getMaxPoints(), EPSILON);//NOPMD
         assertEquals(2.25, report.getMaxPointsWithBonus(), EPSILON);//NOPMD

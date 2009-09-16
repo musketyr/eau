@@ -27,12 +27,12 @@ public class ResultBeanTest {
     @Test
     public void testPassed() throws Exception {
 	ResultBean bean = new ResultBean();
-	bean.setPassed(true);
-	assertTrue(bean.getPassed());
-	assertTrue(bean.passed());
-	bean.setPassed(false);
-	assertFalse(bean.getPassed());
-	assertFalse(bean.passed());
+	bean.setSuccess(true);
+	assertTrue(bean.isSuccess());
+	assertTrue(bean.isSuccess());
+	bean.setSuccess(false);
+	assertFalse(bean.isSuccess());
+	assertFalse(bean.isSuccess());
     }
     
 }

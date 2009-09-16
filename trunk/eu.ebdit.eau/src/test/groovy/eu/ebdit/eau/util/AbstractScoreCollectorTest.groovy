@@ -21,17 +21,17 @@ public abstract class AbstractScoreCollectorTest {
 			assertEquals("org.example.TestClass", score.suiteName)
 			if (score.getCheckName() == 'testOne') {
 				assertEquals(0.5, score.points, EPSILON)
-				assertEquals("Test one is for 0.5 points", score.message)
+				assertEquals("Test one is for 0.5 points", score.description)
 				assertEquals(null, score.details)
 				assertFalse(score.bonus)
 			} else if (score.getCheckName() == 'testTwo') {
 				assertEquals(0.75, score.points, EPSILON)
-				assertEquals(null, score.message)
+				assertEquals(null, score.description)
 				assertEquals(null, score.details)
 				assertFalse(score.bonus);
 			} else if (score.getCheckName() == 'testThree') {
 				assertEquals(1, score.points, EPSILON)
-				assertEquals("Bonus", score.message)
+				assertEquals("Bonus", score.description)
 				assertEquals(
 						"These are details explaining" +
 						" why you have bonus points for this" +

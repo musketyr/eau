@@ -43,7 +43,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return ret;
     }
 
-    public String getMessage() {
+    public String getDescription() {
 	return message;
     }
 
@@ -82,7 +82,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	final StringBuilder ret = new StringBuilder();
 	ret.append(ident(ident)).append(
 		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
-			getMessage())).append(" {\n");
+			getDescription())).append(" {\n");
 	for (Report er : reports) {
 	    if (er == null) {
 		continue;
