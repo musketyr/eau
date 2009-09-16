@@ -7,7 +7,7 @@ public final class JUnitResultCollector implements Collector<Result> {
 
     private final Collector<Result> currentImplementation;
     
-    private JUnitResultCollector() {
+    public JUnitResultCollector() {
 	this.currentImplementation = getCollector();
     }
 
