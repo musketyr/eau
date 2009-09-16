@@ -6,37 +6,37 @@ import java.util.Collections;
 
 import eu.ebdit.eau.Report;
 
-public final class SimpleReport implements Report, Serializable {//NOPMD
+public final class SimpleReport implements Report, Serializable { //NOPMD
 
     private static final long serialVersionUID = -3254636032451267126L;
     private final double points;
     private final double max;
     private final double maxWithBonuses;
-    private final String message;
+    private final String description;
     private final String details;
 
-    public SimpleReport(final String message, final double points,
+    public SimpleReport(final String description, final double points,
 	    final double max, final double maxWithBonuses, final String details) {
 	this.points = points;
 	this.max = max;
 	this.maxWithBonuses = maxWithBonuses;
-	this.message = message;
+	this.description = description;
 	this.details = details;
     }
 
-    public SimpleReport(final String message, final double points,
+    public SimpleReport(final String description, final double points,
 	    final double max, final double maxWithBonuses) {
-	this(message, points, max, maxWithBonuses, null);
+	this(description, points, max, maxWithBonuses, null);
     }
 
-    public SimpleReport(final String message, final double points,
+    public SimpleReport(final String description, final double points,
 	    final double max, final String details) {
-	this(message, points, max, max, details);
+	this(description, points, max, max, details);
     }
 
-    public SimpleReport(final String message, final double points,
+    public SimpleReport(final String description, final double points,
 	    final double max) {
-	this(message, points, max, max, null);
+	this(description, points, max, max, null);
     }
 
     public Collection<Report> getReports() {
@@ -51,8 +51,8 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
 	return maxWithBonuses;
     }
 
-    public String getMessage() {
-	return message;
+    public String getDescription() {
+	return description;
     }
 
     public String getDetails() {
@@ -83,7 +83,7 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
 	result = prime * result + (int) (temp ^ (temp >>> 32));
 	temp = Double.doubleToLongBits(maxWithBonuses);
 	result = prime * result + (int) (temp ^ (temp >>> 32));
-	result = prime * result + ((message == null) ? 0 : message.hashCode());
+	result = prime * result + ((description == null) ? 0 : description.hashCode());
 	temp = Double.doubleToLongBits(points);
 	result = prime * result + (int) (temp ^ (temp >>> 32));
 	return result;
@@ -108,11 +108,11 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
 		.doubleToLongBits(other.maxWithBonuses)) {
 	    return false;
 	}
-	if (message == null) {
-	    if (other.message != null) {
+	if (description == null) {
+	    if (other.description != null) {
 		return false;
 	    }
-	} else if (!message.equals(other.message)) {
+	} else if (!description.equals(other.description)) {
 	    return false;
 	}
 	if (Double.doubleToLongBits(points) != Double
@@ -126,6 +126,6 @@ public final class SimpleReport implements Report, Serializable {//NOPMD
     public String toString() {
 	return String.format("%06.2f%% of %06.2f (%06.2f) - %s",
 		getSuccessPercentage() * 100, getMaxPoints(),
-		getMaxPointsWithBonus(), getMessage());
+		getMaxPointsWithBonus(), getDescription());
     }
 }

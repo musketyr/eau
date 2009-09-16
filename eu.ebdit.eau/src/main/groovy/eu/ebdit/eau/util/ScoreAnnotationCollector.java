@@ -18,8 +18,7 @@ import eu.ebdit.eau.beans.ScoreBean;
 
 public class ScoreAnnotationCollector implements Collector<Score>{
    
-    @Override
-    public boolean canCollectFrom(final Object input) {
+    private boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
@@ -58,7 +57,7 @@ public class ScoreAnnotationCollector implements Collector<Score>{
 	bean.setSuiteName(clazz.getName());
 	bean.setCheckName(method.getName());
 	bean.setPoints(method.getAnnotation(Points.class).value());
-	bean.setMessage(desc);
+	bean.setDescription(desc);
 	bean.setBonus(method.isAnnotationPresent(Bonus.class));
 	bean.setDetails(details);
 	return bean;

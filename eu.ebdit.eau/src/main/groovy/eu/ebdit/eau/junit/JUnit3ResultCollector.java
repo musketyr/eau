@@ -14,15 +14,14 @@ import eu.ebdit.eau.Result;
 import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.util.Classes;
 
-public final class JUnit3ResultCollector extends BaseTestRunner implements
+final class JUnit3ResultCollector extends BaseTestRunner implements
 	Collector<Result> {
 
     private transient ResultBean lastResult;
 
     private transient Collection<Result> results = Lists.newArrayList();
 
-    @Override
-    public boolean canCollectFrom(final Object input) {
+    private boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
@@ -55,7 +54,7 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     // NOPMD
     public void testFailed(final int status, final Test test,
 	    final Throwable trowable) {
-	lastResult.setPassed(false);
+	lastResult.setSuccess(false);
 	lastResult.setMessage(getFilteredTrace(trowable));
     }
 
@@ -63,7 +62,7 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     // NOPMD
     public void testStarted(final String testName) {
 	lastResult = new ResultBean();
-	lastResult.setPassed(true);
+	lastResult.setSuccess(true);
 	lastResult.setFullName(testName);
     }
 

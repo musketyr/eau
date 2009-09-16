@@ -34,7 +34,7 @@ public class XmlScoreParser implements Collector<Score>{
 				checkName: it.'@name', 
 				points: it.'@points'.toDouble(),
 				bonus: it.'@bonus'? true : false, 
-				message: it.'@message', 
+				description: it.'@message', 
 				details: it.text() ? it.text() : null
 				)
 			}

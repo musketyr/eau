@@ -11,11 +11,9 @@ public class ResultBean implements Result{
 
 	String suiteName
 	String message
-	boolean passed
+	boolean success
 	String checkName
 	
-	boolean passed(){ return passed
-	}
 	
 	def getFullName(){
 	    if (!suiteName && !checkName) {
