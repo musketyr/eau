@@ -80,6 +80,16 @@
 							<goal>testCompile</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>generate-findbugs-exclude</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<source>${pom.basedir}/src/main/script/findbugs.groovy</source>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -162,7 +172,7 @@
 					<findbugsXmlOutput>true</findbugsXmlOutput>
 					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
 					<xmlOutput>true</xmlOutput>
-					<excludeFilterFile>src/config/findbugs-exclude.xml</excludeFilterFile>
+					<excludeFilterFile>${project.build.directory}/findbugs-exclude.xml</excludeFilterFile>
 				</configuration>
 			</plugin>
 			<plugin>
