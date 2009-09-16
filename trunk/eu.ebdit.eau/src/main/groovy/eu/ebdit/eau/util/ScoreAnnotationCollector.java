@@ -19,11 +19,11 @@ import eu.ebdit.eau.beans.ScoreBean;
 public class ScoreAnnotationCollector implements Collector<Score>{
    
     @Override
-    public boolean canCollectFrom(final Object... input) {
+    public boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
-    public final List<Score> collectFrom(final Object... input) {
+    public final List<Score> collectFrom(final Object input) {
 	if (!canCollectFrom(input)) {
 	    return Collections.emptyList();
 	}
