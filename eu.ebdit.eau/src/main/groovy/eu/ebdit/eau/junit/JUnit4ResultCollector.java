@@ -21,11 +21,11 @@ final class JUnit4ResultCollector extends RunListener implements
 	Collector<Result> {
 
     @Override
-    public boolean canCollectFrom(final Object... input) {
+    public boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
     
-    public Iterable<Result> collectFrom(final Object... input) {
+    public Iterable<Result> collectFrom(final Object input) {
 	if (!canCollectFrom(input)) {
 	    return Collections.emptyList();
 	}

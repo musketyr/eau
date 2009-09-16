@@ -12,13 +12,14 @@ public final class Classes {
     private Classes() {
 	// prevents instance creation and subtyping
     }
-    
-    public static final Class<?> classForName(CharSequence name){
+
+    public static final Class<?> classForName(Object name) {
 	if (name == null) {
 	    return null;
 	}
 	try {
-	    return Class.forName(name.toString(), false, Thread.currentThread().getContextClassLoader());
+	    return Class.forName(name.toString(), false, Thread.currentThread()
+		    .getContextClassLoader());
 	} catch (ClassNotFoundException e) {
 	    return null;
 	}
@@ -27,6 +28,9 @@ public final class Classes {
     public static final Iterable<Class<?>> asClassIterable(Object object) {
 	if (object == null) {
 	    return Collections.emptyList();
+	}
+	if (Class.class.isAssignableFrom(object.getClass())) {
+	    return Arrays.asList(new Class<?>[]{ (Class<?>) object});
 	}
 	if (object.getClass().isArray()) {
 	    if (Class.class.isAssignableFrom(object.getClass()
@@ -40,22 +44,25 @@ public final class Classes {
 		    if (Class.class.isAssignableFrom(obj.getClass())) {
 			ret.add((Class<?>) obj);
 		    }
-		    if (CharSequence.class.isAssignableFrom(obj.getClass())) {
-			final Class<?> classForName = Classes
-				.classForName((CharSequence) obj);
-			if (classForName != null) {
-			    ret.add(classForName);
-			}
+		    final Class<?> classForName = Classes
+		    .classForName(obj);
+		    if (classForName != null) {
+			ret.add(classForName);
 		    }
 		}
 	    }
 	    return ImmutableList.copyOf(ret);
 	}
+	final Class<?> classForName = Classes.classForName(object);
+	if (classForName != null) {
+	    return Arrays.asList(new Class<?>[]{classForName});
+	}
 	return Collections.emptyList();
     }
 
     public static Class<?>[] asClassArray(Object input) {
-	return ImmutableList.copyOf(asClassIterable(input)).toArray(new Class<?>[]{});
+	return ImmutableList.copyOf(asClassIterable(input)).toArray(
+		new Class<?>[] {});
     }
-    
+
 }

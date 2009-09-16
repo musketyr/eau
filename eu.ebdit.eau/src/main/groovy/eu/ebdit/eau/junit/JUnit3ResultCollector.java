@@ -22,12 +22,12 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     private transient Collection<Result> results = Lists.newArrayList();
 
     @Override
-    public boolean canCollectFrom(final Object... input) {
+    public boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
     @Override
-    public Iterable<Result> collectFrom(final Object... input) {
+    public Iterable<Result> collectFrom(final Object input) {
 	if (!canCollectFrom(input)) {
 	    return Collections.emptyList();
 	}

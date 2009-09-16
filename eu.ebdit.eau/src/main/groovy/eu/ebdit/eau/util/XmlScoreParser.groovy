@@ -16,16 +16,16 @@ import eu.ebdit.eau.beans.ScoreBean;
  */
 public class XmlScoreParser implements Collector<Score>{
 	
-	boolean canCollectFrom(Object[] toBeParsed){
-	    return toBeParsed.every{ new XmlParser().parse(it).name() == 'score'};
+	boolean canCollectFrom(toBeParsed){
+		return normalize(toBeParsed).every{ new XmlParser().parse(it).name() == 'score'};
 	}
 	
-	Iterable<Score> collectFrom(Object[] toBeParsed){
-	    if (!canCollectFrom(toBeParsed)){
-		return [];
-	    }
-	    List<Score> ret = []
-		toBeParsed.each {
+	Iterable<Score> collectFrom(toBeParsed){
+		if (!canCollectFrom(toBeParsed)){
+			return [];
+		}
+		List<Score> ret = []
+		normalize(toBeParsed).each {
 			def points = new XmlParser().parse(it);
 			
 			points.'suite'.'check'.each{
@@ -44,4 +44,10 @@ public class XmlScoreParser implements Collector<Score>{
 		return ret
 	}
 	
+	private normalize(toBeParsed){
+		if (toBeParsed.getClass().isArray() || (toBeParsed instanceof Iterable)) {
+			return toBeParsed
+		}
+		return [toBeParsed]
+	}
 }
