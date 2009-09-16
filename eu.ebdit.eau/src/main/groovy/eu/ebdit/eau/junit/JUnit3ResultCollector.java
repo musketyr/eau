@@ -63,7 +63,7 @@ public final class JUnit3ResultCollector extends BaseTestRunner implements
     // NOPMD
     public void testStarted(final String testName) {
 	lastResult = new ResultBean();
-	lastResult.init();
+	lastResult.setPassed(true);
 	lastResult.setFullName(testName);
     }
 

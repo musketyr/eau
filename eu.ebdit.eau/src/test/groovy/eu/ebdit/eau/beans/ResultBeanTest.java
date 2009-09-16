@@ -25,16 +25,6 @@ public class ResultBeanTest {
     }
     
     @Test
-    public void testInitPassed() throws Exception {
-	ResultBean bean = new ResultBean();
-	assertFalse(bean.passed());
-	assertNull(bean.getMessage());
-	bean.init();
-	assertTrue(bean.passed());
-	assertEquals("", bean.getMessage());
-    }
-    
-    @Test
     public void testPassed() throws Exception {
 	ResultBean bean = new ResultBean();
 	bean.setPassed(true);

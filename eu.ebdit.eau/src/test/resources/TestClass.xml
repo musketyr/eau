@@ -2,7 +2,7 @@
   <testsuite name="org.example.TestClass" time="0.015">
     <testcase name="testOne" classname="org.example.TestClass" time="0.0"/>
     <testcase name="testTwo" classname="org.example.TestClass" time="0.015">
-      <failure>java.lang.AssertionError: 
+      <failure>I've failed
 	at org.junit.Assert.fail(Assert.java:91)
 	at org.junit.Assert.assertTrue(Assert.java:43)
 	at org.junit.Assert.assertTrue(Assert.java:54)
@@ -36,7 +36,7 @@
     </testcase>
     <testcase name="testThree" classname="org.example.TestClass" time="0.0">
       <error>java.lang.Exception
-	at org.example.TestClass.testThree(TestClass.java:26)
+	at org.example.TestClass.testThree(TestClass.java:37)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -64,4 +64,5 @@
 
 </error>
     </testcase>
+     <testcase name="testDummy" classname="org.example.TestClass" time="0.0"/>
   </testsuite>

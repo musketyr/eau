@@ -78,7 +78,7 @@ final class JUnit4ResultCollector extends RunListener implements
     // NOPMD
     public void testStarted(final Description description) throws Exception {// NOPMD
 	lastResult = new ResultBean();
-	lastResult.init();
+	lastResult.setPassed(true);
 	lastResult.setFullName(description.getDisplayName());
     }
     
