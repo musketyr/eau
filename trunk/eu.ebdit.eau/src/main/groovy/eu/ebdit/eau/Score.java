@@ -4,6 +4,8 @@ public interface Score {
 
     String getMessage();
     
+    String getDetails();
+    
     double getPoints();
 
     boolean isBonus();

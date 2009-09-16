@@ -8,18 +8,13 @@ import eu.ebdit.eau.Result
 public class ResultBean implements Result{
 	
 	private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
-	
+
 	String suiteName
 	String message
 	boolean passed
 	String checkName
 	
 	boolean passed(){ return passed
-	}
-	
-	def init(){
-		passed = true
-		message = ''
 	}
 	
 	def getFullName(){
