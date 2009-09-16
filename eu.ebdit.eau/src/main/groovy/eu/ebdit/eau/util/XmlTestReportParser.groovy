@@ -10,17 +10,16 @@ public class XmlTestReportParser{
 		if (testsuite.name() == 'testsuite') {
 			List<Result> ret = []
 			testsuite.testcase.each{
-				DefaultStatus status = DefaultStatus.OK
-				String message = ''
+				String message = ''				boolean passed = true
 				if (it.error){
-					status = DefaultStatus.ERROR
+					passed = false
 					message = it.error.text()
 				}
 				if (it.failure) {
-					status = DefaultStatus.FAILED
+				    	passed = false
 					message = it.failure.text()
 				}
-				ret << new ResultBean(suiteName: it.'@classname', checkName: it.'@name', status: status, message: message)
+				ret << new ResultBean(suiteName: it.'@classname', checkName: it.'@name', passed: passed, message: message)
 			}
 			return ret
 		}

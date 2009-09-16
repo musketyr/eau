@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import eu.ebdit.eau.beans.ResultBean;
-import eu.ebdit.eau.util.DefaultStatus;
 
 final class JUnitTestHelper {
 
@@ -16,11 +15,7 @@ final class JUnitTestHelper {
 
     static ResultBean handleStatus(final ResultBean result,
 	    final Throwable exception) {
-	if (exception instanceof AssertionError) {
-	    result.setStatus(DefaultStatus.FAILED);
-	} else {
-	    result.setStatus(DefaultStatus.ERROR);
-	}
+	result.setPassed(false);
 	return result;
     }
 
@@ -38,7 +33,7 @@ final class JUnitTestHelper {
 
     static ResultBean initResult() {
 	final ResultBean result = new ResultBean();
-	result.setStatus(DefaultStatus.OK);
+	result.setPassed(true);
 	result.setMessage("");
 	return result;
     }

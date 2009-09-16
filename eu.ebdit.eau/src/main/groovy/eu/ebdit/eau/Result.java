@@ -4,7 +4,7 @@ public interface Result {
 
     String getMessage();
 
-    Status getStatus();
+    boolean passed();
     
     String getSuiteName();
 
