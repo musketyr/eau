@@ -86,11 +86,11 @@
 						<goals>
 							<goal>execute</goal>
 						</goals>
-						<configuration>
-							<source>${pom.basedir}/src/main/script/findbugs.groovy</source>
-						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<source>${pom.basedir}/src/main/script/findbugs.groovy</source>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
