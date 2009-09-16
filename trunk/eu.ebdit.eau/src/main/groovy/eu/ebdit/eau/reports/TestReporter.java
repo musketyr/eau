@@ -43,7 +43,7 @@ public final class TestReporter implements Reporter {
 	    final Result result) {
 	final String message = Score.getMessage() == null ? result
 		.getMessage() : Score.getMessage();
-	final double points = result.getStatus().isOK() ? Score.getPoints()
+	final double points = result.passed() ? Score.getPoints()
 		: 0;
 	final double max = Score.isBonus() ? 0 : Score.getPoints();
 	final double maxWB = Score.getPoints();

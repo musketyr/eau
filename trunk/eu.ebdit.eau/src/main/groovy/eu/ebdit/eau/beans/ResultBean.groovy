@@ -1,15 +1,16 @@
 package eu.ebdit.eau.beans
 
 import eu.ebdit.eau.Result
-import eu.ebdit.eau.Status
 
 /**
- * @author Vladimír Oraný
+ * @author Vladimï¿½r Oranï¿½
  *
  */
 public class ResultBean implements Result{
     	String suiteName
 	String message
-	Status status
-	String checkName	
+	boolean passed
+	String checkName
+
+	boolean passed(){ return passed}
 }
