@@ -1,5 +1,6 @@
 package eu.ebdit.eau.junit;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.runner.Description;
@@ -7,26 +8,31 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.ResultCollector;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ResultBean;
+import eu.ebdit.eau.util.Classes;
 
 final class JUnit4ResultCollector extends RunListener implements
-	ResultCollector {
+	Collector<Result> {
 
-    private JUnit4ResultCollector() {
-	// prevents instance creation and subtyping
+    @Override
+    public boolean canCollectFrom(final Object... input) {
+	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
-
-    public static ResultCollector collectResults(final Class<?>... classes) {
-	final JUnit4ResultCollector erl = new JUnit4ResultCollector();
+    
+    public Iterable<Result> collectFrom(final Object... input) {
+	if (!canCollectFrom(input)) {
+	    return Collections.emptyList();
+	}
 	final JUnitCore core = new JUnitCore();
-	core.addListener(erl);
-	core.run(classes);
-	return erl;
+	core.addListener(this);
+	core.run(Classes.asClassArray(input));
+	return results;
     }
 
     private transient ResultBean lastResult;

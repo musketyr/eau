@@ -19,13 +19,11 @@ import eu.ebdit.eau.Description;
 import eu.ebdit.eau.Details;
 import eu.ebdit.eau.Points;
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.ScoreCollector;
 import eu.ebdit.eau.beans.ScoreBean;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.*")
-public class ScoreAnnotationProcessor extends AbstractProcessor implements
-	ScoreCollector {
+public class ScoreAnnotationProcessor extends AbstractProcessor {
 
     private transient final List<Score> scores = Lists.newArrayList();
 

@@ -14,7 +14,7 @@ public class JUnit4ResultCollectorTest extends TestReporterTest {
 
     @Override
     protected Iterable<Result> getResultList() throws ClassNotFoundException {
-	return JUnit4ResultCollector.collectResults(Class.forName("org.example.TestClass")).getResults();
+	return new JUnit4ResultCollector().collectFrom(Class.forName("org.example.TestClass"));
     }
     
     @Override @Test @Ignore

@@ -13,7 +13,7 @@ public class ScoreFromAnnotationTest extends TestReporterTest {
 
     @Override
     protected List<Score> getScoreList() throws ClassNotFoundException {
-	return new ScoreAnnotationCollector().check(Class.forName("org.example.TestClass"));
+	return new ScoreAnnotationCollector().collectFrom(Class.forName("org.example.TestClass"));
     }
 
     @Override @Test @Ignore

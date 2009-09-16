@@ -11,7 +11,7 @@ public class JUnit3ResultCollectorTest extends TestReporterTest {
 
     @Override
     protected Iterable<Result> getResultList() throws ClassNotFoundException {
-	return JUnit3ResultCollector.collectResults(Class.forName("org.example.TestClass")).getResults();
+	return new JUnit3ResultCollector().collectFrom(Class.forName("org.example.TestClass"));
     }
     
     @Override @Test @Ignore

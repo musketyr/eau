@@ -2,9 +2,10 @@ package eu.ebdit.eau.junit;
 
 import java.util.Arrays;
 
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Report;
 import eu.ebdit.eau.Reporter;
-import eu.ebdit.eau.ResultCollector;
+import eu.ebdit.eau.Result;
 import eu.ebdit.eau.reports.TestReporter;
 import eu.ebdit.eau.util.ScoreAnnotationCollector;
 
@@ -21,17 +22,17 @@ public final class JUnitTestReporter implements Reporter {
     }
 
     public Report report() {
-	final ResultCollector col = getCollector();
-	return TestReporter.of(new ScoreAnnotationCollector().check(classes),
-		col.getResults()).report();
+	final Collector<Result> col = getCollector();
+	return TestReporter.of(new ScoreAnnotationCollector().collectFrom((Object[])classes),
+		col.collectFrom((Object[])classes)).report();
     }
 
-    private ResultCollector getCollector() {
+    private Collector<Result> getCollector() {
 	try {
 	    Class.forName("org.junit.Test");
-	    return JUnit4ResultCollector.collectResults(classes);
+	    return new JUnit4ResultCollector();
 	} catch (ClassNotFoundException e) {
-	    return JUnit3ResultCollector.collectResults(classes);
+	    return new JUnit3ResultCollector();
 	}
     }
 
