@@ -48,28 +48,28 @@ public class ReportContainerTest {
     }
 
     @Test
-    public void testPoints()  {
+    public void testPoints() {
 	assertEquals(3, fixture1.getPoints(), EPSILON);
 	assertEquals(5, fixture2.getPoints(), EPSILON);
     }
 
     @Test
     public void testChildren() {
-	assertEquals(fixture1Items, fixture1.getReports());//NOPMD
-	assertEquals(fixture2Items, fixture2.getReports());//NOPMD
+	assertEquals(fixture1Items, fixture1.getReports());// NOPMD
+	assertEquals(fixture2Items, fixture2.getReports());// NOPMD
     }
 
     @Test
     public void testMessage() {
-	assertEquals(FIXTURE1_MESSAGE, fixture1.getDescription());//NOPMD
-	assertEquals(FIXTURE2_MESSAGE, fixture2.getDescription());//NOPMD
+	assertEquals(FIXTURE1_MESSAGE, fixture1.getDescription());// NOPMD
+	assertEquals(FIXTURE2_MESSAGE, fixture2.getDescription());// NOPMD
     }
 
     @Test
     public void testEqualsAndHashCode() {
-	assertEquals(fixture1, ReportContainer.of(FIXTURE1_MESSAGE, //NOPMD
+	assertEquals(fixture1, ReportContainer.of(FIXTURE1_MESSAGE, // NOPMD
 		fixture1Items));
-	assertEquals(fixture1.hashCode(), ReportContainer.of(FIXTURE1_MESSAGE, //NOPMD
+	assertEquals(fixture1.hashCode(), ReportContainer.of(FIXTURE1_MESSAGE, // NOPMD
 		fixture1Items).hashCode());
     }
 
@@ -89,11 +89,11 @@ public class ReportContainerTest {
 	when(report.getMaxPointsWithBonus()).thenReturn(pointsWithBonuses);
 	return report;
     }
-    
+
     public Report getFixture1() {
 	return fixture1;
     }
-    
+
     public Report getFixture2() {
 	return fixture2;
     }

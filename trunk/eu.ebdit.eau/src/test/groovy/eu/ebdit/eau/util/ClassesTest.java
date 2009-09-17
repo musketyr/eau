@@ -10,10 +10,10 @@ public class ClassesTest {
 
     @Test
     public void testClassForName() throws Exception {
-	assertNull(Classes.classForName(null));
-	assertNull(Classes.classForName(new StringBuilder("no.such.Class")));
-	assertEquals(System.class, Classes.classForName("java.lang.System"));
-	assertEquals(System.class, Classes.classForName(new Object() {
+	assertNull(Classes.existingClass(null));
+	assertNull(Classes.existingClass(new StringBuilder("no.such.Class")));
+	assertEquals(System.class, Classes.existingClass("java.lang.System"));
+	assertEquals(System.class, Classes.existingClass(new Object() {
 	    @Override
 	    public String toString() {
 		return "java.lang.System";

@@ -30,11 +30,5 @@ public class XmlResultParserTest extends AbstractResultCollectorTest {
 	}
     }
 
-    @Test
-    public void testCannotParse() throws URISyntaxException {
-	assertFalse(new XmlResultParser().canCollectFrom(new File(
-		XmlResultParserTest.class.getResource("/TestClass.points.eau.xml")
-			.toURI())));
-
-    }
+    
 }
