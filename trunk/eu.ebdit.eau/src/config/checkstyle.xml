@@ -188,6 +188,7 @@ under the License.
         <module name="GenericIllegalRegexp">
             <property name="format" value="\s+$"/>
             <property name="message" value="Line has trailing spaces."/>
+            <property name="ignoreComments" value="true"/>
         </module>
 <!--        <module name="TodoComment"/>-->
         <module name="UpperEll"/>
