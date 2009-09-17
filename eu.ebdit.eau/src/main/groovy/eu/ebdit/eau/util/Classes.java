@@ -13,7 +13,7 @@ public final class Classes {
 	// prevents instance creation and subtyping
     }
 
-    public static Class<?> classForName(final Object name) {
+    public static Class<?> existingClass(final Object name) {
 	if (name == null) {
 	    return null;
 	}
@@ -45,7 +45,7 @@ public final class Classes {
 			ret.add((Class<?>) obj);
 		    }
 		    final Class<?> classForName = Classes
-		    .classForName(obj);
+		    .existingClass(obj);
 		    if (classForName != null) {
 			ret.add(classForName);
 		    }
@@ -53,7 +53,7 @@ public final class Classes {
 	    }
 	    return ImmutableList.copyOf(ret);
 	}
-	final Class<?> classForName = Classes.classForName(object);
+	final Class<?> classForName = Classes.existingClass(object);
 	if (classForName != null) {
 	    return Arrays.asList(new Class<?>[]{classForName});
 	}
