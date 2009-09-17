@@ -14,7 +14,6 @@ import com.google.common.collect.Lists;
 import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.util.Classes;
 
 final class JUnit4ResultCollector extends RunListener implements
@@ -23,7 +22,7 @@ final class JUnit4ResultCollector extends RunListener implements
     private boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
-    
+
     public Iterable<Result> collectFrom(final Object input) {
 	if (!canCollectFrom(input)) {
 	    return Collections.emptyList();
@@ -34,7 +33,7 @@ final class JUnit4ResultCollector extends RunListener implements
 	return results;
     }
 
-    private transient ResultBean lastResult;
+    private transient Result lastResult;
     private final transient List<Result> results = Lists.newArrayList();
     private final transient List<Score> scores = Lists.newArrayList();
 
@@ -76,15 +75,17 @@ final class JUnit4ResultCollector extends RunListener implements
     @Override
     // NOPMD
     public void testStarted(final Description description) throws Exception {// NOPMD
-	lastResult = new ResultBean();
-	lastResult.setSuccess(true);
-	lastResult.setFullName(description.getDisplayName());
+	lastResult = Result.ofFullName(description.getDisplayName());
     }
-    
+
     private void handleFailure(final Failure failure) {
-	lastResult.setSuccess(false);
-	lastResult.setMessage(failure.getMessage() == null ? failure.getTrace()
-		: failure.getMessage());
+	lastResult = Result.ofNames(lastResult.getSuiteName(), lastResult
+		.getCheckName(), false, messageFromFailure(failure));
+    }
+
+    private String messageFromFailure(final Failure failure) {
+	return failure.getMessage() == null ? failure.getTrace() : failure
+		.getMessage();
     }
 
 }
