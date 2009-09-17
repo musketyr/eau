@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @author Vladimír Oraný
  * 
  */
-@Immutable public class Result{
+@Immutable public final class Result{
 	
 	private static final Pattern PATTERN = Pattern.compile("(.*?)\\((.*?)\\)");
 	
