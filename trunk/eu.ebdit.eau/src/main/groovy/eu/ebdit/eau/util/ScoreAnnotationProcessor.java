@@ -25,7 +25,7 @@ import eu.ebdit.eau.beans.ScoreBean;
 @SupportedAnnotationTypes("eu.ebdit.eau.*")
 public class ScoreAnnotationProcessor extends AbstractProcessor {
 
-    private transient final List<Score> scores = Lists.newArrayList();
+    private final transient List<Score> scores = Lists.newArrayList();
 
     @Override
     public final boolean process(final Set<? extends TypeElement> annotations,

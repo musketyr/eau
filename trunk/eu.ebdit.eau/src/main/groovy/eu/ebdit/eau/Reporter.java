@@ -19,8 +19,8 @@ public final class Reporter {
     private final Iterable<Collector<Result>> resultCollectors;
     private final Iterable<Collector<Score>> scoreCollectors;
 
-    private Reporter(Iterable<Collector<Result>> resultCollectors,
-	    Iterable<Collector<Score>> scoreCollectors) {
+    private Reporter(final Iterable<Collector<Result>> resultCollectors,
+	    final Iterable<Collector<Score>> scoreCollectors) {
 	this.resultCollectors = ImmutableList.copyOf(resultCollectors);
 	this.scoreCollectors = ImmutableList.copyOf(scoreCollectors);
     }
@@ -33,7 +33,7 @@ public final class Reporter {
 	return scoreCollectors;
     }
 
-    public Report report(Object input) {
+    public Report report(final Object input) {
 	final Map<String, Map<String, Score>> scoreMap = collectScoresToMap(input);
 	final List<Report> children = Lists.newArrayList();
 	for (Result r : collectResults(input)) {
@@ -50,26 +50,26 @@ public final class Reporter {
 	return ReportContainer.of("Test Reporter", children);
     }
 
-    private Map<String, Map<String, Score>> collectScoresToMap(Object input) {
+    private Map<String, Map<String, Score>> collectScoresToMap(final Object input) {
 	return scoresToMap(collectScores(input));
     }
 
-    private Iterable<Score> collectScores(Object input) {
+    private Iterable<Score> collectScores(final Object input) {
 	return Iterables.concat(Iterables.transform(scoreCollectors,
 		new CollectByCollector<Score>(input)));
     }
 
-    private Iterable<Result> collectResults(Object input) {
+    private Iterable<Result> collectResults(final Object input) {
 	return Iterables.concat(Iterables.transform(resultCollectors,
 		new CollectByCollector<Result>(input)));
     }
 
-    private Report getReport(final Score Score, final Result result) {
-	final String message = Score.getDescription() == null ? result
-		.getMessage() : Score.getDescription();
-	final double points = result.isSuccess() ? Score.getPoints() : 0;
-	final double max = Score.isBonus() ? 0 : Score.getPoints();
-	final double maxWB = Score.getPoints();
+    private Report getReport(final Score score, final Result result) {
+	final String message = score.getDescription() == null ? result
+		.getMessage() : score.getDescription();
+	final double points = result.isSuccess() ? score.getPoints() : 0;
+	final double max = score.isBonus() ? 0 : score.getPoints();
+	final double maxWB = score.getPoints();
 	return new SimpleReport(message, points, max, maxWB);
     }
 
@@ -87,21 +87,21 @@ public final class Reporter {
 	return newMap;
     }
 
-    public static Builder withResultCollectors(Collector<Result> first,
-	    Collector<Result>... rest) {
+    public static Builder withResultCollectors(final Collector<Result> first,
+	    final Collector<Result>... rest) {
 	return new Builder().withResultCollectors(first, rest);
     }
 
-    public static Builder withScoreCollectors(Collector<Score> first,
-	    Collector<Score>... rest) {
+    public static Builder withScoreCollectors(final Collector<Score> first,
+	    final Collector<Score>... rest) {
 	return new Builder().withScoreCollectors(first, rest);
     }
 
-    public static Builder withResultCollectors(Iterable<Collector<Result>> collectors) {
+    public static Builder withResultCollectors(final Iterable<Collector<Result>> collectors) {
 	return new Builder().withResultCollectors(collectors);
     }
 
-    public static Builder withScoreCollectors(Iterable<Collector<Score>> collectors) {
+    public static Builder withScoreCollectors(final Iterable<Collector<Score>> collectors) {
 	return new Builder().withScoreCollectors(collectors);
     }
 
@@ -111,25 +111,25 @@ public final class Reporter {
 	private final Collection<Collector<Score>> scoreCollectors = Lists
 		.newArrayList();
 
-	public Builder withResultCollectors(Collector<Result> first,
-		Collector<Result>... rest) {
+	public Builder withResultCollectors(final Collector<Result> first,
+		final Collector<Result>... rest) {
 	    resultCollectors.addAll(Lists.asList(first, rest));
 	    return this;
 	}
 
-	public Builder withScoreCollectors(Collector<Score> first,
-		Collector<Score>... rest) {
+	public Builder withScoreCollectors(final Collector<Score> first,
+		final Collector<Score>... rest) {
 	    scoreCollectors.addAll(Lists.asList(first, rest));
 	    return this;
 	}
 
 	public Builder withResultCollectors(
-		Iterable<Collector<Result>> collectors) {
+		final Iterable<Collector<Result>> collectors) {
 	    resultCollectors.addAll(Lists.newArrayList(collectors));
 	    return this;
 	}
 
-	public Builder withScoreCollectors(Iterable<Collector<Score>> collectors) {
+	public Builder withScoreCollectors(final Iterable<Collector<Score>> collectors) {
 	    scoreCollectors.addAll(Lists.newArrayList(collectors));
 	    return this;
 	}
@@ -149,12 +149,12 @@ public final class Reporter {
 
 	private final Object input;
 
-	public CollectByCollector(Object input) {
+	public CollectByCollector(final Object input) {
 	    this.input = input;
 	}
 
 	@Override
-	public Iterable<T> apply(Collector<T> from) {
+	public Iterable<T> apply(final Collector<T> from) {
 	    return from.collectFrom(input);
 	}
     }

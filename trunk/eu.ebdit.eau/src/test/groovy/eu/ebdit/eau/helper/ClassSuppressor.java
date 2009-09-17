@@ -11,22 +11,22 @@ public final class ClassSuppressor {
     private final Collection<String> packages = Lists.newArrayList();
     private final Collection<String> regexs = Lists.newArrayList();;
 
-    public ClassSuppressor suppressClass(String suppressedClass) {
+    public ClassSuppressor suppressClass(final String suppressedClass) {
 	classes.add(suppressedClass);
 	return this;
     }
 
-    public ClassSuppressor suppressPackage(String suppressedPackage) {
+    public ClassSuppressor suppressPackage(final String suppressedPackage) {
 	packages.add(suppressedPackage);
 	return this;
     }
 
-    public ClassSuppressor suppressByRegExp(String regExp) {
+    public ClassSuppressor suppressByRegExp(final String regExp) {
 	regexs.add(regExp);
 	return this;
     }
 
-    public <T> T runSuppressed(Callable<T> job) {
+    public <T> T runSuppressed(final Callable<T> job) {
 	ClassLoader original = supressLoader();
 	try {
 	    try {
@@ -47,14 +47,14 @@ public final class ClassSuppressor {
 	return loader;
     }
 
-    private void restoreLoader(ClassLoader loader) {
+    private void restoreLoader(final ClassLoader loader) {
 	Thread.currentThread().setContextClassLoader(loader);
     }
 
     private class FakeClassLoader extends ClassLoader {
 
 	@Override
-	public Class<?> loadClass(String name) throws ClassNotFoundException {
+	public Class<?> loadClass(final String name) throws ClassNotFoundException {
 	    if (classes.contains(name)) {
 		throw new ClassNotFoundException();
 	    }

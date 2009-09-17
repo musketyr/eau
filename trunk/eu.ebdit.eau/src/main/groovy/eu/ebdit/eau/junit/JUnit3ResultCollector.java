@@ -37,7 +37,7 @@ final class JUnit3ResultCollector extends BaseTestRunner implements
 	return results;
     }
 
-    public final junit.framework.TestResult doRun(final Test suite) {
+    public junit.framework.TestResult doRun(final Test suite) {
 	final junit.framework.TestResult result = createResult();
 	suite.run(result);
 	return result;

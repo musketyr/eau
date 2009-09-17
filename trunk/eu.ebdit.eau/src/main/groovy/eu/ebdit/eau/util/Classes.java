@@ -13,7 +13,7 @@ public final class Classes {
 	// prevents instance creation and subtyping
     }
 
-    public static final Class<?> classForName(Object name) {
+    public static Class<?> classForName(final Object name) {
 	if (name == null) {
 	    return null;
 	}
@@ -25,7 +25,7 @@ public final class Classes {
 	}
     }
 
-    public static final Iterable<Class<?>> asClassIterable(Object object) {
+    public static Iterable<Class<?>> asClassIterable(final Object object) {
 	if (object == null) {
 	    return Collections.emptyList();
 	}
@@ -60,7 +60,7 @@ public final class Classes {
 	return Collections.emptyList();
     }
 
-    public static Class<?>[] asClassArray(Object input) {
+    public static Class<?>[] asClassArray(final Object input) {
 	return ImmutableList.copyOf(asClassIterable(input)).toArray(
 		new Class<?>[] {});
     }
