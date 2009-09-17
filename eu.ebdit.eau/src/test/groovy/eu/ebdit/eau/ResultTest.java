@@ -59,7 +59,7 @@ public class ResultTest {
     }
 
 
-    private void assertCheckSuite(Result bean) {
+    private void assertCheckSuite(final Result bean) {
 	assertEquals("check", bean.getCheckName());
 	assertEquals("Suite", bean.getSuiteName());
     }

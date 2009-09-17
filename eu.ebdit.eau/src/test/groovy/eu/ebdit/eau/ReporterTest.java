@@ -3,21 +3,13 @@ package eu.ebdit.eau;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
-
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import com.google.common.collect.ImmutableList;
 
-import eu.ebdit.eau.Report;
-import eu.ebdit.eau.Reporter;
-import eu.ebdit.eau.Result;
-import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ScoreBean;
 
 public class ReporterTest {

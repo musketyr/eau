@@ -22,7 +22,7 @@ public final class JUnitResultCollector implements Collector<Result> {
     }
     
     @Override
-    public Iterable<Result> collectFrom(Object input) {
+    public Iterable<Result> collectFrom(final Object input) {
         return currentImplementation.collectFrom(input);
     }
 

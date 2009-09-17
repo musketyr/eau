@@ -69,7 +69,7 @@ public class ClassSuppressorTest {
 	assertTrue(SUPPRESSED_CLASS + " not found!",isFound(SUPPRESSED_CLASS));
     }
 
-    private boolean isFound(String className) {
+    private boolean isFound(final String className) {
 	try {
 	    Class.forName(className, true, Thread.currentThread().getContextClassLoader());
 	    return true;
