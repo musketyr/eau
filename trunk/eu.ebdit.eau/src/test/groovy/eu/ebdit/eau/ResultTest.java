@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import eu.ebdit.eau.Result;
-
 
 public class ResultTest {
     
