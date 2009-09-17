@@ -6,9 +6,6 @@ import org.junit.Test;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.util.AbstractResultCollectorTest;
 
-
-
-
 public class JUnit4ResultCollectorTest extends AbstractResultCollectorTest {
 	
 	

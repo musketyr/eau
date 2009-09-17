@@ -13,7 +13,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.reports.TestReporterTest;
 
 /**
  * @author Vladimir Orany
