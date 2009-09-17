@@ -1,39 +1,55 @@
 package eu.ebdit.eau.util;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import java.net.URL;
 
-
-import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.net.URISyntaxException;
-
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
+
 
 /**
  * @author Vladimir Orany
  * 
  */
 public class XmlScoreParserTest extends AbstractScoreCollectorTest {
-
-    protected Iterable<Score> getScores(){
-	try {
-	    return new XmlScoreParser().collectFrom(new File(XmlScoreParserTest.class
-	    	.getResource("/TestClass.score.xml").toURI()));
-	} catch (URISyntaxException e) {
-	    fail(e.getMessage());
-	    return null;
-	}
-    }
-
-    @Test
-    public void testInputs() throws Exception {
-	XmlScoreParser parser = new XmlScoreParser();
-	assertFalse parser.collectFrom("/TestClass.score.xml").isEmpty();
-	assertTrue parser.collectFrom("org.example.TestClass").isEmpty();
-	assertTrue parser.collectFrom("org/example/TestClass.java").isEmpty();
-	assertTrue parser.collectFrom(XmlScoreParserTest.class).isEmpty();
 	
-    }
+	protected Collector<Score> newCollector() {
+		new XmlScoreParser()
+	}
+	
+	@Override
+	protected Object getInputForResults() {
+		"/TestClass.score.xml";
+	}
+	
+	@Override
+	protected Iterable<Object> getInputsToFail() {
+		[
+		"/TestClass.score.xml",
+		"org.example.TestClass",
+		"org/example/TestClass.java",
+		XmlScoreParserTest.class,
+		]
+	}
+	
+	@Override
+	protected Iterable<Object> getInputsToSucceed() {
+		URL resourceUrl = XmlScoreParserTest.class
+		.getResource("/TestClass.score.xml")
+		[
+			"/TestClass.score.xml",
+			new File(XmlScoreParserTest.class
+				.getResource("/TestClass.score.xml").toURI()),
+			resourceUrl,
+			resourceUrl.toURI()
+		]
+	}
+	
+	protected Iterable<Score> getScores(){
+		try {
+			return new XmlScoreParser().collectFrom();
+		} catch (URISyntaxException e) {
+			fail(e.getMessage());
+			return null;
+		}
+	}
 }

@@ -1,22 +1,16 @@
 package eu.ebdit.eau.util;
 
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertFalse
+import static org.junit.Assert.assertTrue
 
 import eu.ebdit.eau.Score;
 
-public abstract class AbstractScoreCollectorTest {
+public abstract class AbstractScoreCollectorTest extends AbstractCollectorTest<Score>{
 	
 	private static final double EPSILON = 0.01
 	
-	protected abstract Iterable<Score> getScores();
-	
-	@Test
-	public final void testScores() {
-		Iterable<Score> scores = getScores()
-		
+	protected final void assertCollectedItems(Iterable<Score> scores) {
 		for (Score score : scores) {
 			assertEquals("org.example.TestClass", score.suiteName)
 			if (score.getCheckName() == 'testOne') {

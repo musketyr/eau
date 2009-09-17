@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.processing.Processor;
+
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
@@ -19,13 +20,35 @@ import javax.tools.JavaCompiler.CompilationTask;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.util.ScoreAnnotationProcessor;
 
 public class ScoreAnnotationProcessorTest extends AbstractScoreCollectorTest {// NOPMD
 
     @Override
+    protected Object getInputForResults() {
+        "/org/example/TestClass.java"
+    }
+
+    @Override
+    protected Iterable<Object> getInputsToSucceed() {
+	["/org/example/TestClass.java"]
+    }
+
+    @Override
+    protected Iterable<Object> getInputsToFail() {
+        []
+    }
+
+@Override
+    protected Collector<Score> newCollector() {
+    	return { getScores() } as Collector<Score>;
+    }
+
+    @Override
     protected Iterable<Score> getScores(){// NOPMD
+	def className = "/org/example/TestClass.java";
 	try {
         	final ScoreAnnotationProcessor processor = new ScoreAnnotationProcessor();
         
@@ -53,7 +76,7 @@ public class ScoreAnnotationProcessorTest extends AbstractScoreCollectorTest {//
         	// one file, TestClass.java
         	final Iterable<? extends JavaFileObject> compilationUnits1 = fileManager
         		.getJavaFileObjects(new File(ScoreAnnotationProcessorTest.class
-        			.getResource("/org/example/TestClass.java").toURI()));
+        			.getResource(className).toURI()));
         
         	final CompilationTask task = compiler.getTask(null, fileManager, null,
         		null, null, compilationUnits1);

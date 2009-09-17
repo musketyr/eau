@@ -1,18 +1,28 @@
 package eu.ebdit.eau.util;
 
-import junit.framework.Assert;
+import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
+
 
 public class ScoreAnnotationCollectorTest extends AbstractScoreCollectorTest {
 
     @Override
-    protected Iterable<Score> getScores() {
-	try {
-	    return new ScoreAnnotationCollector().collectFrom(Class.forName("org.example.TestClass"));
-	} catch (ClassNotFoundException e) {
-	    Assert.fail(e.getMessage());
-	    return null;
-	}
+    protected Object getInputForResults() {
+	return "org.example.TestClass";
+    }
+
+    @Override
+    protected Iterable<Object> getInputsToFail() {
+        return ["no.such.Class", "no-such.file", "TestClass.xml"]
+    }
+
+    protected Iterable<Object> getInputsToSucceed() {
+	return [Class.forName("org.example.TestClass"), "org.example.TestClass"]
+    };
+
+    @Override
+    protected Collector<Score> newCollector() {
+        return new ScoreAnnotationCollector();
     }
 
 }
