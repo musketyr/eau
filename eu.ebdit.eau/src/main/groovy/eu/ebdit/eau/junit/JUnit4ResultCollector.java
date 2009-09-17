@@ -75,7 +75,7 @@ final class JUnit4ResultCollector extends RunListener implements
     @Override
     // NOPMD
     public void testStarted(final Description description) throws Exception {// NOPMD
-	lastResult = Result.ofFullName(description.getDisplayName());
+	lastResult = Result.ofFullName(description.getDisplayName(), true, null);
     }
 
     private void handleFailure(final Failure failure) {

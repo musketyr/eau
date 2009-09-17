@@ -60,7 +60,7 @@ final class JUnit3ResultCollector extends BaseTestRunner implements
     @Override
     // NOPMD
     public void testStarted(final String testName) {
-	lastResult = Result.ofFullName(testName);
+	lastResult = Result.ofFullName(testName, true, null);
     }
 
     @Override
