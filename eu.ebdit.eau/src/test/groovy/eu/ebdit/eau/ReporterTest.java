@@ -18,7 +18,6 @@ import eu.ebdit.eau.Report;
 import eu.ebdit.eau.Reporter;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.Score;
-import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.beans.ScoreBean;
 
 public class ReporterTest {
@@ -100,12 +99,7 @@ public class ReporterTest {
 
     private Result createResult(final String className,
 	    final String methodName, final boolean passed, final String message) {
-	final ResultBean result = new ResultBean();
-	result.setCheckName(methodName);
-	result.setSuiteName(className);
-	result.setSuccess(passed);
-	result.setMessage(message);
-	return result;
+	return Result.ofNames(className, methodName, passed, message);
     }
 
     @SuppressWarnings("unchecked")

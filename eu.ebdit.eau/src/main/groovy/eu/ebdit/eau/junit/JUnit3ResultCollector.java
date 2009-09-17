@@ -11,13 +11,12 @@ import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
-import eu.ebdit.eau.beans.ResultBean;
 import eu.ebdit.eau.util.Classes;
 
 final class JUnit3ResultCollector extends BaseTestRunner implements
 	Collector<Result> {
 
-    private transient ResultBean lastResult;
+    private transient Result lastResult;
 
     private transient Collection<Result> results = Lists.newArrayList();
 
@@ -54,16 +53,14 @@ final class JUnit3ResultCollector extends BaseTestRunner implements
     // NOPMD
     public void testFailed(final int status, final Test test,
 	    final Throwable trowable) {
-	lastResult.setSuccess(false);
-	lastResult.setMessage(getFilteredTrace(trowable));
+	lastResult = Result.ofNames(lastResult.getSuiteName(), lastResult
+		.getCheckName(), false, getFilteredTrace(trowable));
     }
 
     @Override
     // NOPMD
     public void testStarted(final String testName) {
-	lastResult = new ResultBean();
-	lastResult.setSuccess(true);
-	lastResult.setFullName(testName);
+	lastResult = Result.ofFullName(testName);
     }
 
     @Override
