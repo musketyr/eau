@@ -62,8 +62,8 @@
 
 		<!-- Checks for Javadoc comments.                     -->
 		<!-- See http://checkstyle.sf.net/config_javadoc.html -->
-		<module name="JavadocPackage"/>
-		<module name="JavadocMethod">
+		<!--<module name="JavadocPackage"/>
+		--><module name="JavadocMethod">
 			<property name="scope" value="package"/>
 		</module>
 		<module name="JavadocType">
