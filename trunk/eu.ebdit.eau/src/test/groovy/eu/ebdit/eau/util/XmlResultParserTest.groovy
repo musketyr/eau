@@ -3,32 +3,47 @@
  */
 package eu.ebdit.eau.util;
 
-import static org.junit.Assert.assertFalse;
+import java.net.URL;
 
-import java.io.File;
-import java.net.URISyntaxException;
-
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.Collector;
 
 /**
  * @author Vladimir Orany
  * 
  */
 public class XmlResultParserTest extends AbstractResultCollectorTest {
-
-    protected Iterable<Result> getResults(){
-	try {
-	    return new XmlResultParser().collectFrom(new File(XmlResultParserTest.class
-	    	.getResource("/TestClass.xml").toURI()));
-	} catch (URISyntaxException e) {
-	    Assert.fail(e.getMessage());
-	    return null;
+	
+	@Override
+	protected Object getInputForResults() {
+	    return "/TestClass.xml"
 	}
-    }
 
-    
+	@Override
+	protected Collector<Result> newCollector() {
+	    return new XmlResultParser()
+	}
+
+	@Override
+	protected Iterable<Object> getInputsToFail() {
+		return ["/TestClass.score.xml"
+		        ,"org.example.TestClass"
+		        ,"org/example/TestClass.java"
+		        ,XmlScoreParserTest.class]
+	}
+
+	@Override
+	protected Iterable<Object> getInputsToSucceed() {
+	    URL resourceUrl = XmlResultParserTest.class.getResource("/TestClass.xml");
+	    return ["/TestClass.xml", 
+    		        resourceUrl, 
+    		        resourceUrl.toURI(),
+    		        new File(resourceUrl.toURI()),
+    		        ["/TestClass.xml", "no-such.file"]
+	         ]
+	}
+	
+	
 }
