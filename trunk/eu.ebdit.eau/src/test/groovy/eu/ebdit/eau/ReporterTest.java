@@ -27,9 +27,6 @@ public final class ReporterTest {
     private static final int SCORE_3_POINTS = 1;
     private static final double SCORE_2_POINTS = 0.75;
     private static final double SCORE_1_POINTS = 0.5;
-    /**
-     * Delta for {@link Assert#assertEquals(double, double, double)}.
-     */
     private static final double EPSILON = 0.01;
     private static final String CLASS_FQNAME = "org.example.TestClass";
     private static final String SCORE_1_MESSAGE = "Test one is for 0.5 points";
