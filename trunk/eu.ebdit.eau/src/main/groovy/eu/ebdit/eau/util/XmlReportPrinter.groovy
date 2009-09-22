@@ -1,14 +1,14 @@
 package eu.ebdit.eau.util
 
+import eu.ebdit.eau.Printer;
 import eu.ebdit.eau.Report;
 import groovy.xml.MarkupBuilder;
 
-public class XmlReportPrinter {
+public class XmlReportPrinter implements Printer{
 	
-	Writer writeReport(theReport, writer = new StringWriter()){
+	void printReport(theReport, Writer writer){
 		def builder = new MarkupBuilder(writer)
 		generateReport(builder, theReport)
-		return writer;
 	}
 	
 	private generateReport(builder, theReport){
