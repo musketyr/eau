@@ -8,20 +8,28 @@ import eu.ebdit.eau.Result;
 import eu.ebdit.eau.junit.JUnit3ResultCollector;
 import eu.ebdit.eau.util.AbstractResultCollectorTest;
 
-public abstract class AbstractJUnitResultCollectorTest extends AbstractResultCollectorTest {
+/**
+ * Abstract parent for JUnit result collectors. Sets up default values for
+ * getInput* methods.
+ * 
+ * @author Vladimir Orany
+ *
+ */
+public abstract class AbstractJUnitResultCollectorTest 
+	extends AbstractResultCollectorTest {
 
     @Override
-    protected Object getInputForResults() {
+    protected final Object getInputForResults() {
 	"org.example.TestClass"
     }
 
     @Override
-    protected Iterable<Object> getInputsToFail() {
+    protected final Iterable<Object> getInputsToFail() {
         ["no.such.Class", "no-such.file"]
     }
 
     @Override
-    protected Iterable<Object> getInputsToSucceed() {
+    protected final Iterable<Object> getInputsToSucceed() {
 	"org.example.TestClass"
     }
     
