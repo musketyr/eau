@@ -1,4 +1,4 @@
-package eu.ebdit.eau;
+package eu.ebdit.eau.spi;
 
 /**
  * Collects information of specified type <code>T</code> from object specified

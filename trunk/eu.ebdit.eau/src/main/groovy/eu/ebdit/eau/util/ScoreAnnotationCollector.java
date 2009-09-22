@@ -9,12 +9,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import eu.ebdit.eau.Bonus;
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Description;
 import eu.ebdit.eau.Details;
 import eu.ebdit.eau.Points;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ScoreBean;
+import eu.ebdit.eau.spi.Collector;
 
 public class ScoreAnnotationCollector implements Collector<Score>{
    

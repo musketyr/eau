@@ -20,8 +20,8 @@ import javax.tools.JavaCompiler.CompilationTask;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.spi.Collector;
 import eu.ebdit.eau.util.ScoreAnnotationProcessor;
 
 public class ScoreAnnotationProcessorTest extends AbstractScoreCollectorTest {// NOPMD

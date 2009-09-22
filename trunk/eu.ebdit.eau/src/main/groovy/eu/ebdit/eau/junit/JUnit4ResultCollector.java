@@ -11,9 +11,9 @@ import org.junit.runner.notification.RunListener;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.spi.Collector;
 import eu.ebdit.eau.util.Classes;
 
 final class JUnit4ResultCollector extends RunListener implements

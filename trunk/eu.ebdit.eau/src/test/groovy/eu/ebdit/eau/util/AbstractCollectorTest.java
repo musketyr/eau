@@ -7,7 +7,7 @@ import static junit.framework.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.ebdit.eau.Collector;
+import eu.ebdit.eau.spi.Collector;
 
 /**
  * Abstract test for {@link Collector collectors}.
