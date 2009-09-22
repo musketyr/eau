@@ -1,8 +1,8 @@
 package eu.ebdit.eau.junit;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
 import eu.ebdit.eau.junit.JUnit3ResultCollector;
+import eu.ebdit.eau.spi.Collector;
 import eu.ebdit.eau.util.AbstractResultCollectorTest;
 
 /**

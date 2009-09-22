@@ -1,0 +1,4 @@
+eu.ebdit.eau.junit.JUnitResultCollector
+eu.ebdit.eau.util.ScoreAnnotationCollector
+eu.ebdit.eau.util.XmlScoreParser
+eu.ebdit.eau.util.XmlResultParser

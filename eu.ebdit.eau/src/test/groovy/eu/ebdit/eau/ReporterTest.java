@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.beans.ScoreBean;
+import eu.ebdit.eau.spi.Collector;
 
 /**
  * Test for {@link Reporter}.

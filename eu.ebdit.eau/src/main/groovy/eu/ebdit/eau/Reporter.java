@@ -13,6 +13,7 @@ import com.google.common.collect.Maps;
 
 import eu.ebdit.eau.reports.ReportContainer;
 import eu.ebdit.eau.reports.SimpleReport;
+import eu.ebdit.eau.spi.Collector;
 
 public final class Reporter {
 

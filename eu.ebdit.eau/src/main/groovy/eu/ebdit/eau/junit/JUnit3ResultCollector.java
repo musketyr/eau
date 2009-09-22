@@ -9,8 +9,8 @@ import junit.runner.BaseTestRunner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.spi.Collector;
 import eu.ebdit.eau.util.Classes;
 
 final class JUnit3ResultCollector extends BaseTestRunner implements

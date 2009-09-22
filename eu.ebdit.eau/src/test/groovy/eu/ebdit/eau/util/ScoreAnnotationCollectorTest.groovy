@@ -1,7 +1,7 @@
 package eu.ebdit.eau.util;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.spi.Collector;
 
 
 public class ScoreAnnotationCollectorTest extends AbstractScoreCollectorTest {

@@ -2,8 +2,8 @@ package eu.ebdit.eau.util;
 
 import java.net.URL;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Score;
+import eu.ebdit.eau.spi.Collector;
 
 
 /**

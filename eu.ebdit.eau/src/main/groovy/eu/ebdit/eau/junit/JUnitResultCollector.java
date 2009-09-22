@@ -1,7 +1,7 @@
 package eu.ebdit.eau.junit;
 
-import eu.ebdit.eau.Collector;
 import eu.ebdit.eau.Result;
+import eu.ebdit.eau.spi.Collector;
 
 public final class JUnitResultCollector implements Collector<Result> {
 
