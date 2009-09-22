@@ -56,7 +56,7 @@ public class XmlReportPrinterTest {
 	</report>	
 '''
 
-    private static final FIXURE = [
+    public static final FIXURE = [
                                    message: 'Master Report',
                                    successPercentage: 0.5,
                                    points: 2,
