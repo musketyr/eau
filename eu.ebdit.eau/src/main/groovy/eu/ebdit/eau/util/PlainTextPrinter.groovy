@@ -6,6 +6,9 @@ import eu.ebdit.eau.Printer;
 
 public class PlainTextPrinter implements Printer {
 
+    private static final int NUM_OF_IDENT_CHAR = 3;
+    private static final int BASE_IDENT = 8;
+    
     @Override
     void printReport(report, Writer writer) {
         writer << '\n'
@@ -14,19 +17,21 @@ public class PlainTextPrinter implements Printer {
     }
 
     private printReport(report, Writer writer, int ident){
-        String success = String.format('%6.2f', (double) report.successPercentage * 100d)
-        writer << ' ' * (3 * ident)
+        String success = String.format('%6.2f', 
+        	(double) report.successPercentage * 100d)
+        writer << ' ' * (NUM_OF_IDENT_CHAR * ident)
         writer << success.padLeft((6) - success.size()) + '% ' + report.message
         writer << '\n'
-        writer << ' ' * (8 + 3 * ident)
+        writer << ' ' * (BASE_IDENT + NUM_OF_IDENT_CHAR * ident)
         writer << "points: ${report.points}/${report.maxPoints}"
-        if (report.maxPoints != report.maxPointsWithBonus) {
-	    writer << "(${report.maxPointsWitBonus})"
+        if (report.maxPointsWithBonus != null && report.maxPoints 
+        	!= report.maxPointsWithBonus) {
+	    writer << "(${report.maxPointsWithBonus})"
 	}
         writer << '\n'
         if (report.details) {
             // TODO handle longer details
-            writer << ' ' * (8 + 3 * ident)
+            writer << ' ' * (BASE_IDENT + NUM_OF_IDENT_CHAR * ident)
             writer << "detail: ${report.details}"
             writer << '\n'
 	}
