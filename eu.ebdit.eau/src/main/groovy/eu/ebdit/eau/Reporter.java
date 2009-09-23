@@ -57,6 +57,7 @@ public final class Reporter {
 	}
 
     }
+    
     private static final class CollectByCollector<T> implements
 	    Function<Collector<T>, Iterable<T>> {
 
