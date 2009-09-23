@@ -6,14 +6,15 @@ import groovy.xml.MarkupBuilder;
 
 public class XmlReportPrinter implements Printer{
 	
-	void printReport(theReport, Writer writer){
+	Writer printReport(theReport, Writer writer){
 		def builder = new MarkupBuilder(writer)
 		generateReport(builder, theReport)
+		return writer
 	}
 	
 	private generateReport(builder, theReport){
 		builder.report {
-			builder.message theReport.message
+			builder.description theReport.description
 			builder.successPercentage theReport.successPercentage
 			builder.points theReport.points
 			builder.maxPoints theReport.maxPoints

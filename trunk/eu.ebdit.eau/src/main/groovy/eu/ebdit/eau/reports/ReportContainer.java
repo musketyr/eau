@@ -1,14 +1,21 @@
 package eu.ebdit.eau.reports;
 
-import java.io.Serializable;
+import java.io.StringWriter;
 
 import com.google.common.collect.ImmutableList;
 
 import eu.ebdit.eau.Report;
+import eu.ebdit.eau.util.PlainTextPrinter;
 
-public final class ReportContainer implements Report, Serializable {//NOPMD
+/**
+ * Report container holds zero or more single reports and shows summary 
+ * statistics for them.
+ * 
+ * @author Vladimir Orany
+ * 
+ */
+public final class ReportContainer implements Report { // NOPMD
 
-    private static final long serialVersionUID = 324202196457789090L;
     private final ImmutableList<Report> reports;
     private final String message;
 
@@ -18,15 +25,24 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	this.message = theMessage;
     }
 
-    public static ReportContainer of(final String message,//NOPMD
+    /**
+     * Creates new report container of specified message and children.
+     * 
+     * @param message description of report container
+     * @param theChildren children of report container
+     * @return new report container of specified description and children
+     */
+    public static ReportContainer of(final String message, // NOPMD
 	    final Iterable<Report> theChildren) {
 	return new ReportContainer(theChildren, message);
     }
 
+    @Override
     public ImmutableList<Report> getReports() {
 	return reports;
     }
 
+    @Override
     public double getMaxPoints() {
 	double ret = 0;
 	for (Report er : reports) {
@@ -35,6 +51,7 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return ret;
     }
 
+    @Override
     public double getMaxPointsWithBonus() {
 	double ret = 0;
 	for (Report er : reports) {
@@ -43,14 +60,17 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return ret;
     }
 
+    @Override
     public String getDescription() {
 	return message;
     }
 
+    @Override
     public String getDetails() {
-	return toString();
+	return null;
     }
 
+    @Override
     public double getPoints() {
 	double ret = 0;
 	for (Report er : reports) {
@@ -59,57 +79,28 @@ public final class ReportContainer implements Report, Serializable {//NOPMD
 	return ret;
     }
 
+    @Override
     public double getSuccessPercentage() {
 	return getPoints() / getMaxPoints();
     }
 
     @Override
     public String toString() {
-	return toString(0);
-    }
-
-    private static final String IDENT_BLOCK = "   ";
-
-    private static String ident(final int ident) {
-	final StringBuilder ret = new StringBuilder();
-	for (int i = 0; i < ident; i++) {
-	    ret.append(IDENT_BLOCK);
-	}
-	return ret.toString();
-    }
-
-    private String toString(final int ident) {
-	final StringBuilder ret = new StringBuilder();
-	ret.append(ident(ident)).append(
-		String.format("%06.2f%% - %s", getSuccessPercentage() * 100,
-			getDescription())).append(" {\n");
-	for (Report er : reports) {
-	    if (er == null) {
-		continue;
-	    }
-	    if (er instanceof ReportContainer) {
-		ret.append(((ReportContainer) er).toString(ident + 1));
-	    } else {
-		ret.append(ident(ident + 1) + er.toString());
-	    }
-	    ret.append("\n");
-	}
-	ret.append(ident(ident)).append("}");
-	return ret.toString();
+	return PlainTextPrinter.INSTANCE.printReport(this, new StringWriter())
+		.toString();
     }
 
     @Override
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result
-		+ ((reports == null) ? 0 : reports.hashCode());
+	result = prime * result + ((reports == null) ? 0 : reports.hashCode());
 	result = prime * result + ((message == null) ? 0 : message.hashCode());
 	return result;
     }
 
     @Override
-    public boolean equals(final Object obj) { //NOPMD
+    public boolean equals(final Object obj) { // NOPMD
 	if (this == obj) {
 	    return true;
 	}
