@@ -56,6 +56,11 @@
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>eu.ebdit.eau.util.TextUI</mainClass>
+							</manifest>
+						</archive>
 						<descriptorRefs>
 							<descriptorRef>jar-with-dependencies</descriptorRef>
 						</descriptorRefs>
@@ -70,6 +75,16 @@
 				<configuration>
 					<source>${targetJre}</source>
 					<target>${targetJre}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>eu.ebdit.eau.util.TextUI</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 			<plugin>
