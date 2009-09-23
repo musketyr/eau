@@ -37,11 +37,17 @@ public final class ReportContainer implements Report { // NOPMD
 	return new ReportContainer(theChildren, message);
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getReports()
+     */
     @Override
     public ImmutableList<Report> getReports() {
 	return reports;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getMaxPoints()
+     */
     @Override
     public double getMaxPoints() {
 	double ret = 0;
@@ -51,6 +57,9 @@ public final class ReportContainer implements Report { // NOPMD
 	return ret;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getMaxPointsWithBonus()
+     */
     @Override
     public double getMaxPointsWithBonus() {
 	double ret = 0;
@@ -60,16 +69,25 @@ public final class ReportContainer implements Report { // NOPMD
 	return ret;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getDescription()
+     */
     @Override
     public String getDescription() {
 	return message;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getDetails()
+     */
     @Override
     public String getDetails() {
 	return null;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getPoints()
+     */
     @Override
     public double getPoints() {
 	double ret = 0;
@@ -79,17 +97,26 @@ public final class ReportContainer implements Report { // NOPMD
 	return ret;
     }
 
+    /* (non-Javadoc)
+     * @see eu.ebdit.eau.Report#getSuccessPercentage()
+     */
     @Override
     public double getSuccessPercentage() {
 	return getPoints() / getMaxPoints();
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 	return PlainTextPrinter.INSTANCE.printReport(this, new StringWriter())
 		.toString();
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -99,6 +126,9 @@ public final class ReportContainer implements Report { // NOPMD
 	return result;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
     public boolean equals(final Object obj) { // NOPMD
 	if (this == obj) {
