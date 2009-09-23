@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import eu.ebdit.eau.util.TextUI;
 
-public class JUnitTextUITest {
+public class TextUITest {
 
     @Test
     public void testRunMain() { // NOPMD

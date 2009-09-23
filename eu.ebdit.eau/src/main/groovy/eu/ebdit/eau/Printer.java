@@ -15,7 +15,8 @@ public interface Printer {
      * @param report
      *            report to be printed
      * @param writer
-     *            writer where to write report
+     *            writer where to write report, use {@link java.io.StringWriter}
+     *            if you don't know which one to use
      * @return the same writer as was writer parameter
      */
     Writer printReport(Object report, Writer writer);

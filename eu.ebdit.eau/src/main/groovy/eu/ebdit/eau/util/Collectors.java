@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.ServiceLoader;
 
 import com.google.common.base.Predicate;
@@ -22,6 +23,25 @@ import eu.ebdit.eau.spi.Collector;
 @SuppressWarnings("unchecked")
 public final class Collectors {
 
+    public static final Collector<Result> RESULT_COLLECTOR_FOOTPRINT  // NOPMD
+    	= new Collector<Result>() {
+
+	    @Override
+	    public Iterable<Result> collectFrom(final Object input) {
+		return Collections.emptyList();
+	    }
+	
+    	};
+    	
+    public static final Collector<Score> SCORE_COLLECTOR_FOOTPRINT // NOPMD 
+    	= new Collector<Score>() {
+
+	    @Override
+	    public Iterable<Score> collectFrom(final Object input) {
+		return Collections.emptyList();
+	    }
+	
+    	};
     
     private static final class IsOfSpecificType implements
 	    Predicate<Collector> {

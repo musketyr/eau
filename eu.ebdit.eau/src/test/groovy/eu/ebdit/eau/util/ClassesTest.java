@@ -6,6 +6,11 @@ import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 
+import eu.ebdit.eau.Result;
+import eu.ebdit.eau.Score;
+import eu.ebdit.eau.junit.JUnitResultCollector;
+import eu.ebdit.eau.spi.Collector;
+
 public class ClassesTest {
 
     @Test
@@ -65,6 +70,48 @@ public class ClassesTest {
 		.asClassArray(String.class));
 	assertArrayEquals(new Class<?>[] { String.class }, Classes
 		.asClassArray(new Object[] { "java.lang.String", "Bla bla" }));
+    }
+    
+    @Test
+    public void testSimilarTo() {
+	assertTrue(Classes.isSimilarTo(null, XmlResultParser.class));
+	assertTrue(Classes.isSimilarTo(null, null));
+	assertFalse(Classes.isSimilarTo(JUnitResultCollector.class, null));
+	assertTrue(Classes.isSimilarTo(JUnitResultCollector.class, 
+		JUnitResultCollector.class));
+	
+	assertTrue(Classes.isSimilarTo(JUnitResultCollector.class, 
+		Collectors.RESULT_COLLECTOR_FOOTPRINT.getClass()));
+	assertFalse(Classes.isSimilarTo(JUnitResultCollector.class, 
+		Collectors.SCORE_COLLECTOR_FOOTPRINT.getClass()));
+	
+	assertTrue(Classes.isSimilarTo(new JUnitResultCollector(), 
+		Collectors.RESULT_COLLECTOR_FOOTPRINT.getClass()));
+	assertFalse(Classes.isSimilarTo(new JUnitResultCollector(), 
+		Collectors.SCORE_COLLECTOR_FOOTPRINT.getClass()));
+	
+	assertTrue(Classes.isSimilarTo(new JUnitResultCollector(), 
+		Collectors.RESULT_COLLECTOR_FOOTPRINT));
+	assertFalse(Classes.isSimilarTo(new JUnitResultCollector(), 
+		Collectors.SCORE_COLLECTOR_FOOTPRINT));
+	
+	assertTrue(Classes.isSimilarTo(new JUnitResultCollector(), 
+		new Collector<Result>() {
+
+		    @Override
+		    public Iterable<Result> collectFrom(final Object input) {
+			return null;
+		    }
+		}));
+	assertFalse(Classes.isSimilarTo(new JUnitResultCollector(), 
+		new Collector<Score>() {
+
+		    @Override
+		    public Iterable<Score> collectFrom(final Object input) {
+			return null;
+		    }
+		}));
+	
     }
 
 }
