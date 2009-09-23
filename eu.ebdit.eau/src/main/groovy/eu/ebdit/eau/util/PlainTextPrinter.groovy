@@ -6,21 +6,25 @@ import eu.ebdit.eau.Printer;
 
 public class PlainTextPrinter implements Printer {
 
+    /**
+     * Shared instance of this printer.
+     */
+    public static final Printer INSTANCE = new PlainTextPrinter();
     private static final int NUM_OF_IDENT_CHAR = 3;
     private static final int BASE_IDENT = 8;
     
     @Override
-    void printReport(report, Writer writer) {
+    Writer printReport(report, Writer writer) {
         writer << '\n'
 	printReport(report, writer, 0)
-	println writer
+	return writer
     }
 
     private printReport(report, Writer writer, int ident){
         String success = String.format('%6.2f', 
         	(double) report.successPercentage * 100d)
         writer << ' ' * (NUM_OF_IDENT_CHAR * ident)
-        writer << success.padLeft((6) - success.size()) + '% ' + report.message
+        writer << success.padLeft((6) - success.size()) + '% ' + report.description
         writer << '\n'
         writer << ' ' * (BASE_IDENT + NUM_OF_IDENT_CHAR * ident)
         writer << "points: ${report.points}/${report.maxPoints}"

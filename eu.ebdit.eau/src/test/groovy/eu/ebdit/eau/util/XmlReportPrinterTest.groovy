@@ -24,7 +24,7 @@ public class XmlReportPrinterTest {
     private static final EXAMPLE_XML = 
 '''
 	<report>
-		<message>Master Report</message>
+		<description>Master Report</description>
 		<successPercentage>0.5</successPercentage>
 		<points>2</points>
 		<maxPoints>4</maxPoints>
@@ -32,20 +32,20 @@ public class XmlReportPrinterTest {
 		<details>This is root summary report</details>
 		<reports>
         		<report>
-                		<message>Child Report 1</message>
+                		<description>Child Report 1</description>
                 		<successPercentage>0</successPercentage>
                 		<points>0</points>
                 		<maxPoints>2</maxPoints>
                 		<maxPointsWithBonus>4</maxPointsWithBonus>
                 	</report>
                 	<report>
-                		<message>Child Report 2</message>
+                		<description>Child Report 2</description>
                 		<successPercentage>1</successPercentage>
                 		<points>2</points>
                 		<maxPoints>2</maxPoints>
                 		<reports>
                         		<report>
-                                		<message>Grand-child Report 2.1</message>
+                                		<description>Grand-child Report 2.1</description>
                                 		<successPercentage>1</successPercentage>
                                 		<points>2</points>
                                 		<maxPoints>2</maxPoints>
@@ -57,7 +57,7 @@ public class XmlReportPrinterTest {
 '''
 
     public static final FIXURE = [
-                                   message: 'Master Report',
+                                   description: 'Master Report',
                                    successPercentage: 0.5,
                                    points: 2,
                                    maxPoints: 4,
@@ -66,20 +66,20 @@ public class XmlReportPrinterTest {
                                    reports: 
                                    [
                                     	    [
-                                             message: 'Child Report 1',
+                                             description: 'Child Report 1',
                                              successPercentage: 0,
                                              points: 0,
                                              maxPoints: 2,
                                              maxPointsWithBonus: 4
                                              ],
                                             [
-                                             message: 'Child Report 2',
+                                             description: 'Child Report 2',
                                              successPercentage: 1,
                                              points: 2,
                                              maxPoints: 2,
                                              reports:
                                         	  [[
-                                        	   message: 'Grand-child Report 2.1',
+                                        	   description: 'Grand-child Report 2.1',
                                                    successPercentage: 1,
                                                    points: 2,
                                                    maxPoints: 2,
@@ -103,7 +103,7 @@ public class XmlReportPrinterTest {
     @Test void testPrinterWorks() {
 	def writer = new StringWriter()
 	def printer = new XmlReportPrinter()
-	printer.writeReport(FIXURE, writer)
+	printer.printReport(FIXURE, writer)
 	Diff xmlDiff = new Diff(EXAMPLE_XML.toString(), writer.toString())
 	Assert.assertTrue(xmlDiff.toString(), xmlDiff.similar())
     }

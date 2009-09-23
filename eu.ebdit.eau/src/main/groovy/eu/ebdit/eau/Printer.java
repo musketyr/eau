@@ -16,6 +16,7 @@ public interface Printer {
      *            report to be printed
      * @param writer
      *            writer where to write report
+     * @return the same writer as was writer parameter
      */
-    void printReport(Object report, Writer writer);
+    Writer printReport(Object report, Writer writer);
 }
