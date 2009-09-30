@@ -1,5 +1,7 @@
 package eu.ebdit.eau.util
 
+import org.slf4j.LoggerFactory;
+
 import com.google.common.collect.Iterables;
 
 import com.google.common.base.Function;
@@ -15,7 +17,9 @@ public class TextUI {
     private static final SEPARATOR_PATTERN = /\s*,\s*/
 
     public static void main(String[] args) {
-
+	println "\nReporting started...\n"
+	LoggerFactory.getLogger(TextUI).info("Using classpath: " 
+		+ System.getProperty("java.class.path"))
 	def cli = initCli()
 	def opt = cli.parse(args)
 	if (!opt) return
@@ -30,11 +34,9 @@ public class TextUI {
 	initCollectors ('score', opt.s, Collectors.SCORE_COLLECTOR_FOOTPRINT,
 		Collectors.getScoreCollectors(), builder.&withScoreCollectors)
 	
-	def reporter = builder.build();
-
+	def report =  builder.build().report(opt.arguments())
 	println ' Start of Report '.center(80, '=')
-	println getPrinter(opt).printReport(reporter.report(opt.arguments()), 
-		new StringWriter())
+	println getPrinter(opt).printReport(report, new StringWriter())
 	println ' End of the report '.center(80, '=')
     }
 
