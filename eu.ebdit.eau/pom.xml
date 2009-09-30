@@ -53,8 +53,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.8</version>
+			<artifactId>slf4j-${slf4jImpl}</artifactId>
+			<version>${slf4jVersion}</version>
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
@@ -234,6 +234,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJre>1.6</targetJre>
 		<junitVersion>4.5</junitVersion>
+		<slf4jVersion>1.5.8</slf4jVersion>
+		<slf4jImpl>simple</slf4jImpl>
 	</properties>
 
 </project>
