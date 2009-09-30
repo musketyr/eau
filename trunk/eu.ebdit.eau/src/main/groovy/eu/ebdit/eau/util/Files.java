@@ -80,7 +80,7 @@ public final class Files {
 	    return null;
 	}
 	if (helper == null || !helper.exists()) {
-	    LOG.info("Cannod find valid resource from {}", file);
+	    LOG.info("Cannot find valid resource from {}", file);
 	    return null;
 	}
 	return helper;
