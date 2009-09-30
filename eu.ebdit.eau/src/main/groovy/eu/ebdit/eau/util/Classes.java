@@ -6,6 +6,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
@@ -20,6 +23,8 @@ import com.google.common.collect.Sets;
  * 
  */
 public final class Classes {
+    
+    private static final Logger LOG = LoggerFactory.getLogger(Classes.class);
     
     private Classes() {
 	// prevents instance creation and subtyping
@@ -48,6 +53,8 @@ public final class Classes {
 	    return Class.forName(input.toString(), false, Thread
 		    .currentThread().getContextClassLoader());
 	} catch (ClassNotFoundException e) {
+	    LOG.info("Class {} was not found on the class path. It's not class"
+	    		+ " or your classpath is misconfigured.", input);
 	    return null;
 	}
     }
@@ -82,6 +89,8 @@ public final class Classes {
 	    objList = (Iterable<Object>) object;
 	}
 	if (objList == null) {
+	    LOG.info("Object {} was not recognized as class iterable. "
+	    		+ "Returning empty iterable", object);
 	    return Collections.emptyList();
 	}
 	final List<Class<?>> ret = Lists.newArrayList();
@@ -161,22 +170,48 @@ public final class Classes {
 	}
 	return false;
     }
-    
-    public static <T> Function<Class<T>, T> toInstance(){
+
+    /**
+     * Returns function which creates new instance of given class or
+     * <code>null</code> when the class cannot create new instance.
+     * 
+     * @param <T>
+     *            type of new object created
+     * @return function which creates new instance of given class or
+     *         <code>null</code> when the class cannot create new instance
+     */
+    public static <T> Function<Class<T>, T> toInstance() {
 	return new Function<Class<T>, T>() {
 	    @Override
 	    public T apply(final Class<T> from) {
 	        try {
 		    return from.newInstance();
 		} catch (InstantiationException e) {
+		    logCannotInstantialize(from, e);
 		    return null;
 		} catch (IllegalAccessException e) {
+		    logCannotInstantialize(from, e);
 		    return null;
 		}
+	    }
+
+	    private <TT> void logCannotInstantialize(final Class<TT> from,
+		    final Throwable exception) {
+		LOG.info("Class {} cannot be instantialized.", from);
+		LOG.info("Following exception was throw.", exception);
 	    }
 	};
     }
     
+    /**
+     * Creates predicate which returns same results as
+     * {@link #isSimilarTo(Object, Object)} method.
+     * 
+     * @param footprint
+     *            object to match similarity
+     * @return predicate returning same result as
+     *         {@link #isSimilarTo(Object, Object)} method
+     */
     public static Predicate<Object> isSimilarTo(final Object footprint){
 	return new Predicate<Object>() {
 	    @Override

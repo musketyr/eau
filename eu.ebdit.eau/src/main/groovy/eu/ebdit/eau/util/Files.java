@@ -8,6 +8,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -19,6 +22,8 @@ import com.google.common.collect.Lists;
  */
 public final class Files {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Files.class);
+    
     private Files() {
 	// prevents instance creation and subtyping
     }
@@ -49,10 +54,10 @@ public final class Files {
      *         <code>null</code> if there is no such file
      */
     public static File existingFile(final Class<?> context, final Object file) {
-	Class<?> theContext = context == null ? Files.class : context;
 	if (file == null) {
 	    return null;
 	}
+	final Class<?> theContext = context == null ? Files.class : context;
 	File helper = null;
 	try {
 	    if (file instanceof File) {
@@ -68,9 +73,14 @@ public final class Files {
 		helper = new File((URI) file);
 	    }
 	} catch (URISyntaxException e) {
+	    LOG.info(
+		    "Exception was thrown when trying to find resource"
+		    + " from object {}",
+		    file);
 	    return null;
 	}
 	if (helper == null || !helper.exists()) {
+	    LOG.info("Cannod find valid resource from {}", file);
 	    return null;
 	}
 	return helper;
@@ -106,7 +116,7 @@ public final class Files {
     @SuppressWarnings("unchecked")
     public static Iterable<File> asFileIterable(final Class<?> aContext,
 	    final Object input) {
-	Class<?> context = aContext == null ? Files.class : aContext;
+	final Class<?> context = aContext == null ? Files.class : aContext;
 	if (input == null) {
 	    return Collections.emptyList();
 	}
@@ -122,9 +132,9 @@ public final class Files {
 	    maybeIterable = Arrays.asList((Object[]) input);
 	}
 	if (maybeIterable instanceof Iterable) {
-	    Collection<File> ret = Lists.newArrayList();
+	    final Collection<File> ret = Lists.newArrayList();
 	    for (Object obj : (Iterable<?>) maybeIterable) {
-		File existing = existingFile(context, obj);
+		final File existing = existingFile(context, obj);
 		if (existing != null) {
 		    ret.add(existing);
 		}

@@ -21,6 +21,13 @@ import eu.ebdit.eau.Points;
 import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ScoreBean;
 
+/**
+ * This class is Java 6 annotation processor which can be run during source file
+ * compilation.
+ * 
+ * @author Vladimir Orany
+ * 
+ */
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes("eu.ebdit.eau.*")
 public class ScoreAnnotationProcessor extends AbstractProcessor {
@@ -56,6 +63,9 @@ public class ScoreAnnotationProcessor extends AbstractProcessor {
 	return element.getEnclosingElement().toString();
     }
 
+    /**
+     * @return collected scores
+     */
     public final Iterable<Score> getScores() {
 	return ImmutableList.copyOf(scores);
     }
