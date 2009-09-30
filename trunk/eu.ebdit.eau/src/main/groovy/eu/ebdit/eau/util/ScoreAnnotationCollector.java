@@ -16,12 +16,25 @@ import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ScoreBean;
 import eu.ebdit.eau.spi.Collector;
 
-public class ScoreAnnotationCollector implements Collector<Score>{
-   
+/**
+ * This class is implementation of {@link Collector} interface which is able to
+ * collect score information from any class which has methods annotated with
+ * {@link Points} annotation.
+ * 
+ * @author Vladimir Orany
+ * 
+ */
+public class ScoreAnnotationCollector implements Collector<Score> {
+
     private boolean canCollectFrom(final Object input) {
 	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see eu.ebdit.eau.spi.Collector#collectFrom(java.lang.Object)
+     */
     public final List<Score> collectFrom(final Object input) {
 	if (!canCollectFrom(input)) {
 	    return Collections.emptyList();
@@ -43,8 +56,7 @@ public class ScoreAnnotationCollector implements Collector<Score>{
 	return scores;
     }
 
-    private ScoreBean createScore(final Class<?> clazz,
-	    final Method method) {
+    private ScoreBean createScore(final Class<?> clazz, final Method method) {
 	String desc = null;
 	if (method.isAnnotationPresent(Description.class)) {
 	    desc = method.getAnnotation(Description.class).value();
