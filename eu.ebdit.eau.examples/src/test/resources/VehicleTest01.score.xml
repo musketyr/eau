@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score>
+	<suite name="acme.VehicleTest01">
+		<check name="testTurnRight" points="2"
+			message="Vehicle changes direction to proper one after turning right" />
+		<check name="testPrepareRight" points="0.5" bonus="true"
+			message="Vehicle blinks right when preparing to turn right">
+			Vehicle must keep original direction when preparing to turn
+		</check>
+		<!-- other checks -->
+	</suite>
+</score>
