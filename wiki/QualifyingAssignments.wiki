@@ -32,7 +32,7 @@ public interface Vehicle {
     boolean isRightBlinkerOn();
 }
 }}}
-We can write a simple test to check whether student�s implementation works as it 
+We can write a simple test to check whether student's implementation works as it 
 should. It could look like one this:
 
 {{{
@@ -42,23 +42,77 @@ public class VehicleTest01 {
     // setup and other tests
     
     @Test public void testTurnRight(){
-	Direction original = fixture.getDirection();
-	fixture.turnRight();
-	assertEquals(original.right(), fixture.getDirection());
+		Direction original = fixture.getDirection();
+		fixture.turnRight();
+		assertEquals(original.right(), fixture.getDirection());
     }
     
     @Test public void testPrepareRight(){
-	Direction original = fixture.getDirection();
-	fixture.prepareTurnRight();
-	assertEquals(original, fixture.getDirection());
-	assertTrue(fixture.isRightBlinkerOn());
-	assertFalse(fixture.isLeftBlinkerOn());
+		Direction original = fixture.getDirection();
+		fixture.prepareTurnRight();
+		assertEquals(original, fixture.getDirection());
+		assertTrue(fixture.isRightBlinkerOn());
+		assertFalse(fixture.isLeftBlinkerOn());
     }
 }
 }}}
+
 And here is the problem. Importance of testTurnRight is much higher than 
 testPrepareRight, but there is no sign about this in the code. So there is no 
 way how to find out how many points does particular student get until we match 
 test results with the original assignment. But there can be some better way. We 
 can make special annotations which will help us to have everything on one place. 
 Look on next code snippet.
+
+{{{
+public class VehicleTest02 {
+
+    protected Vehicle fixture;
+    
+    // setup and other tests
+    
+    @Points(2)
+    @Test public void testTurnRight(){
+		Direction original = fixture.getDirection();
+		fixture.turnRight();
+		assertEquals(original.right(), fixture.getDirection());
+    }
+    
+    @Points(0.5)
+    @Test public void testPrepareRight(){
+		Direction original = fixture.getDirection();
+		fixture.prepareTurnRight();
+		assertEquals(original, fixture.getDirection());
+		assertTrue(fixture.isRightBlinkerOn());
+		assertFalse(fixture.isLeftBlinkerOn());
+    }   
+}
+}}}
+
+{{{
+public class VehicleTest03 {
+
+    protected Vehicle fixture;
+    
+    // setup and other tests
+    
+    @Points(2)
+    @Description("Vehicle changes direction to proper one after turning right")
+    @Test public void testTurnRight(){
+		Direction original = fixture.getDirection();
+		fixture.turnRight();
+		assertEquals(original.right(), fixture.getDirection());
+    }
+    
+    @Bonus @Points(0.5)
+    @Description("Vehicle blinks right when preparing to turn right")
+    @Details("Vehicle must keep original direction when preparing to turn")
+    @Test public void testPrepareRight(){
+		Direction original = fixture.getDirection();
+		fixture.prepareTurnRight();
+		assertEquals(original, fixture.getDirection());
+		assertTrue(fixture.isRightBlinkerOn());
+		assertFalse(fixture.isLeftBlinkerOn());
+    }
+}
+}}}
