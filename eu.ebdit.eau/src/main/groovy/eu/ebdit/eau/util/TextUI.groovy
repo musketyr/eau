@@ -15,10 +15,12 @@ import groovy.util.OptionAccessor;
 public class TextUI {
 
     private static final SEPARATOR_PATTERN = /\s*,\s*/
-
+    private static final logger = LoggerFactory.getLogger(TextUI)
+    
     public static void main(String[] args) {
-	println "\nReporting started...\n"
-	LoggerFactory.getLogger(TextUI).info("Using classpath: " 
+	
+	logger.info "\nReporting started...\n"
+	logger.info("Using classpath: " 
 		+ System.getProperty("java.class.path"))
 	def cli = initCli()
 	def opt = cli.parse(args)
@@ -35,9 +37,9 @@ public class TextUI {
 		Collectors.getScoreCollectors(), builder.&withScoreCollectors)
 	
 	def report =  builder.build().report(opt.arguments())
-	println ' Start of Report '.center(80, '=')
+	logger.info ' Start of Report '.center(80, '=')
 	println getPrinter(opt).printReport(report, new StringWriter())
-	println ' End of the report '.center(80, '=')
+	logger.info ' End of the report '.center(80, '=')
     }
 
     
@@ -70,7 +72,7 @@ public class TextUI {
     private static final initCollectors(what, fromWhat, footprint, defaultCollectors, whereTo){
 	def collectors = null;
 	if (fromWhat) {
-	    println "Selected collectors: $fromWhat"
+	    logger.info "Selected collectors: $fromWhat"
 	    collectors = 
 		    Iterables.transform(
 			    Iterables.filter(
@@ -79,11 +81,11 @@ public class TextUI {
 			    ),
 			    Classes.toInstance()
 		    )
-	    println "Following collectors was found from selection: $collectors"
+	    logger.info "Following collectors was found from selection: $collectors"
 	}
 	if (!collectors) {
 	    collectors = defaultCollectors
-	    println "No $what collectors defined, using defaults: $collectors"
+	    logger.info "No $what collectors defined, using defaults: $collectors"
 	}
 	    whereTo(collectors)
     }
