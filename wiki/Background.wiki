@@ -1,3 +1,6 @@
+#summary Students' Assignments Evaluation Background
+#sidebar TableOfContents
+
 =Students' Assignments Evaluation Background=
 Evaluating students' assignments is generally one of the most important teachers’ activities because it is sometimes only way how to get feedback from students. On the other hand as number of assignments grows up theirs evaluating takes more and more time and become more and more routine and therefore also error prone. The way how people get rid of routine error prone tasks is simple – the automation. But are we able to automate so sophisticated activity as evaluation of students’ assignments? Maybe not always but in world of programming we have already many tools which can be used for this purpose. But at this moment we should look what exactly evaluation means for us.
 ==The model situation==
