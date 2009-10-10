@@ -154,8 +154,8 @@ For example plane must be able to take off and also land safely:
 @Points(10)
 @Description("Plane must take off and land safely!")
 public class PlaneTest {
-	@Test testTakeOff(){...}
-	@Test testLand(){...}
+	@Test void testTakeOff(){...}
+	@Test void testLand(){...}
 }
 }}}
 
@@ -167,3 +167,23 @@ Following table describes basic usage of annotations from {{{eu.ebdit.eau}}} pac
 || *Details* ||Additional details about the test||Provide additional details about the test. This details can be used for evaluating tools to provide more information about the test.||
 || *Points* ||Number of points if successful||Provide number of points for evaluation. The number can be any {{{double}}}. Negative numbers will be converted to their positive counterparts using absolute value. Zero value should not be used since there is no meaningful how to decide whether the test was successful after evaluation. *This annotation must be always present on test method or class otherwise the method or class will not be taken into account during evaluation!*||
 
+Since we have annotated test we can also simply evaluate it. Imagine having test
+{{{acme.VeteranCarTest}}} for ours {{{acme.VeteranCar}}} class shown above. 
+Only thing we need is to download latest {{{eau-all}}} jar file from  
+[http://code.google.com/p/eau/downloads/list?q=label:Featured EAU downloads web site].
+The "all" jar file includes all dependencies for eau project so we don't need to bother
+with anything else. 
+
+The most primitive way how tp evaluate the test is just open command line 
+and type following:
+
+{{{
+java cp "<path-to-eau-all.jar>;<path-to-your-project's-classpath>" eu.ebdit.eau.util.TextUI acme.VeteranCarTest
+}}}
+
+This is another real life example. The context directory of command shell is root directory of our compiled classes.
+Underlaying platform is MS Windows and {{{eal-all}}} jar is located at {{{c:\eau\eau-all.0.0.1-0910102015.jar}}}.
+
+{{{
+java cp "c:\eau\eau-all.0.0.1-0910102015.jar;." eu.ebdit.eau.util.TextUI acme.VeteranCarTest
+}}}
