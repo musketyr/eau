@@ -10,15 +10,14 @@ helps us to test nearly everything. There are also a lot of tools like continuou
 integration servers which helps us to report their results. But there is one 
 important problem.  Are they all tests equal?
 
-{{{
-Implement vehicle based on given interface. The following features will be scored:
-Requirements
-4p. - vehicle must change its direction appropriately when turning left or right
+----
+_*Implement vehicle based on given interface. The following features will be scored:*_
+|| *Points* || *Requirements* ||
+|| 4 || vehicle must change its direction appropriately when turning left or right ||
+||  || *Bonus features* ||
+|| 1 || vehicle might show proper blinker before and during turning left or right || 
 
-Bonus features
-1p. - vehicle might show proper blinker before and during turning left or right  
-
-}}}
+----
 
 Here we have desired interface:
 {{{
