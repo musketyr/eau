@@ -1,75 +1,223 @@
 #summary Students' Assignments Evaluation Background
 #sidebar TableOfContents
+#labels EarlyDraft
 <wiki:toc depth="3"/>
+
 =Students' Assignments Evaluation Background=
-Evaluating students' assignments is generally one of the most important teachers’ activities because it is sometimes only way how to get feedback from students. On the other hand as number of assignments grows up theirs evaluating takes more and more time and become more and more routine and therefore also error prone. The way how people get rid of routine error prone tasks is simple – the automation. But are we able to automate so sophisticated activity as evaluation of students’ assignments? Maybe not always but in world of programming we have already many tools which can be used for this purpose. But at this moment we should look what exactly evaluation means for us.
+
+Evaluating students' assignments is generally one of the most important teachers'
+ activities because it is sometimes only way how to get feedback from students. 
+ On the other hand as number of assignments grows up theirs evaluating takes more 
+ and more time and become more and more routine and therefore also error prone. 
+ The way how people get rid of routine error prone tasks is simple – the automation. 
+ But are we able to automate so sophisticated activity as evaluation of students’ 
+ assignments? Maybe not always but in world of programming we have already many 
+ tools which can be used for this purpose. But at this moment we should look what 
+ exactly evaluation means for us.
+ 
 ==The model situation==
-To be less abstract let’s create some model situation. What we need? First we need a teacher. Let’s call her Tina. She learns Java programming language at the university for a first term and she also works for unnamed consultant company as a second job. She learns four classes each having approximately twenty students. That is all about Tina for now.
-Next we need some model students. Basically it is enough to have the extreme ones – good and bad student.  Let’s call the good one Gloria and the bad one Betty. 
+To be less abstract let’s create some model situation. What we need? First we 
+need a teacher. Let’s call her Tina. She learns Java programming language at 
+the university for a first term and she also works for unnamed consultant 
+company as a second job. She learns four classes each having approximately 
+twenty students. That is all about Tina for now.
+
+Next we need some model students. Basically it is enough to have the extreme 
+ones – good and bad student.  Let’s call the good one Gloria and the bad one Betty. 
+
 ===Situation I===
-As a time goes by students learnt some basic programming knowledge and Tina gives them theirs first assignment. The assignment was same for each of them.  They should write a class with several methods writing some information to the system console. One of them was student’s name.
+As a time goes by students learnt some basic programming knowledge and Tina gives 
+them theirs first assignment. The assignment was same for each of them.  They 
+should write a class with several methods writing some information to the system 
+console. One of them was student’s name.
 
-Gloria writes assignment on her own and while she was trying to do the perfect work she has made some stupid compilation error which she didn’t mention and send it to Tina as final work.
+Gloria writes assignment on her own and while she was trying to do the 
+perfect work she has made some stupid compilation error which she didn’t mention 
+and send it to Tina as final work.
 
-Betty had no time to write the assignment so she copied it from her friend and only changed the name to her own.
+Betty had no time to write the assignment so she copied it from her friend and 
+only changed the name to her own.
 
-Tina had a lot of work that week and checked assignment the evening before she had next class. Gloria’s assignment didn’t work so she gave her zero points. Betty’s work looks perfect so she got all of points.  If she had more time or was less tires she hopefully mention that Betty’s work was almost the same as work of other student. 
+Tina had a lot of work that week and checked assignment the evening before she 
+had next class. Gloria’s assignment didn’t work so she gave her zero points. Betty’s 
+work looks perfect so she got all of points.  If she had more time or was less tires 
+she hopefully mention that Betty’s work was almost the same as work of other student. 
 
-Gloria was surprised by getting zero points so she talked to Tina. Tina told her what happened and told her to be more careful next time or to send her work sooner so she could return it to her before final evaluation.
-From this first simple situation we can deduce a few important facts about students’ assignments and theirs evaluation.
+Gloria was surprised by getting zero points so she talked to Tina. Tina told her 
+what happened and told her to be more careful next time or to send her work sooner 
+so she could return it to her before final evaluation.
+
+From this first simple situation we can deduce a few important facts about 
+students’ assignments and theirs evaluation.
 
 ====Lack of feedback imply inadequate results====
-Lot of students – I hope most of them – wants to do their assignments well.  But lack of feedback which is usually only one combined with scoring doesn’t allow them to fix their bugs until deadline or force them to overdo the solution. They rather spent much more time on solution that is needed just to be sure they done the best.
+Lot of students – I hope most of them – wants to do their assignments well.  
+But lack of feedback which is usually only one combined with scoring doesn’t 
+allow them to fix their bugs until deadline or force them to overdo the solution. 
+They rather spent much more time on solution that is needed just to be sure they 
+done the best.
 
-In ideal world Tina has a lot of time to give Gloria a feedback that her class doesn’t work well and Gloria had a lot of time to fix the stupid mistake. Or much better Tina had written assignment in way it can be evaluated automatically and Gloria got feedback few seconds or minutes after she submitted her work to evaluation application. 
+In ideal world Tina has a lot of time to give Gloria a feedback that her class 
+doesn’t work well and Gloria had a lot of time to fix the stupid mistake. Or much 
+better Tina had written assignment in way it can be evaluated automatically and 
+Gloria got feedback few seconds or minutes after she submitted her work to 
+evaluation application.
+
 ====Amount of assignments and lack of automation imply lack of feedback====
-It is hard to give appropriate feedback if you spent a noticeably amount of time on each evaluation.  If you want to give feedback to all students anytime they need it will probably spend all day evaluating their work.  To evaluate effectively you has to automate it. Generally these days you can test nearly every code if it is doing right things, has appropriate format and so on. But to evaluate appropriately you must be able to score errors in code accordingly.  This thesis will spend a lot of time on this topic later so stay tuned.
-====Opportunity makes a cheater====
-Some student surprisingly doesn’t want to do their assignments.  They are attending course because they must to, they are lazy, they just don’t have time to do it or they simple see that its hundred percent better to copy it than write it on their own since nobody will find it out and the assignment doesn’t teach them anything anyway.  Is Betty the bad one because she copied the work or Tina that she doesn’t check all assignments properly to find cheaters? But she had about eighty assignments and that is plenty of assignments to check one to other (mathematicians should know exact number).
+It is hard to give appropriate feedback if you spent a noticeably amount of time 
+on each evaluation.  If you want to give feedback to all students anytime they 
+need it will probably spend all day evaluating their work.  To evaluate effectively 
+you has to automate it. Generally these days you can test nearly every code if 
+it is doing right things, has appropriate format and so on. But to evaluate 
+appropriately you must be able to score errors in code accordingly.  This thesis 
+will spend a lot of time on this topic later so stay tuned.
 
-If Tina had used some copy-paste detection tools which are already on the market for programming languages or some academic tools for plagiarism detection she would find that Betty had cheated and what is better Betty maybe had never tried to cheat as she knew it would be detected.
+====Opportunity makes a cheater====
+Some student surprisingly doesn’t want to do their assignments.  They are 
+attending course because they must to, they are lazy, they just don’t have time 
+to do it or they simple see that its hundred percent better to copy it than 
+write it on their own since nobody will find it out and the assignment doesn’t 
+teach them anything anyway.  Is Betty the bad one because she copied the work 
+or Tina that she doesn’t check all assignments properly to find cheaters? But 
+she had about eighty assignments and that is plenty of assignments to check one 
+to other (mathematicians should know exact number).
+
+If Tina had used some copy-paste detection tools which are already on the market 
+for programming languages or some academic tools for plagiarism detection she 
+would find that Betty had cheated and what is better Betty maybe had never tried 
+to cheat as she knew it would be detected.
 
 
 ===Situation II===
-As a time goes by Tina decided to give students new assignment.  She has learnt from her mistakes and wrote some automated tests to evaluate students’ works. She had also heart that some students does copy others work so she created specific assignment for each student changing some literals or method names and conditions but because of that she had to copy her automated tests and customize them for each student. She also told all students to send their work as soon as possible so she can send them feedback if something goes wrong.
+As a time goes by Tina decided to give students new assignment.  She has learnt 
+from her mistakes and wrote some automated tests to evaluate students’ works. 
+She had also heart that some students does copy others work so she created 
+specific assignment for each student changing some literals or method names 
+and conditions but because of that she had to copy her automated tests and 
+customize them for each student. She also told all students to send their work 
+as soon as possible so she can send them feedback if something goes wrong.
 
-Gloria spent a lot of time doing her work and sent it to Tina few days before deadline. She got no feedback one day before deadline that she had some minor mistake. She wanted to fix it up but she was just writing hard essay for other lesson. She got 70%  score.
-Betty spent some minutes trying to find out what she was supposed to do but because she didn’t carefully listen during lessons she didn’t actually know how to start. Fortunately one of her friend was working as professional developer and for small amount of money she did it in about a half hour. Betty sent result to Tina and after one day before deadline she got messages that there is some terrible bug. Friend of her didn’t have time that evening so Betty doesn’t fix it. She got only half of all points.
+Gloria spent a lot of time doing her work and sent it to Tina few days before 
+deadline. She got no feedback one day before deadline that she had some minor 
+mistake. She wanted to fix it up but she was just writing hard essay for other 
+lesson. She got 70%  score.
 
-And what about Tina? She was doing pretty well but still far from ideal. The hardest thing was to match according tests to right student. After that it was easier to evaluate each assignment but it was still lot of work so she decided not to test any assignment more than twice and to send feedback only one day before deadline and then do the final evaluation. 
+Betty spent some minutes trying to find out what she was supposed to do but 
+because she didn’t carefully listen during lessons she didn’t actually know how 
+to start. Fortunately one of her friend was working as professional developer 
+and for small amount of money she did it in about a half hour. Betty sent result 
+to Tina and after one day before deadline she got messages that there is some 
+terrible bug. Friend of her didn’t have time that evening so Betty doesn’t fix 
+it. She got only half of all points.
+
+And what about Tina? She was doing pretty well but still far from ideal. The 
+hardest thing was to match according tests to right student. After that it was 
+easier to evaluate each assignment but it was still lot of work so she decided 
+not to test any assignment more than twice and to send feedback only one day 
+before deadline and then do the final evaluation. 
+
 ====Late feedback is no feedback====
-Sure, giving at least late feedback is better than nothing but sincerely there is good chance that the person you give feedback has something other to do that moment and will not be able to react on the feedback accordingly.
+Sure, giving at least late feedback is better than nothing but sincerely there 
+is good chance that the person you give feedback has something other to do that 
+moment and will not be able to react on the feedback accordingly.
+
 ====Individual assignments complicates life to the cheater but to the teacher too====
-As was written if you have a lot of different assignments you will probably find yourself difficult to keep track on what assignment you should use with the work you just got from specific student. This can be for example handled by spreadsheet where you can write students’ names and parameters to some parameterized assignment. You must always first find right assignment for a given person.  Writing automated tests for each assignment is also too complicated and error prone. You can easy create test with wrong assertion and then evaluate good code as bad and vice versa.
+As was written if you have a lot of different assignments you will probably find 
+yourself difficult to keep track on what assignment you should use with the work
+you just got from specific student. This can be for example handled by spreadsheet 
+where you can write students’ names and parameters to some parameterized assignment.
+You must always first find right assignment for a given person.  Writing automated
+tests for each assignment is also too complicated and error prone. You can easy 
+create test with wrong assertion and then evaluate good code as bad and vice versa.
 
-If Tina has some tool to pair students with their assignments or has some way how to parameterize automated tests by assignments she wouldn’t be so scared for giving feedback and could give it more time than only twice. Gloria than would have more time to appropriately finish her work an got better result.  Well, Betty could also have more time and her friend could fix the bugs her work had but would be a bearable price for helping good students to better results.
+If Tina has some tool to pair students with their assignments or has some way 
+how to parameterize automated tests by assignments she wouldn’t be so scared for 
+giving feedback and could give it more time than only twice. Gloria than would 
+have more time to appropriately finish her work an got better result.  Well, 
+Betty could also have more time and her friend could fix the bugs her work had 
+but would be a bearable price for helping good students to better results.
+
 ===Situation III===
-As a time goes by Tina gave students new assignment. Now it was a team work. Because number of teams was quite low she encourages herself to gave each team different assignment.  Each team had one team leader who was answerable for communication with Tina. He collects parts of the work from team members put them together and send final work to Tina to evaluate it. He was also responsible for giving report to Tina how much was each member working which will be reflected on final score.
+As a time goes by Tina gave students new assignment. Now it was a team work. 
+Because number of teams was quite low she encourages herself to gave each team 
+different assignment.  Each team had one team leader who was answerable for 
+communication with Tina. He collects parts of the work from team members put 
+them together and send final work to Tina to evaluate it. He was also responsible 
+for giving report to Tina how much was each member working which will be reflected 
+on final score.
 
-Gloria was in one team with Betty. Their team leader Lucy decided that the best way how to write the assignment is to meet together after school.  Everyone got some small part of final work to be done and then they begun to work.  Gloria had nearly finish her part that afternoon but Betty said she wasn’t able to concentrate and she would finish her part at home. Lucy said that others need her part to make progress and if she doesn’t know how to do it they will help her. While she was humming and saying ‘Oh, so!’ others finish her work quite well. Lucy sent Tina theirs work three times and always got feedback in few hours. At the end Lucy’s team got full score and Lucy was so glad to have it she propose Tina to give all team members full score too and Tina did so.
+Gloria was in one team with Betty. Their team leader Lucy decided that the best 
+way how to write the assignment is to meet together after school.  Everyone got 
+some small part of final work to be done and then they begun to work.  Gloria 
+had nearly finish her part that afternoon but Betty said she wasn’t able to 
+concentrate and she would finish her part at home. Lucy said that others need 
+her part to make progress and if she doesn’t know how to do it they will help 
+her. While she was humming and saying ‘Oh, so!’ others finish her work quite well. 
+Lucy sent Tina theirs work three times and always got feedback in few hours. At the 
+end Lucy’s team got full score and Lucy was so glad to have it she propose Tina to 
+give all team members full score too and Tina did so.
 
 ====Students' teams problem====
-Team work is crucial part of developing software. But it is hard to simulate this in school especially in beginners’ classes. If you let teams to form freely it will be created from groups of friends and in group of friend is hard to keep yourself objective. If you create teams declaratively they won’t be able to get themselves into productive part of team forming curve. They spend more time storming than creating final product. The person of team leader is also important. Maybe she could be from higher class.
-Here are some clues to make team work a little better and fairer. For the beginners the part of work for team member would be given by teacher and would be also track by her for example by running automated isolated tests.  Incompetence of one member shouldn’t harm others. Team should be able to get good mark even if one of them hasn’t done her work properly. This should prevent social inhibition and bystander effect.
-===Situation IV===
-As a time goes by the term reached its end. Tina gave her students their final assignment. They should create some text adventure game with usual features like bag, walking through several areas and so on. Tina was quite disappointed about her previous attempts and she also thought that writing automated tests will be too difficult so she choose different scenario. Every student will show her her final work, walk the adventure through and then the student will make some minor change on functionality to prove she did it herself.
-Gloria as usual worked hard and made her adventure perfectly working. Before showing it to Tina she mentioned some troubles removing items from bag so she decided not to do it during the presentation. And she didn’t. Presentation went well and she also managed to make the change in quite quick time. She didn’t lose a single point.
+Team work is crucial part of developing software. But it is hard to simulate this 
+in school especially in beginners’ classes. If you let teams to form freely it 
+will be created from groups of friends and in group of friend is hard to keep 
+yourself objective. If you create teams declaratively they won’t be able to get 
+themselves into productive part of team forming curve. They spend more time 
+storming than creating final product. The person of team leader is also important. 
+Maybe she could be from higher class.
 
-Betty asked her friend again to write application instead of her. Before she went to the presentation she read code and notes she got from her friend but it was just a big mess for her. She didn’t know anything about how does exactly it work. She somehow to managed to show the application to Tina but when it comes to change something she was absolutely out of the question. She spent three hours trying to change it as Tina wanted but she wasn’t able. Tina sensed that something was wrong and said Betty to come some other day when she would know anything about code she wanted to show. She didn’t come at all and she will attend the course once again.
+Here are some clues to make team work a little better and fairer. For the 
+beginners the part of work for team member would be given by teacher and would 
+be also track by her for example by running automated isolated tests. 
+Incompetence of one member shouldn’t harm others. Team should be able to get 
+good mark even if one of them hasn’t done her work properly. This should prevent 
+social inhibition and bystander effect.
+===Situation IV===
+As a time goes by the term reached its end. Tina gave her students their final 
+assignment. They should create some text adventure game with usual features 
+like bag, walking through several areas and so on. Tina was quite disappointed 
+about her previous attempts and she also thought that writing automated tests 
+will be too difficult so she choose different scenario. Every student will show 
+her her final work, walk the adventure through and then the student will make 
+some minor change on functionality to prove she did it herself.
+
+Gloria as usual worked hard and made her adventure perfectly working. Before 
+showing it to Tina she mentioned some troubles removing items from bag so she 
+decided not to do it during the presentation. And she didn’t. Presentation went 
+well and she also managed to make the change in quite quick time. She didn’t 
+lose a single point.
+
+Betty asked her friend again to write application instead of her. Before she 
+went to the presentation she read code and notes she got from her friend but it 
+was just a big mess for her. She didn’t know anything about how does exactly it 
+work. She somehow to managed to show the application to Tina but when it comes 
+to change something she was absolutely out of the question. She spent three hours 
+trying to change it as Tina wanted but she wasn’t able. Tina sensed that something 
+was wrong and said Betty to come some other day when she would know anything 
+about code she wanted to show. She didn’t come at all and she will attend the 
+course once again.
 
 ===Ends good all good!?===
-It could look that everything ended well. In last situation we saw one of most effective way how to prevent students to cheat. After a few unsuccessful attempts nearly nobody tries to cheat on final assignment again.
+It could look that everything ended well. In last situation we saw one of most 
+effective way how to prevent students to cheat. After a few unsuccessful attempts 
+nearly nobody tries to cheat on final assignment again.
 
 TBD
 ==Summary==
-In a few model situations we introduced some common problems which must programming language teacher face while evaluating students work. Surprisingly they can be described only with two items:
+In a few model situations we introduced some common problems which must 
+programming language teacher face while evaluating students work. Surprisingly 
+they can be described only with two items:
+
   #Giving appropriately feedback to the students
   #Prevents students against cheating
+
 According to this to points we can list some crucial parts of any automatic evaluation application
+
   *generate student-specific assignments and keep track about them
   *collect students’ works and pair them with their creators and with the right assignment
   *quantify parts of the assignment (code quality)
   *give appropriate feedback
   *support team projects
   *support plagiarism detection and other cheaters detection
+  
 Let’s begin with number three in [QualifyingAssignments next chapter].

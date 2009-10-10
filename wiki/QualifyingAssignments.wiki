@@ -1,5 +1,6 @@
 #summary Qualifying Assignments
 #sidebar TableOfContents
+#labels EarlyDraft
 
 <wiki:toc max_depth="3" />
 
