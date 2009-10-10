@@ -14,7 +14,7 @@ important problem.  Are they all tests equal?
 _*Implement vehicle based on given interface. The following features will be scored:*_
 || *Points* || *Requirements* ||
 || 4 || vehicle must change its direction appropriately when turning left or right ||
-||  || *Bonus features* ||
+|| *Points* || *Bonus features* ||
 || 1 || vehicle might show proper blinker before and during turning left or right || 
 
 ----
@@ -61,7 +61,8 @@ testPrepareRight, but there is no sign about this in the code. So there is no
 way how to find out how many points does particular student get until we match 
 test results with the original assignment. But there can be some better way. We 
 can make special annotations which will help us to have everything on one place. 
-Look on next code snippet.
+Look on next code snippet. The points are divided by two because we can turn into
+two directions.
 
 {{{
 public class VehicleTest02 {
