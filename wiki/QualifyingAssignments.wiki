@@ -188,3 +188,61 @@ Underlaying platform is MS Windows and {{{eal-all}}} jar is located at {{{c:\eau
 java -cp "c:\eau\eau-all.0.0.1-0910102015.jar;." eu.ebdit.eau.util.TextUI acme.VeteranCarTest
 }}}
 
+After running this command we should get some logging messages and also our desired
+evaluation report. It should look like this one:
+
+{{{
+100,00% Test Reporter
+        points: 2.0/2.0(2.5)
+   100,00% Vehicle changes direction to proper one after turning right
+           points: 2.0/2.0
+     0,00% Vehicle blinks right when preparing to turn right
+           points: 0.0/0.0(0.5)
+}}}
+
+The percentage number is called "success percentage" which is quite explaining.
+The number means how successful was the evaluation. Note that bonus tests are not
+counted so you can even be more than 100% successful.
+
+Points shows number of points obtained followed by maximal number of points which
+could be obtained (not counting bonus ones). If there are some bonus point the maximal
+amount of point which can be obtained including bonus ones is written into parenthesis
+after as the last number.
+
+Sometime is also useful to have result in more format way such as XML. This is easy
+using custom printers. EAU project comes with two predefined printers text printer
+shown above and XML printer. You can also define your own printers implementing 
+{{{eu.ebdit.eau.Printer}}} interface. To enable custom printer pass its class name
+as {{{-p}}} parameter to {{{eu.ebdit.eau.TextUI}}} main class. Note you can also forward
+output to specific file using standard {{{>}}} command char.
+
+{{{
+java -cp "c:\eau\eau-all.0.0.1-0910102015.jar;." eu.ebdit.eau.util.TextUI -p eu.ebdit.eau.util.XmlReportPrinter acme.VeteranCarTest > result.xml
+}}}
+
+The result should look like following listing:
+
+{{{
+<report>
+  <description>Test Reporter</description>
+  <successPercentage>1.0</successPercentage>
+  <points>2.0</points>
+  <maxPoints>2.0</maxPoints>
+  <maxPointsWithBonus>2.5</maxPointsWithBonus>
+  <reports>
+    <report>
+      <description>Vehicle changes direction to proper one after turning right</description>
+      <successPercentage>1.0</successPercentage>
+      <points>2.0</points>
+      <maxPoints>2.0</maxPoints>
+    </report>
+    <report>
+      <description>Vehicle blinks right when preparing to turn right</description>
+      <successPercentage>0.0</successPercentage>
+      <points>0.0</points>
+      <maxPoints>0.0</maxPoints>
+      <maxPointsWithBonus>0.5</maxPointsWithBonus>
+    </report>
+  </reports>
+</report>
+}}}
