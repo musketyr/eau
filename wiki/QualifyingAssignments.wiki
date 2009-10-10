@@ -6,7 +6,7 @@
 
 = Qualifying assignments =
 
-Nowadays there is plenty of *Unit, Test* and other testing frameworks which 
+Nowadays there is plenty of `*`Unit, Test`*` and other testing frameworks which 
 helps us to test nearly everything. There are also a lot of tools like continuous 
 integration servers which helps us to report their results. But there is one 
 important problem.  Are they all tests equal?
