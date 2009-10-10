@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="acme.VehicleTest01" time="0.015">
+	<testcase name="testTurnRight" classname="acme.VehicleTest01"
+		time="0.0" />
+	<testcase name="testPrepareRight" classname="acme.VehicleTest01"
+		time="0.015">
+		<failure>...very long stack trace...</failure>
+	</testcase>
+	<!-- other test cases -->
+</testsuite>
