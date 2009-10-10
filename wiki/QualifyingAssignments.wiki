@@ -1,0 +1,64 @@
+#summary Dummy page for playing with wiki
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
+
+= Qualifying assignments =
+
+Nowadays there is plenty of ´*Unit, Test´*´ and other testing frameworks which 
+helps us to test nearly everything. There are also a lot of tools like continuous 
+integration servers which helps us to report their results. But there is one 
+important problem.  Are they all tests equal?
+
+{{{
+Implement vehicle based on given interface. The following features will be scored:
+Requirements
+4p. – vehicle must change its direction appropriately when turning left or right
+…
+Bonus features
+1p. – vehicle might show proper blinker before and during turning left or right  
+…
+}}}
+
+Here we have desired interface:
+{{{
+public interface Vehicle {
+    Direction getDirection();
+    void turnLeft();
+    void turnRight();
+    void prepareTurnLeft();
+    void prepareTurnRight();
+    boolean isLeftBlinkerOn();
+    boolean isRightBlinkerOn();
+}
+}}}
+We can write a simple test to check whether student’s implementation works as it 
+should. It could look like one this:
+
+{{{
+public class VehicleTest01 {
+    protected Vehicle fixture;
+    
+    // setup and other tests
+    
+    @Test public void testTurnRight(){
+	Direction original = fixture.getDirection();
+	fixture.turnRight();
+	assertEquals(original.right(), fixture.getDirection());
+    }
+    
+    @Test public void testPrepareRight(){
+	Direction original = fixture.getDirection();
+	fixture.prepareTurnRight();
+	assertEquals(original, fixture.getDirection());
+	assertTrue(fixture.isRightBlinkerOn());
+	assertFalse(fixture.isLeftBlinkerOn());
+    }
+}
+}}}
+And here is the problem. Importance of testTurnRight is much higher than 
+testPrepareRight, but there is no sign about this in the code. So there is no 
+way how to find out how many points does particular student get until we match 
+test results with the original assignment. But there can be some better way. We 
+can make special annotations which will help us to have everything on one place. 
+Look on next code snippet.
