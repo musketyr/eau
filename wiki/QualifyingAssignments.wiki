@@ -1,4 +1,4 @@
-#summary Dummy page for playing with wiki
+#summary Qualifying Assignments
 #sidebar TableOfContents
 
 <wiki:toc max_depth="3" />
@@ -87,6 +87,10 @@ public class VehicleTest02 {
     }   
 }
 }}}
+
+We can even provide lot of more useful informations like tasks description and
+that some test is testing bonus feature. Bonus feature is as expected the one which
+gives some extra points.
 
 {{{
 public class VehicleTest03 {
