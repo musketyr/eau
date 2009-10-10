@@ -178,12 +178,13 @@ The most primitive way how tp evaluate the test is just open command line
 and type following:
 
 {{{
-java cp "<path-to-eau-all.jar>;<path-to-your-project's-classpath>" eu.ebdit.eau.util.TextUI acme.VeteranCarTest
+java -cp "<path-to-eau-all.jar>;<path-to-your-project's-classpath>" eu.ebdit.eau.util.TextUI acme.VeteranCarTest
 }}}
 
 This is another real life example. The context directory of command shell is root directory of our compiled classes.
 Underlaying platform is MS Windows and {{{eal-all}}} jar is located at {{{c:\eau\eau-all.0.0.1-0910102015.jar}}}.
 
 {{{
-java cp "c:\eau\eau-all.0.0.1-0910102015.jar;." eu.ebdit.eau.util.TextUI acme.VeteranCarTest
+java -cp "c:\eau\eau-all.0.0.1-0910102015.jar;." eu.ebdit.eau.util.TextUI acme.VeteranCarTest
 }}}
+
