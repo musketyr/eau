@@ -58,7 +58,8 @@ Gloria as usual worked hard and made her adventure perfectly working. Before sho
 Betty asked her friend again to write application instead of her. Before she went to the presentation she read code and notes she got from her friend but it was just a big mess for her. She didn’t know anything about how does exactly it work. She somehow to managed to show the application to Tina but when it comes to change something she was absolutely out of the question. She spent three hours trying to change it as Tina wanted but she wasn’t able. Tina sensed that something was wrong and said Betty to come some other day when she would know anything about code she wanted to show. She didn’t come at all and she will attend the course once again.
 
 ===Ends good all good!?===
-It could look that everything ended well. In last situation we saw one of most effective way how to prevent students to cheat. After a few unsuccessful attempts nearly nobody tries to cheat on final assignment again. 
+It could look that everything ended well. In last situation we saw one of most effective way how to prevent students to cheat. After a few unsuccessful attempts nearly nobody tries to cheat on final assignment again.
+
 TBD
 ==Summary==
 In a few model situations we introduced some common problems which must programming language teacher face while evaluating students work. Surprisingly they can be described only with two items:
