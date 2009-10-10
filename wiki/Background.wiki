@@ -1,3 +1,32 @@
+=Students' Assignments Evaluation Background=
+Evaluating students' assignments is generally one of the most important teachers’ activities because it is sometimes only way how to get feedback from students. On the other hand as number of assignments grows up theirs evaluating takes more and more time and become more and more routine and therefore also error prone. The way how people get rid of routine error prone tasks is simple – the automation. But are we able to automate so sophisticated activity as evaluation of students’ assignments? Maybe not always but in world of programming we have already many tools which can be used for this purpose. But at this moment we should look what exactly evaluation means for us.
+==The model situation==
+To be less abstract let’s create some model situation. What we need? First we need a teacher. Let’s call her Tina. She learns Java programming language at the university for a first term and she also works for unnamed consultant company as a second job. She learns four classes each having approximately twenty students. That is all about Tina for now.
+Next we need some model students. Basically it is enough to have the extreme ones – good and bad student.  Let’s call the good one Gloria and the bad one Betty. 
+===Situation I===
+As a time goes by students learnt some basic programming knowledge and Tina gives them theirs first assignment. The assignment was same for each of them.  They should write a class with several methods writing some information to the system console. One of them was student’s name.
+
+Gloria writes assignment on her own and while she was trying to do the perfect work she has made some stupid compilation error which she didn’t mention and send it to Tina as final work.
+
+Betty had no time to write the assignment so she copied it from her friend and only changed the name to her own.
+
+Tina had a lot of work that week and checked assignment the evening before she had next class. Gloria’s assignment didn’t work so she gave her zero points. Betty’s work looks perfect so she got all of points.  If she had more time or was less tires she hopefully mention that Betty’s work was almost the same as work of other student. 
+
+Gloria was surprised by getting zero points so she talked to Tina. Tina told her what happened and told her to be more careful next time or to send her work sooner so she could return it to her before final evaluation.
+From this first simple situation we can deduce a few important facts about students’ assignments and theirs evaluation.
+
+====Lack of feedback imply inadequate results====
+Lot of students – I hope most of them – wants to do their assignments well.  But lack of feedback which is usually only one combined with scoring doesn’t allow them to fix their bugs until deadline or force them to overdo the solution. They rather spent much more time on solution that is needed just to be sure they done the best.
+
+In ideal world Tina has a lot of time to give Gloria a feedback that her class doesn’t work well and Gloria had a lot of time to fix the stupid mistake. Or much better Tina had written assignment in way it can be evaluated automatically and Gloria got feedback few seconds or minutes after she submitted her work to evaluation application. 
+====Amount of assignments and lack of automation imply lack of feedback====
+It is hard to give appropriate feedback if you spent a noticeably amount of time on each evaluation.  If you want to give feedback to all students anytime they need it will probably spend all day evaluating their work.  To evaluate effectively you has to automate it. Generally these days you can test nearly every code if it is doing right things, has appropriate format and so on. But to evaluate appropriately you must be able to score errors in code accordingly.  This thesis will spend a lot of time on this topic later so stay tuned.
+====Opportunity makes a cheater====
+Some student surprisingly doesn’t want to do their assignments.  They are attending course because they must to, they are lazy, they just don’t have time to do it or they simple see that its hundred percent better to copy it than write it on their own since nobody will find it out and the assignment doesn’t teach them anything anyway.  Is Betty the bad one because she copied the work or Tina that she doesn’t check all assignments properly to find cheaters? But she had about eighty assignments and that is plenty of assignments to check one to other (mathematicians should know exact number).
+
+If Tina had used some copy-paste detection tools which are already on the market for programming languages or some academic tools for plagiarism detection she would find that Betty had cheated and what is better Betty maybe had never tried to cheat as she knew it would be detected.
+
+
 ===Situation II===
 As a time goes by Tina decided to give students new assignment.  She has learnt from her mistakes and wrote some automated tests to evaluate students’ works. She had also heart that some students does copy others work so she created specific assignment for each student changing some literals or method names and conditions but because of that she had to copy her automated tests and customize them for each student. She also told all students to send their work as soon as possible so she can send them feedback if something goes wrong.
 
