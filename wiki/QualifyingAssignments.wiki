@@ -162,8 +162,8 @@ public class PlaneTest {
 Following table describes basic usage of annotations from {{{eu.ebdit.eau}}} package:
 
 || *Annotation* || *Value* || *Usage* ||
-||Bonus||_None_||Marks test as optional. Failing the test will author not loose any important points but can gain extra ones.||
-||Description||Short and meaningful description of test||Provide short and meaningful description for given test. This description will be shown in evaluation report.||
-||Details||Additional details about the test||Provide additional details about the test. This details can be used for evaluating tools to provide more information about the test.||
-||Points||Number of points if successful||Provide number of points for evaluation. The number can be any {{{double}}}. Negative numbers will be converted to their positive counterparts using absolute value. Zero value should not be used since there is no meaningful how to decide whether the test was successful after evaluation. *This annotation must be always present on test method or class otherwise the method or class will not be taken into account during evaluation!*||
+|| *Bonus* || _None_ ||Marks test as optional. Failing the test will author not loose any important points but can gain extra ones.||
+|| *Description* ||Short and meaningful description of test||Provide short and meaningful description for given test. This description will be shown in evaluation report.||
+|| *Details* ||Additional details about the test||Provide additional details about the test. This details can be used for evaluating tools to provide more information about the test.||
+|| *Points* ||Number of points if successful||Provide number of points for evaluation. The number can be any {{{double}}}. Negative numbers will be converted to their positive counterparts using absolute value. Zero value should not be used since there is no meaningful how to decide whether the test was successful after evaluation. *This annotation must be always present on test method or class otherwise the method or class will not be taken into account during evaluation!*||
 
