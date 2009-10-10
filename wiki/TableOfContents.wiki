@@ -1,7 +1,6 @@
 #summary Table of Contents
 #labels Featured
 
-The Automatic Evaluation of Students' Assignments
+*The Automatic Evaluation of Students' Assignments*
  * [Background Students' Assignments Evaluation Background]
- * [ModelSituations Model Situations]
  * [QualifyingAssignments Qualifying assignments]
