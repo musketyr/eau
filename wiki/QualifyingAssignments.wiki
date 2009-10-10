@@ -32,6 +32,26 @@ public interface Vehicle {
     boolean isRightBlinkerOn();
 }
 }}}
+
+And here is one of final works. The veteran car.
+
+{{{
+public class VeteranCar implements Vehicle{     
+    
+    private Direction direction = Direction.NORTH;  
+    
+    @Override public Direction getDirection() { return direction; }
+    @Override public boolean isLeftBlinkerOn() { return false; }
+    @Override public boolean isRightBlinkerOn() { return false; }
+    @Override public void prepareTurnLeft() {}  
+    @Override public void prepareTurnRight() {}
+    @Override public void turnLeft() { direction = direction.left(); }
+    @Override public void turnRight() { direction = direction.right(); }  
+}
+}}}
+As we see blinkers are not supported by this car so the author will get no extra points
+but still she should get all required points.
+
 We can write a simple test to check whether student's implementation works as it 
 should. It could look like one this:
 
@@ -57,8 +77,8 @@ public class VehicleTest01 {
 }
 }}}
 
-And here is the problem. Importance of testTurnRight is much higher than 
-testPrepareRight, but there is no sign about this in the code. So there is no 
+And here is the problem. Importance of {{{testTurnRight}}} is much higher than 
+{{{testPrepareRight}}}, but there is no sign about this in the code. So there is no 
 way how to find out how many points does particular student get until we match 
 test results with the original assignment. But there can be some better way. We 
 can make special annotations which will help us to have everything on one place. 
