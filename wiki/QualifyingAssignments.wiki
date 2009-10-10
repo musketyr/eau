@@ -141,3 +141,29 @@ public class VehicleTest03 {
     }
 }
 }}}
+
+Usage of this annotations is quite straightforward. They all can be found in
+{{{eu.ebdit.eau}}} package of [http://code.google.com/p/eau EAU project]. They 
+can be used at method or class level. By annotating single test we say that
+if this test is successful author should get particular number of points. By annotating
+whole test class we say that some points should be given to author when all tests passes.
+
+For example plane must be able to take off and also land safely:
+
+{{{
+@Points(10)
+@Description("Plane must take off and land safely!")
+public class PlaneTest {
+	@Test testTakeOff(){...}
+	@Test testLand(){...}
+}
+}}}
+
+Following table describes basic usage of annotations from {{{eu.ebdit.eau}}} package:
+
+||*Annotation*||*Value*||*Usage*||
+||*Bonus*||_None_||Marks test as optional. Failing the test will author not loose any important points but can gain extra ones.||
+||*Description*||Short and meaningful description of test||Provide short and meaningful description for given test. This description will be shown in evaluation report.||
+||*Details*||Additional details about the test||Provide additional details about the test. This details can be used for evaluating tools to provide more information about the test.||
+||*Points*||Number of points if successful||Provide number of points for evaluation. The number can be any {{{double}}}. Negative numbers will be converted to their positive counterparts using absolute value. Zero value should not be used since there is no meaningful how to decide whether the test was successful after evaluation. *This annotation must be always present on test method or class otherwise the method or class will not be taken into account during evaluation!*||
+
