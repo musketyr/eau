@@ -1,0 +1,29 @@
+===Situation III===
+As a time goes by Tina gave students new assignment. Now it was a team work. Because number of teams was quite low she encourages herself to gave each team different assignment.  Each team had one team leader who was answerable for communication with Tina. He collects parts of the work from team members put them together and send final work to Tina to evaluate it. He was also responsible for giving report to Tina how much was each member working which will be reflected on final score.
+
+Gloria was in one team with Betty. Their team leader Lucy decided that the best way how to write the assignment is to meet together after school.  Everyone got some small part of final work to be done and then they begun to work.  Gloria had nearly finish her part that afternoon but Betty said she wasn’t able to concentrate and she would finish her part at home. Lucy said that others need her part to make progress and if she doesn’t know how to do it they will help her. While she was humming and saying ‘Oh, so!’ others finish her work quite well. Lucy sent Tina theirs work three times and always got feedback in few hours. At the end Lucy’s team got full score and Lucy was so glad to have it she propose Tina to give all team members full score too and Tina did so.
+
+====Students' teams problem====
+Team work is crucial part of developing software. But it is hard to simulate this in school especially in beginners’ classes. If you let teams to form freely it will be created from groups of friends and in group of friend is hard to keep yourself objective. If you create teams declaratively they won’t be able to get themselves into productive part of team forming curve. They spend more time storming than creating final product. The person of team leader is also important. Maybe she could be from higher class.
+Here are some clues to make team work a little better and fairer. For the beginners the part of work for team member would be given by teacher and would be also track by her for example by running automated isolated tests.  Incompetence of one member shouldn’t harm others. Team should be able to get good mark even if one of them hasn’t done her work properly. This should prevent social inhibition and bystander effect.
+===Situation IV===
+As a time goes by the term reached its end. Tina gave her students their final assignment. They should create some text adventure game with usual features like bag, walking through several areas and so on. Tina was quite disappointed about her previous attempts and she also thought that writing automated tests will be too difficult so she choose different scenario. Every student will show her her final work, walk the adventure through and then the student will make some minor change on functionality to prove she did it herself.
+Gloria as usual worked hard and made her adventure perfectly working. Before showing it to Tina she mentioned some troubles removing items from bag so she decided not to do it during the presentation. And she didn’t. Presentation went well and she also managed to make the change in quite quick time. She didn’t lose a single point.
+
+Betty asked her friend again to write application instead of her. Before she went to the presentation she read code and notes she got from her friend but it was just a big mess for her. She didn’t know anything about how does exactly it work. She somehow to managed to show the application to Tina but when it comes to change something she was absolutely out of the question. She spent three hours trying to change it as Tina wanted but she wasn’t able. Tina sensed that something was wrong and said Betty to come some other day when she would know anything about code she wanted to show. She didn’t come at all and she will attend the course once again.
+
+===Ends good all good!?===
+It could look that everything ended well. In last situation we saw one of most effective way how to prevent students to cheat. After a few unsuccessful attempts nearly nobody tries to cheat on final assignment again. 
+TBD
+==Summary==
+In a few model situations we introduced some common problems which must programming language teacher face while evaluating students work. Surprisingly they can be described only with two items:
+  #Giving appropriately feedback to the students
+  #Prevents students against cheating
+According to this to points we can list some crucial parts of any automatic evaluation application
+  *generate student-specific assignments and keep track about them
+  *collect students’ works and pair them with their creators and with the right assignment
+  *quantify parts of the assignment (code quality)
+  *give appropriate feedback
+  *support team projects
+  *support plagiarism detection and other cheaters detection
+Let’s begin with number three in [QualifyingAssignments next chapter].
