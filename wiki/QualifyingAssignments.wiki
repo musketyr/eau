@@ -270,13 +270,13 @@ The result should look like following listing:
 Using annotations is nice and straightforward but sometimes we cannot use them
 effectively or we cannot them use at all e.g. we are not owners of the source code.
 Therefore EAU support by default XML configuration of both: the test result and
-the score definition. Test reports are supported in familiar Surfire report schema
+the score definition. Test reports are supported in familiar Surefire report schema
 which is format of generated test reports in usual maven build.
 Score definition has its own internal definition.
 
-Here is example of VehicleTest01 test run result:
+Here is example of !VehicleTest01 test run result:
 
-====Test result in Surfire XML format====
+====Test result in Surefire XML format====
 
 {{{
 <testsuite name="acme.VehicleTest01" time="0.015">
@@ -323,7 +323,7 @@ the input?
 
 EAU uses highly flexible and extendable mechanism which allows to collect
 test results and score definitions from various sources. Sources for test results
-can be JUnit test runs, Surfire test reports or, PMD reports etc. Also
+can be JUnit test runs, Surefire test reports or, PMD reports etc. Also
 score definitions may be various: annotated class, XML definition or definition
 in some specific DSL.
 
