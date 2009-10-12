@@ -38,7 +38,7 @@ public interface Vehicle {
 
 And here is one of final works. The veteran car.
 
-====acme/VeteranCar.java====
+====acme/!VeteranCar.java====
 {{{
 public class VeteranCar implements Vehicle{     
     
@@ -59,7 +59,7 @@ but still she should get all required points.
 We can write a simple test to check whether student's implementation works as it 
 should. It could look like one this:
 
-====acme/VehicleTest01.java====
+====acme/!VehicleTest01.java====
 {{{
 public class VehicleTest01 {
     protected Vehicle fixture;
@@ -90,7 +90,7 @@ can make special annotations which will help us to have everything on one place.
 Look on next code snippet. The points are divided by two because we can turn into
 two directions.
 
-====acme/VehicleTest02.java====
+====acme/!VehicleTest02.java====
 {{{
 public class VehicleTest02 {
 
@@ -120,7 +120,7 @@ We can even provide lot of more useful informations like tasks description and
 that some test is testing bonus feature. Bonus feature is as expected the one which
 gives some extra points.
 
-====acme/VehicleTest03.java====
+====acme/!VehicleTest03.java====
 {{{
 public class VehicleTest03 {
 
@@ -157,7 +157,7 @@ whole test class we say that some points should be given to author when all test
 
 For example plane must be able to take off and also land safely:
 
-====acme/PlaneTest.java====
+====acme/!PlaneTest.java====
 {{{
 @Points(10)
 @Description("Plane must take off and land safely!")
@@ -187,7 +187,7 @@ with anything else.
 The most primitive way how tp evaluate the test is just open command line 
 and type following:
 
-====Example command line run with acme.VeteranCarTest====
+====Example command line run with acme.!VeteranCarTest====
 
 {{{
 java -cp "<path-to-eau-all.jar>;<path-to-your-project's-classpath>" eu.ebdit.eau.util.TextUI acme.VeteranCarTest
@@ -232,7 +232,7 @@ shown above and XML printer. You can also define your own printers implementing
 as {{{-p}}} parameter to {{{eu.ebdit.eau.TextUI}}} main class. Note you can also forward
 output to specific file using standard {{{>}}} command char.
 
-====Example command line run with acme.VeteranCarTest with XML output====
+====Example command line run with acme.!VeteranCarTest with XML output====
 
 {{{
 java -cp "<path-to-eau-all.jar>;<path-to-your-project's-classpath>" eu.ebdit.eau.util.TextUI -p eu.ebdit.eau.util.XmlReportPrinter acme.VeteranCarTest > result.xml
@@ -310,7 +310,7 @@ And here is how would should score definition look like for this test:
 
 Now you can evaluate it again only using XML files:
 
-====Example command line run with acme.VeteranCarTest with XML inputs====
+====Example command line run with acme.!VeteranCarTest with XML inputs====
 
 {{{
 java -cp "<path-to-eau-all.jar>;<path-to-your-xml-files>" eu.ebdit.eau.util.TextUI TEST-acme.VehicleTest01.xml VehicleTest01.score.xml
@@ -349,7 +349,7 @@ java -cp "<path-to-eau-all.jar>;<path-to-your-xml-files>" eu.ebdit.eau.util.Text
 
 And this is how should look like example with JUnit test run.
 
-====Example command line run with acme.VeteranCarTest with specified collectors====
+====Example command line run with acme.!VeteranCarTest with specified collectors====
 
 {{{
 java -cp "<path-to-eau-all.jar>;<path-to-your-xml-files>" eu.ebdit.eau.util.TextUI -s eu.util.eau.util.ScoreAnnotationCollector -r eu.util.eau.junit.JUnitResultCollector acme.VeteranCarTest
