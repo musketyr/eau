@@ -4,7 +4,7 @@
 
 <wiki:toc max_depth="3" />
 
-= Qualifying assignments =
+= Quantifying assignments =
 
 
 Nowadays there is plenty of `*`Unit, Test`*` and other testing frameworks which 
