@@ -215,9 +215,9 @@ According to this to points we can list some crucial parts of any automatic eval
 
   # generate student-specific assignments and keep track about them
   # collect students’ works and pair them with their creators and with the right assignment
-  # quantify parts of the assignment (code quality)
+  # [QuantifyingAssignments quantify parts of the assignment] (code quality)
   # give appropriate feedback
   # support team projects
   # support plagiarism detection and other cheaters detection
   
-Let’s begin with number three in [QualifyingAssignments next chapter].
+Let’s begin with number three in [QuantifyingAssignments next chapter].
