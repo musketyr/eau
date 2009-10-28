@@ -3,4 +3,4 @@
 
 *The Automatic Evaluation of Students' Assignments*
  # [Background Students' Assignments Evaluation Background]
- # [QualifyingAssignments Qualifying assignments]
+ # [QuantifyingAssignments Quantifying assignments]
