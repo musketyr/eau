@@ -1,5 +1,5 @@
 #summary Students' Assignments Evaluation Background
-#labels EarlyDraft
+#labels EarlyDraft,Deprecated
 #sidebar TableOfContents
 <wiki:toc depth="3"/>
 
