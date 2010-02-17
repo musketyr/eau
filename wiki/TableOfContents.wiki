@@ -1,5 +1,4 @@
 #summary Table of Contents
-#labels Featured
 
 *The Automatic Evaluation of Students' Assignments*
  # [Background Students' Assignments Evaluation Background]
