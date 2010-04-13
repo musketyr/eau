@@ -1,5 +1,0 @@
-#summary Table of Contents
-
-*The Automatic Evaluation of Students' Assignments*
- # [Background Students' Assignments Evaluation Background]
- # [QuantifyingAssignments Quantifying assignments]
