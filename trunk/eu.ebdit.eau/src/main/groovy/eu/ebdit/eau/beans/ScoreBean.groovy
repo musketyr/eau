@@ -1,7 +1,7 @@
 
 package eu.ebdit.eau.beans
 
-import eu.ebdit.eau.Score
+import eu.ebdit.eau.Score;
 
 /**
  * @author Vladimir Orany

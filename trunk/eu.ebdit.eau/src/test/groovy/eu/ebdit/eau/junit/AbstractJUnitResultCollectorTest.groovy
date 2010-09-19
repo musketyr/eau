@@ -30,7 +30,7 @@ public abstract class AbstractJUnitResultCollectorTest
 
     @Override
     protected final Iterable<Object> getInputsToSucceed() {
-	"org.example.TestClass"
+		"org.example.TestClass"
     }
     
 }

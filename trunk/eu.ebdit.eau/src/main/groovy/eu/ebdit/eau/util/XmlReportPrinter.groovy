@@ -1,7 +1,8 @@
 package eu.ebdit.eau.util
 
+import java.io.Writer;
+
 import eu.ebdit.eau.Printer;
-import eu.ebdit.eau.Report;
 import groovy.xml.MarkupBuilder;
 
 public class XmlReportPrinter implements Printer{
