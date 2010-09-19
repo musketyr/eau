@@ -11,17 +11,17 @@
 	<groupId>eu.ebdit</groupId>
 	<artifactId>eau</artifactId>
 	<name>Eau - Evaluation Automation Utility</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>1.6.1</version>
+			<version>1.7.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.collections</groupId>
 			<artifactId>google-collections</artifactId>
-			<version>1.0-rc2</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -225,14 +225,12 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 			</plugin>
-			<plugins>
-			</plugins>
 		</plugins>
 	</reporting>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<targetJre>1.6</targetJre>
+		<targetJre>1.5</targetJre>
 		<junitVersion>4.5</junitVersion>
 		<slf4jVersion>1.5.8</slf4jVersion>
 		<slf4jImpl>simple</slf4jImpl>

@@ -20,17 +20,17 @@ final class JUnit4ResultCollector extends RunListener implements
 	Collector<Result> {
 
     private boolean canCollectFrom(final Object input) {
-	return !Iterables.isEmpty(Classes.asClassIterable(input));
+    	return !Iterables.isEmpty(Classes.asClassIterable(input));
     }
 
     public Iterable<Result> collectFrom(final Object input) {
-	if (!canCollectFrom(input)) {
-	    return Collections.emptyList();
-	}
-	final JUnitCore core = new JUnitCore();
-	core.addListener(this);
-	core.run(Classes.asClassArray(input));
-	return results;
+		if (!canCollectFrom(input)) {
+		    return Collections.emptyList();
+		}
+		final JUnitCore core = new JUnitCore();
+		core.addListener(this);
+		core.run(Classes.asClassArray(input));
+		return results;
     }
 
     private transient Result lastResult;

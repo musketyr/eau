@@ -1,9 +1,8 @@
 package eu.ebdit.eau.util;
 
 import static com.google.common.collect.Iterables.isEmpty;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,11 +44,11 @@ public abstract class AbstractCollectorTest<T> {
      */
     public final void testInputs() {
 	for (Object toSucceed : getInputsToSucceed()) {
-	    assertFalse("Items collected from " + toSucceed + " was empty!",
+	    Assert.assertFalse("Items collected from " + toSucceed + " was empty!",
 		    isEmpty(getFixure().collectFrom(toSucceed)));
 	}
 	for (Object toFail : getInputsToFail()) {
-	    assertTrue("Items collected from " + toFail + " was not empty!",
+		Assert.assertTrue("Items collected from " + toFail + " was not empty!",
 		    isEmpty(getFixure().collectFrom(toFail)));
 	}
     }

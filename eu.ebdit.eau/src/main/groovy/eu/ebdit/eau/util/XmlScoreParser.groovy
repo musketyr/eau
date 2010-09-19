@@ -3,10 +3,7 @@
  */
 package eu.ebdit.eau.util
 
-import java.io.File;
-
-import eu.ebdit.eau.Score
-import eu.ebdit.eau.Result
+import eu.ebdit.eau.Score;
 import eu.ebdit.eau.beans.ScoreBean;
 import eu.ebdit.eau.spi.Collector;
 
